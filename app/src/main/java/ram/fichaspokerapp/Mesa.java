@@ -25,4 +25,7 @@ public class Mesa {
 
 	}
 
+	public int cantidadDeJugadoresSentados() {
+		return 1;
+	}
 }

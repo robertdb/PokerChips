@@ -16,7 +16,10 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void mesaSeInicializaCon1Jugador() {
+    public void mesaSeInicializaConUnJugador() {
         Mesa mesita = new Mesa();
+        assertEquals(1, mesita.cantidadDeJugadoresSentados());
     }
+
+
 }
