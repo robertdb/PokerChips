@@ -1,3 +1,5 @@
+package ram.fichaspokerapp;
+
 public class Jugador {
 
 	private String nombre;
