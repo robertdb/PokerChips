@@ -1,6 +1,9 @@
+package ram.fichaspokerapp;
+import java.util.List;
+
 public class Mesa {
 
-	private List listaDeJugadores;
+	private List <Jugador> listaDeJugadores;
 
 	private String nombre;
 
@@ -13,8 +16,6 @@ public class Mesa {
 	private Jugador jugador;
 
 	private Administrador administrador;
-
-	private TipoDePoker tipoDePoker;
 
 	public void operation0() {
 
