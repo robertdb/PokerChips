@@ -12,24 +12,33 @@ import static org.junit.Assert.*;
 
 public class ExampleUnitTest {
 
+    private Jugador unJugador = new Jugador();
+    private Mesa mesa;
+    private Administrador unAdministrador = new Administrador();
+
     @Test
     public void mesaSeInicializaConUnJugadorTest() {
 
-        Jugador unJugador = new Jugador();
-        Mesa mesita = new Mesa(unJugador);
-        assertEquals(1, mesita.cantidadDeJugadoresSentados());
+        mesa = new Mesa("prueba", unJugador);
+        assertEquals(1, mesa.cantidadDeJugadoresSentados());
 
     }
 
     @Test
     public void mesaSoportaDosJugadoresTest() {
 
-        Jugador unJugador = new Jugador();
         Jugador otroJugador = new Jugador();
-        Mesa mesita = new Mesa(unJugador);
-        mesita.agregarJugador(otroJugador);
-        assertEquals(2, mesita.cantidadDeJugadoresSentados());
+        mesa = new Mesa("prueba", unJugador);
+        mesa.agregarJugador(otroJugador);
+        assertEquals(2, mesa.cantidadDeJugadoresSentados());
 
     }
-    
+
+    @Test
+    public void partidaNoPuedeComenzarConUnSoloJugadorTest() {
+
+        mesa = new Mesa("prueba", unJugador);
+        mesa.agregarJugador(unAdministrador);
+
+    }
 }

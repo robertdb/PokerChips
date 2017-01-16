@@ -18,8 +18,9 @@ public class Mesa {
 
 	private Administrador administrador;
 
-	public Mesa(Jugador jugador) {
+	public Mesa(String nombre, Jugador jugador) {
 
+		this.nombre = nombre;
 		this.listaDeJugadores = new ArrayList<Jugador>();
 		this.listaDeJugadores.add(jugador);
 
