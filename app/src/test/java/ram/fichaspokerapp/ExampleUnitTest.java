@@ -1,5 +1,6 @@
 package ram.fichaspokerapp;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -12,14 +13,15 @@ import static org.junit.Assert.*;
 
 public class ExampleUnitTest {
 
+    private Administrador unAdministrador = new Administrador();
     private Jugador unJugador = new Jugador();
     private Mesa mesa;
-    private Administrador unAdministrador = new Administrador();
+
 
     @Test
     public void mesaSeInicializaConUnJugadorTest() {
 
-        mesa = new Mesa("prueba", unJugador);
+        mesa = new Mesa("Prueba", unAdministrador);
         assertEquals(1, mesa.cantidadDeJugadoresSentados());
 
     }
@@ -28,7 +30,7 @@ public class ExampleUnitTest {
     public void mesaSoportaDosJugadoresTest() {
 
         Jugador otroJugador = new Jugador();
-        mesa = new Mesa("prueba", unJugador);
+        mesa = new Mesa("Prueba", unAdministrador);
         mesa.agregarJugador(otroJugador);
         assertEquals(2, mesa.cantidadDeJugadoresSentados());
 
@@ -37,8 +39,17 @@ public class ExampleUnitTest {
     @Test
     public void partidaNoPuedeComenzarConUnSoloJugadorTest() {
 
-        mesa = new Mesa("prueba", unJugador);
+        mesa = new Mesa("Prueba", unAdministrador);
         mesa.agregarJugador(unAdministrador);
+
+    }
+
+    @Ignore
+    @Test
+    public void elPrimerJugadorEsAdministradorTest() {
+
+        mesa = new Mesa("Prueba", unAdministrador);
+        assertEquals(unAdministrador, mesa.getAdministrador());
 
     }
 }
