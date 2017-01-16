@@ -1,9 +1,10 @@
 package ram.fichaspokerapp;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Mesa {
 
-	private List <Jugador> listaDeJugadores;
+	private List<Jugador> listaDeJugadores;
 
 	private String nombre;
 
@@ -17,15 +18,22 @@ public class Mesa {
 
 	private Administrador administrador;
 
-	public void operation0() {
+	public Mesa(Jugador jugador) {
 
-	}
-
-	public void operation1() {
+		this.listaDeJugadores = new ArrayList<Jugador>();
+		this.listaDeJugadores.add(jugador);
 
 	}
 
 	public int cantidadDeJugadoresSentados() {
-		return 1;
+
+		return this.listaDeJugadores.size();
+
+	}
+
+	public void agregarJugador(Jugador jugador) {
+
+		listaDeJugadores.add(jugador);
+
 	}
 }

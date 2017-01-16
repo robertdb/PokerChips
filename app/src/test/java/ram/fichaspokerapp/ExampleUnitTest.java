@@ -12,14 +12,27 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
+
         assertEquals(4, 2 + 2);
     }
 
     @Test
     public void mesaSeInicializaConUnJugador() {
-        Mesa mesita = new Mesa();
+
+        Jugador unJugador = new Jugador();
+        Mesa mesita = new Mesa(unJugador);
         assertEquals(1, mesita.cantidadDeJugadoresSentados());
+
     }
 
+    @Test
+    public void mesaSoportaDosJugadores() {
 
+        Jugador unJugador = new Jugador();
+        Jugador otroJugador = new Jugador();
+        Mesa mesita = new Mesa(unJugador);
+        mesita.agregarJugador(otroJugador);
+        assertEquals(2, mesita.cantidadDeJugadoresSentados());
+
+    }
 }
