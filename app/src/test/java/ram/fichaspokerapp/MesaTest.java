@@ -5,6 +5,8 @@ import junit.framework.TestCase;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import ram.fichaspokerapp.error.PartidaNoPuedeComenzarConUnSoloJugadorError;
+
 import static org.junit.Assert.*;
 
 /**
@@ -38,7 +40,6 @@ public class MesaTest {
 
     }
 
-    @Ignore
     @Test(expected = PartidaNoPuedeComenzarConUnSoloJugadorError.class)
     public void partidaNoPuedeComenzarConUnSoloJugadorTest() {
 
