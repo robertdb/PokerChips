@@ -1,5 +1,7 @@
 package ram.fichaspokerapp;
 
+import junit.framework.TestCase;
+
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -36,15 +38,16 @@ public class ExampleUnitTest {
 
     }
 
-    @Test
+    @Ignore
+    @Test(expected = PartidaNoPuedeComenzarConUnSoloJugadorError.class)
     public void partidaNoPuedeComenzarConUnSoloJugadorTest() {
 
         mesa = new Mesa("Prueba", unAdministrador);
         mesa.agregarJugador(unAdministrador);
+        unAdministrador.comenzarPartida();
 
     }
 
-    @Ignore
     @Test
     public void elPrimerJugadorEsAdministradorTest() {
 
