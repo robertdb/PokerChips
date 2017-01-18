@@ -10,7 +10,7 @@
         android:contentDescription="FichaAzul"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/FichaAzul"/>
+        android:src="@drawable/fichaazulpng"/>
 
     <TextView
         android:layout_width="wrap_content"
