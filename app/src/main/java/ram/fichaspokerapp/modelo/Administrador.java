@@ -1,4 +1,4 @@
-package ram.fichaspokerapp;
+package ram.fichaspokerapp.modelo;
 
 import ram.fichaspokerapp.error.PartidaNoPuedeComenzarConUnSoloJugadorError;
 

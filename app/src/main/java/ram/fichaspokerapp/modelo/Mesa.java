@@ -1,8 +1,8 @@
-package ram.fichaspokerapp;
+package ram.fichaspokerapp.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
-class Mesa {
+public class Mesa {
 
 	private List<Jugador> listaDeJugadores;
 
@@ -16,7 +16,7 @@ class Mesa {
 
 	private Administrador administrador;
 
-	Mesa(String nombre, Administrador administrador) {
+	public Mesa(String nombre, Administrador administrador) {
 
 		this.nombre = nombre;
 		this.administrador = administrador;
@@ -25,19 +25,19 @@ class Mesa {
 
 	}
 
-	int cantidadDeJugadoresSentados() {
+	public int cantidadDeJugadoresSentados() {
 
 		return this.listaDeJugadores.size();
 
 	}
 
-	void agregarJugador(Jugador jugador) {
+	public void agregarJugador(Jugador jugador) {
 
 		listaDeJugadores.add(jugador);
 
 	}
 
-	Administrador getAdministrador() {
+	public Administrador getAdministrador() {
 		return administrador;
 	}
 }

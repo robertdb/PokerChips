@@ -1,4 +1,4 @@
-package ram.fichaspokerapp;
+package ram.fichaspokerapp.modelo;
 
 public class Jugador {
 

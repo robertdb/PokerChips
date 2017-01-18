@@ -1,9 +1,11 @@
 package ram.fichaspokerapp;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import ram.fichaspokerapp.error.PartidaNoPuedeComenzarConUnSoloJugadorError;
+import ram.fichaspokerapp.modelo.Administrador;
+import ram.fichaspokerapp.modelo.Jugador;
+import ram.fichaspokerapp.modelo.Mesa;
 
 import static org.junit.Assert.*;
 
