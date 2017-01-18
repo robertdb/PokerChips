@@ -14,5 +14,4 @@
 .idea/vcs.xml
 app/libs/
 app/proguard-rules.pro
-app/src/main/res/drawable/
 mylogfile.log
