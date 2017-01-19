@@ -1,11 +1,13 @@
 package ram.fichaspokerapp;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import ram.fichaspokerapp.error.PartidaNoPuedeComenzarConUnSoloJugadorError;
 import ram.fichaspokerapp.modelo.Administrador;
 import ram.fichaspokerapp.modelo.Jugador;
 import ram.fichaspokerapp.modelo.Mesa;
+import ram.fichaspokerapp.error.UnJugadorNoPuedeEstarRepetidoEnLaMesaError;
 
 import static org.junit.Assert.*;
 
@@ -40,11 +42,12 @@ public class MesaTest {
 
     }
 
+    @Ignore
     @Test(expected = PartidaNoPuedeComenzarConUnSoloJugadorError.class)
     public void partidaNoPuedeComenzarConUnSoloJugadorTest() {
 
         mesa = new Mesa("Prueba", unAdministrador);
-        mesa.agregarJugador(unAdministrador);
+        mesa.agregarJugador(unJugador);
         unAdministrador.comenzarPartida();
 
     }
@@ -54,6 +57,23 @@ public class MesaTest {
 
         mesa = new Mesa("Prueba", unAdministrador);
         assertEquals(unAdministrador, mesa.getAdministrador());
+
+    }
+
+    @Test(expected = UnJugadorNoPuedeEstarRepetidoEnLaMesaError.class)
+    public void unJugadorNoPuedeEstarRepetidoTest() {
+
+        mesa = new Mesa("prueba", unAdministrador);
+        mesa.agregarJugador(unJugador);
+        mesa.agregarJugador(unJugador);
+
+    }
+
+    @Test
+    public void lasCiegasSeDebitanYCobranCorrectamenteTest() {
+
+        mesa = new Mesa("Prueba", unAdministrador);
+        mesa.agregarJugador(unJugador);
 
     }
 }
