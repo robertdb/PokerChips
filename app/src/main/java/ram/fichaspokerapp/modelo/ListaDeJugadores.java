@@ -30,22 +30,28 @@ public class ListaDeJugadores {
     private boolean mesaLlena() {
 
         boolean mesaLlena = (this.listaDeJugadores.size() >= 10);
+
         if (mesaLlena) {
             throw new MesaNoSoportaMasDeDiezJugadoresError();
         }
-        return false;
+        return false; // siempre es falso
     }
 
     private boolean existe(Jugador jugador) {
 
         boolean existe = listaDeJugadores.contains(jugador);
+
         if (existe) {
             throw new UnJugadorNoPuedeEstarRepetidoError();
         }
-        return false;
+        return false; // siempre es falso
     }
 
     public int size() {
         return this.listaDeJugadores.size();
+    }
+
+    public Jugador siguiente(Jugador unJugador) {
+        return (this.listaDeJugadores.get(this.listaDeJugadores.indexOf(unJugador) + 1));
     }
 }

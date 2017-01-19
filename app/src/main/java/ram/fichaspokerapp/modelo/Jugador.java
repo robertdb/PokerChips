@@ -6,20 +6,17 @@ public class Jugador {
 
 	private int cantidadDeFichas;
 
-	public void apostar() {
+	public void apostar(int fichas) {
+
+		this.cantidadDeFichas = this.cantidadDeFichas - fichas;
 
 	}
 
-	public void apostar(int ciega) {
-
+	public int getFichas() {
+		return cantidadDeFichas;
 	}
 
-	public void retirarse() {
-
+	public void acreditarFichas(int fichas) {
+		this.cantidadDeFichas = this.cantidadDeFichas + fichas;
 	}
-
-	public void operation6() {
-
-	}
-
 }

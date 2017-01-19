@@ -14,11 +14,14 @@ public class Mesa {
 
 	private int pozo;
 
+	private Jugador boton;
+
 	public Mesa(String nombre, Jugador jugador) {
 
 		this.nombre = nombre;
 		this.listaDeJugadores = new ListaDeJugadores();
 		this.listaDeJugadores.add(jugador);
+		this.boton = jugador;
 
 	}
 
@@ -30,11 +33,30 @@ public class Mesa {
 
 	public void agregarJugador(Jugador jugador) {
 
+		jugador.acreditarFichas(1500);
 		listaDeJugadores.add(jugador);
 
 	}
 
 	public void comenzarPartida() {
-		throw new PartidaNoPuedeComenzarConUnSoloJugadorError();
+
+		if (this.listaDeJugadores.size() == 1) {
+			throw new PartidaNoPuedeComenzarConUnSoloJugadorError();
+		}	else {
+
+		}
+
+	}
+
+	public Jugador getBoton() {
+		return boton;
+	}
+
+	public Jugador getCiegaChica() {
+		return listaDeJugadores.siguiente(this.getBoton());
+	}
+
+	public Jugador getCiegaGrande() {
+		return listaDeJugadores.siguiente(this.getCiegaChica());
 	}
 }
