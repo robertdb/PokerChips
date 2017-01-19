@@ -1,13 +1,10 @@
 package ram.fichaspokerapp.modelo;
-import java.util.ArrayList;
-import java.util.List;
 
 import ram.fichaspokerapp.error.PartidaNoPuedeComenzarConUnSoloJugadorError;
-import ram.fichaspokerapp.error.UnJugadorNoPuedeEstarRepetidoEnLaMesaError;
 
 public class Mesa {
 
-	private List<Jugador> listaDeJugadores;
+	private ListaDeJugadores listaDeJugadores;
 
 	private String nombre;
 
@@ -20,7 +17,7 @@ public class Mesa {
 	public Mesa(String nombre, Jugador jugador) {
 
 		this.nombre = nombre;
-		this.listaDeJugadores = new ArrayList<>();
+		this.listaDeJugadores = new ListaDeJugadores();
 		this.listaDeJugadores.add(jugador);
 
 	}
@@ -33,11 +30,7 @@ public class Mesa {
 
 	public void agregarJugador(Jugador jugador) {
 
-		if (! listaDeJugadores.contains(jugador)) {
-			listaDeJugadores.add(jugador);
-		}	else {
-			throw new UnJugadorNoPuedeEstarRepetidoEnLaMesaError();
-		}
+		listaDeJugadores.add(jugador);
 
 	}
 

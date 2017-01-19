@@ -1,12 +1,14 @@
 package ram.fichaspokerapp;
 
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import ram.fichaspokerapp.error.MesaNoSoportaMasDeDiezJugadoresError;
 import ram.fichaspokerapp.error.PartidaNoPuedeComenzarConUnSoloJugadorError;
 import ram.fichaspokerapp.modelo.Jugador;
 import ram.fichaspokerapp.modelo.Mesa;
-import ram.fichaspokerapp.error.UnJugadorNoPuedeEstarRepetidoEnLaMesaError;
+import ram.fichaspokerapp.error.UnJugadorNoPuedeEstarRepetidoError;
 
 import static org.junit.Assert.*;
 
@@ -22,11 +24,16 @@ public class MesaTest {
     private Jugador otroJugador = new Jugador();
     private Mesa mesa;
 
+    @Before
+    public void setUp() {
+
+        mesa = new Mesa("Prueba", unJugador);
+
+    }
 
     @Test
     public void mesaSeInicializaConUnJugadorTest() {
 
-        mesa = new Mesa("Prueba", unJugador);
         assertEquals(1, mesa.cantidadDeJugadoresSentados());
 
     }
@@ -34,19 +41,40 @@ public class MesaTest {
     @Test
     public void mesaSoportaDosJugadoresTest() {
 
-        Jugador otroJugador = new Jugador();
-        mesa = new Mesa("Prueba", unJugador);
         mesa.agregarJugador(otroJugador);
         assertEquals(2, mesa.cantidadDeJugadoresSentados());
 
     }
 
-    @Ignore
+    @Test(expected = MesaNoSoportaMasDeDiezJugadoresError.class)
+    public void mesaNoSoportaMasDeDiezJugadoresTest() {
+
+        Jugador jugador3 = new Jugador();
+        Jugador jugador4 = new Jugador();
+        Jugador jugador5 = new Jugador();
+        Jugador jugador6 = new Jugador();
+        Jugador jugador7 = new Jugador();
+        Jugador jugador8 = new Jugador();
+        Jugador jugador9 = new Jugador();
+        Jugador jugador10 = new Jugador();
+        Jugador jugador11 = new Jugador();
+
+        mesa.agregarJugador(otroJugador);
+        mesa.agregarJugador(jugador3);
+        mesa.agregarJugador(jugador4);
+        mesa.agregarJugador(jugador5);
+        mesa.agregarJugador(jugador6);
+        mesa.agregarJugador(jugador7);
+        mesa.agregarJugador(jugador8);
+        mesa.agregarJugador(jugador9);
+        mesa.agregarJugador(jugador10);
+        mesa.agregarJugador(jugador11);
+
+    }
+
     @Test(expected = PartidaNoPuedeComenzarConUnSoloJugadorError.class)
     public void partidaNoPuedeComenzarConUnSoloJugadorTest() {
 
-        mesa = new Mesa("Prueba", unJugador);
-        mesa.agregarJugador(unJugador);
         mesa.comenzarPartida();
 
     }
@@ -55,15 +83,13 @@ public class MesaTest {
     @Test
     public void elPrimerJugadorEsAdministradorTest() {
 
-        mesa = new Mesa("Prueba", unJugador);
 //        assertEquals(unJugador, mesa.getAdministrador());
 
     }
 
-    @Test(expected = UnJugadorNoPuedeEstarRepetidoEnLaMesaError.class)
+    @Test(expected = UnJugadorNoPuedeEstarRepetidoError.class)
     public void unJugadorNoPuedeEstarRepetidoTest() {
 
-        mesa = new Mesa("prueba", unJugador);
         mesa.agregarJugador(unJugador);
 
     }
@@ -71,7 +97,6 @@ public class MesaTest {
     @Test
     public void lasCiegasSeDebitanYCobranCorrectamenteTest() {
 
-        mesa = new Mesa("Prueba", unJugador);
         mesa.agregarJugador(otroJugador);
 
     }
