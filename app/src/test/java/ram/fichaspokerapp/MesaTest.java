@@ -1,15 +1,8 @@
 package ram.fichaspokerapp;
 
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
-
-import ram.fichaspokerapp.error.MesaNoSoportaMasDeDiezJugadoresError;
-import ram.fichaspokerapp.error.PartidaNoPuedeComenzarConUnSoloJugadorError;
-import ram.fichaspokerapp.modelo.Jugador;
-import ram.fichaspokerapp.modelo.Mesa;
-import ram.fichaspokerapp.error.UnJugadorNoPuedeEstarRepetidoError;
-
+import org.junit.*;
+import ram.fichaspokerapp.modelo.*;
+import ram.fichaspokerapp.error.*;
 import static org.junit.Assert.*;
 
 /**
