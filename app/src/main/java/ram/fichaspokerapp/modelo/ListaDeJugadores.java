@@ -54,6 +54,10 @@ public class ListaDeJugadores {
         return this.listaDeJugadores.size();
     }
 
+    public Jugador get(int index) {
+        return this.listaDeJugadores.get(index);
+    }
+
     public Jugador siguiente(Jugador unJugador) {
 
         Iterator<Jugador> iter = listaDeJugadores.iterator();

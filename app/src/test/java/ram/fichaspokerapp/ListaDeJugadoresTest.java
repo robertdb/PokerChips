@@ -32,7 +32,7 @@ public class ListaDeJugadoresTest {
 
         //Jugador jugadorPosicion1 = lista.getListaDeJugadores().get(1);
         //Jugador jugadorPosicion2 = jugadorPosicion1.si
-       assertEquals("Robert", lista.getListaDeJugadores().get(1).getNombre());
+       assertEquals("Robert", lista.get(1).getNombre());
 
 
 
