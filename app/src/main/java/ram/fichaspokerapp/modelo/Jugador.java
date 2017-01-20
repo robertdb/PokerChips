@@ -19,4 +19,21 @@ public class Jugador {
 	public void acreditarFichas(int fichas) {
 		this.cantidadDeFichas = this.cantidadDeFichas + fichas;
 	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public Jugador(){
+
+	}
+	public Jugador (String nombre){
+
+		this.nombre = nombre;
+		this.cantidadDeFichas = 1500;
+	}
+
 }
+
+
+
