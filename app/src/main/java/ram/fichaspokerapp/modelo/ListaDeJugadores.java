@@ -16,6 +16,7 @@ public class ListaDeJugadores {
     public ListaDeJugadores() {
 
         this.listaDeJugadores = new ArrayList<>();
+        this.listaDeJugadores.iterator();
 
     }
 

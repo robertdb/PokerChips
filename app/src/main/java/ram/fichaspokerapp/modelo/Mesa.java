@@ -59,4 +59,8 @@ public class Mesa {
 	public Jugador getCiegaGrande() {
 		return listaDeJugadores.siguiente(this.getCiegaChica());
 	}
+
+	public int getPozo() {
+		return pozo;
+	}
 }

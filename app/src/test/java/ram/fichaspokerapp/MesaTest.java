@@ -104,4 +104,23 @@ public class MesaTest {
         assertEquals(1480, ciegaGrande.getFichas());
 
     }
+
+    @Ignore
+    @Test
+    public void lasCiegasSeAcreditanEnElPozoCorrectamenteTest() {
+
+        Jugador jugador3 = new Jugador();
+        Jugador ciegaChica;
+        Jugador ciegaGrande;
+
+        mesa.agregarJugador(otroJugador);
+        mesa.agregarJugador(jugador3);
+        mesa.comenzarPartida();
+        ciegaChica = mesa.getCiegaChica();
+        ciegaGrande = mesa.getCiegaGrande();
+        ciegaChica.apostar(10);
+        ciegaGrande.apostar(20);
+        assertEquals(30, mesa.getPozo());
+
+    }
 }
