@@ -5,6 +5,7 @@ import org.junit.Test;
 import ram.fichaspokerapp.modelo.LinkedList.CircularLinkedList;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Robert on 20/1/17.
@@ -107,6 +108,16 @@ public class CircularLinkedListTest {
 
         // se elimninó a braian
         assertEquals("braian", lista.removeAt(4));
+
+    }
+
+    @Test
+    public void elementoExisteEnLaListaEsCorrecto(){
+
+        CircularLinkedList lista = getListaConNombres();
+
+        assertTrue(lista.contains("marcos"));
+
 
     }
 

@@ -7,7 +7,7 @@ import java.util.List;
  * Created by Samsung on 20/01/2017.
  */
 
-public class IteradorJugadores implements Iterator<Jugador> {
+class IteradorJugadores implements Iterator<Jugador> {
     private int cursor;
     private List<Jugador> lista;
 
