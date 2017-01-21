@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Iterator;
 
-import ram.fichaspokerapp.error.MesaNoSoportaMasDeDiezJugadoresError;
-import ram.fichaspokerapp.error.UnJugadorNoPuedeEstarRepetidoError;
+import ram.fichaspokerapp.error.*;
 
 /**
  * Created by Marcos on 19/01/2017.
@@ -54,19 +53,27 @@ public class ListaDeJugadores {
         return this.listaDeJugadores.size();
     }
 
+    public Jugador get(int index) {
+        return this.listaDeJugadores.get(index);
+    }
+
     public Jugador siguiente(Jugador unJugador) {
 
-        Iterator<Jugador> iter = listaDeJugadores.iterator();
-
-        if (iter.hasNext()) {
-            return (Jugador)iter.next();
-        }   else {
-                return (listaDeJugadores.get(0));
-        }
+        int index = this.listaDeJugadores.indexOf(unJugador);
+        IteradorJugadores iter = this.iterator(index);
+        return iter.next();
 
     }
 
     public List<Jugador> getListaDeJugadores(){
         return this.listaDeJugadores;
+    }
+
+    public IteradorJugadores iterator(int posInicial) {
+        return new IteradorJugadores(this.listaDeJugadores, posInicial);
+    }
+
+    public IteradorJugadores iterator() {
+        return new IteradorJugadores(this.listaDeJugadores);
     }
 }
