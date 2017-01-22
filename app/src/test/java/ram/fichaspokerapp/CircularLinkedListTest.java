@@ -2,7 +2,7 @@ package ram.fichaspokerapp;
 
 import org.junit.Test;
 
-import ram.fichaspokerapp.modelo.LinkedList.CircularLinkedList;
+import ram.fichaspokerapp.modelo.linkedList.CircularLinkedList;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

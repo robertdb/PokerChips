@@ -1,6 +1,4 @@
-package ram.fichaspokerapp.modelo.LinkedList;
-
-import java.util.Objects;
+package ram.fichaspokerapp.modelo.linkedList;
 
 /**
  * Created by Robert on 20/1/17.

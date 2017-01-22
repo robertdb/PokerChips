@@ -1,14 +1,20 @@
 package ram.fichaspokerapp.modelo;
 
+import ram.fichaspokerapp.error.JugadorNoPuedeApostarMasFichasQueSuPilaError;
+
 public class Jugador {
 
 	private String nombre;
 
 	private int cantidadDeFichas;
 
-	public void apostar(int fichas) {
+	public void apostar(int fichasAApostar) {
 
-		this.cantidadDeFichas = this.cantidadDeFichas - fichas;
+		if (this.cantidadDeFichas < fichasAApostar) {
+			throw new JugadorNoPuedeApostarMasFichasQueSuPilaError();
+		}	else {
+			this.cantidadDeFichas -= fichasAApostar;
+		}
 
 	}
 
@@ -24,15 +30,19 @@ public class Jugador {
 		return nombre;
 	}
 
-	public Jugador(){
-
+	public Jugador() {
 	}
-	public Jugador (String nombre){
+
+	public Jugador (String nombre) {
 
 		this.nombre = nombre;
 		this.cantidadDeFichas = 1500;
 	}
 
+	public void pasar() {
+
+
+	}
 }
 
 

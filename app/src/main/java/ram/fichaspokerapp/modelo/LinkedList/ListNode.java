@@ -1,4 +1,4 @@
-package ram.fichaspokerapp.modelo.LinkedList;
+package ram.fichaspokerapp.modelo.linkedList;
 
 /**
  * Created by Robert on 20/1/17.
