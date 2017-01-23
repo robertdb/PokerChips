@@ -26,4 +26,9 @@ public class Subir extends Jugada {
     public void retirar() {
 
     }
+
+    @Override
+    public void actuar(Jugada jugadaAnterior) {
+
+    }
 }

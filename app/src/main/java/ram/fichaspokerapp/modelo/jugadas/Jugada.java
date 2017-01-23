@@ -14,4 +14,6 @@ public abstract class Jugada {
 
     public abstract void retirar();
 
+    public abstract void actuar(Jugada jugadaAnterior);
+
 }

@@ -24,4 +24,9 @@ public class Retirar extends Jugada {
     public void retirar() {
 
     }
+
+    @Override
+    public void actuar(Jugada jugadaAnterior) {
+
+    }
 }

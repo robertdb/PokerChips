@@ -6,18 +6,17 @@ package ram.fichaspokerapp.modelo.jugadas;
 
 public class Pasar extends Jugada {
 
-    private Jugada jugadaAnterior;
+    public Pasar () {
+    }
 
     public Pasar(Jugada jugadaAnterior) {
 
-        this.jugadaAnterior = jugadaAnterior;
+        this.actuar(jugadaAnterior);
 
     }
 
     @Override
     public void pasar() {
-
-        jugadaAnterior.pasar();
 
     }
 
@@ -35,5 +34,10 @@ public class Pasar extends Jugada {
     @Override
     public void retirar() {
 
+    }
+
+    @Override
+    public void actuar(Jugada jugadaAnterior) {
+        jugadaAnterior.pasar();
     }
 }

@@ -17,7 +17,6 @@ public class PasarTest {
 
         Jugada jugadaAnterior = new Subir();
         Jugada jugada = new Pasar(jugadaAnterior);
-        jugada.pasar();
 
     }
 
@@ -26,7 +25,14 @@ public class PasarTest {
 
         Jugada jugadaAnterior = new Igualar();
         Jugada jugada = new Pasar(jugadaAnterior);
-        jugada.pasar();
+
+    }
+
+    @Test
+    public void sePuedePasarSiSePasaTest() {
+
+        Jugada jugadaAnterior = new Pasar();
+        Jugada jugada = new Pasar(jugadaAnterior);
 
     }
 }
