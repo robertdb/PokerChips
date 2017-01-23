@@ -1,6 +1,5 @@
 package ram.fichaspokerapp.modelo.linkedList;
-import ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular;
-import ram.fichaspokerapp.modelo.linkedList.ListNode;
+
 /**
  * Created by Robert on 20/1/17.
  */
