@@ -1,20 +1,20 @@
 package ram.fichaspokerapp.modelo.linkedList;
-
+import ram.fichaspokerapp.modelo.linkedList.ListaCircular;
+import ram.fichaspokerapp.modelo.linkedList.ListNode;
 /**
  * Created by Robert on 20/1/17.
  */
 
 public class IteradorListaCircular {
 
-    private CircularLinkedList listCircular;
+    private ListaCircular listCircular;
     private ListNode actual;
-    private int index;
 
-    public IteradorListaCircular(CircularLinkedList list){
+
+    public IteradorListaCircular(ListaCircular list){
 
         listCircular = list;
         actual = listCircular.getFirst();
-        index = 0;
 
     }
 
@@ -27,7 +27,7 @@ public class IteradorListaCircular {
         }
         return null;
     }
-    public IteradorListaCircular(CircularLinkedList list, Object data){
+    public IteradorListaCircular(ListaCircular list, Object data){
 
         listCircular = list;
         actual = buscarActual(data);

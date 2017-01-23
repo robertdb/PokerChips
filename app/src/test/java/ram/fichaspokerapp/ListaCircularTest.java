@@ -5,6 +5,9 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import ram.fichaspokerapp.modelo.linkedList.ListaCircular;
+import ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular;
+
 
 /**
  * Created by Robert on 20/1/17.
@@ -18,9 +21,9 @@ public class ListaCircularTest {
     private String charly = "charly";
     private String braian =  "braian";
 
-    private ram.fichaspokerapp.modelo.linkedList.ListaCircular getListaConNombres(){
+    private ListaCircular getListaConNombres(){
 
-        ram.fichaspokerapp.modelo.linkedList.ListaCircular lista = new ram.fichaspokerapp.modelo.linkedList.ListaCircular();
+        ListaCircular lista = new ListaCircular();
 
         lista.add(marcos);
         lista.add(andres);
@@ -35,7 +38,7 @@ public class ListaCircularTest {
     @Test
     public void primerElementoDeLaListaEsCorrecto(){
 
-        ram.fichaspokerapp.modelo.linkedList.ListaCircular lista = getListaConNombres();
+        ListaCircular lista = getListaConNombres();
 
         assertEquals("marcos", lista.getFirstElement());
 
@@ -44,7 +47,7 @@ public class ListaCircularTest {
     @Test
     public void ultimoElementoDeLaListaEsCorrecto(){
 
-        ram.fichaspokerapp.modelo.linkedList.ListaCircular lista = getListaConNombres();
+        ListaCircular lista = getListaConNombres();
 
         assertEquals("braian", lista.getLastElement());
 
@@ -53,7 +56,7 @@ public class ListaCircularTest {
     @Test
     public void siguienteElementoDeLaListaEsCorrecto(){
 
-        ram.fichaspokerapp.modelo.linkedList.ListaCircular lista = getListaConNombres();
+        ListaCircular lista = getListaConNombres();
 
         assertEquals("andres", lista.getFirst().next.data);
 
@@ -62,7 +65,7 @@ public class ListaCircularTest {
     @Test
     public void laListaVueleAempezarEsCorrecto(){
 
-        ram.fichaspokerapp.modelo.linkedList.ListaCircular lista = getListaConNombres();
+        ListaCircular lista = getListaConNombres();
 
         assertEquals("marcos", lista.getLast().next.data);
 
@@ -71,7 +74,7 @@ public class ListaCircularTest {
     @Test
     public void laCantidadDeElementosEs5EsCorrecto(){
 
-        ram.fichaspokerapp.modelo.linkedList.ListaCircular lista = getListaConNombres();
+        ListaCircular lista = getListaConNombres();
 
         assertEquals(5, lista.size());
 
@@ -80,7 +83,7 @@ public class ListaCircularTest {
     @Test
     public void siSeBorraAlPrimeroDeLaListaElSiguientePasaASerElSiguienteDelUlitmoEsCorrecto(){
 
-        ram.fichaspokerapp.modelo.linkedList.ListaCircular lista = getListaConNombres();
+        ListaCircular lista = getListaConNombres();
 
         lista.removeAtFirst();
         // andres pasa a ser el primero de la lista ahora, se elimino a marcos.
@@ -91,7 +94,7 @@ public class ListaCircularTest {
     @Test
     public void siSeBorraElUltimoeDeLaListaElAnteriorPasaASerUlitmoEsCorrecto(){
 
-        ram.fichaspokerapp.modelo.linkedList.ListaCircular lista = getListaConNombres();
+        ListaCircular lista = getListaConNombres();
 
         lista.removeAtLast();
         // se elimninó a braian ahora charly es ultimo de la lista. Marcos es el primero.
@@ -103,7 +106,7 @@ public class ListaCircularTest {
     @Test
     public void borrarUnElementoEspecificoLaListaEsCorrecto(){
 
-        ram.fichaspokerapp.modelo.linkedList.ListaCircular lista = getListaConNombres();
+        ListaCircular lista = getListaConNombres();
 
         // se elimninó a braian
         assertEquals("braian", lista.removeAt(4));
@@ -113,7 +116,7 @@ public class ListaCircularTest {
     @Test
     public void elementoExisteEnLaListaEsCorrecto(){
 
-        ram.fichaspokerapp.modelo.linkedList.ListaCircular lista = getListaConNombres();
+        ListaCircular lista = getListaConNombres();
 
         assertTrue(lista.contains(marcos));
 
@@ -122,11 +125,22 @@ public class ListaCircularTest {
     @Test
     public void elementoNoExisteEnLaListaEsCorrecto(){
 
-        ram.fichaspokerapp.modelo.linkedList.ListaCircular lista = getListaConNombres();
+        ListaCircular lista = getListaConNombres();
 
         String pablo = "pablo";
 
         assertFalse(lista.contains(pablo));
+
+    }
+
+    @Test
+    public void siguienteDeUnElementoEsCorrecto(){
+
+        ListaCircular lista = getListaConNombres();
+
+        IteradorListaCircular iterador = new IteradorListaCircular(lista, marcos);
+
+        assertEquals(andres, iterador.next());
 
     }
 
