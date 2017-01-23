@@ -2,16 +2,13 @@ package ram.fichaspokerapp;
 
 import org.junit.Test;
 
-import ram.fichaspokerapp.modelo.linkedList.CircularLinkedList;
-import ram.fichaspokerapp.modelo.linkedList.IterListCircular;
-
 import static org.junit.Assert.assertEquals;
 
 /**
  * Created by Robert on 20/1/17.
  */
 
-public class IterListCircularTest {
+public class IteradorListaCircularTest {
 
     private String marcos = "marcos";
     private String andres = "andres";
@@ -19,9 +16,9 @@ public class IterListCircularTest {
     private String charly = "charly";
     private String braian =  "braian";
 
-    private CircularLinkedList getListaConNombres(){
+    private ram.fichaspokerapp.modelo.linkedList.ListaCircular getListaConNombres(){
 
-        CircularLinkedList lista = new CircularLinkedList();
+        ram.fichaspokerapp.modelo.linkedList.ListaCircular lista = new ram.fichaspokerapp.modelo.linkedList.ListaCircular();
 
         lista.add(marcos);
         lista.add(andres);
@@ -36,9 +33,9 @@ public class IterListCircularTest {
     @Test
     public void primerElementoDeLaListaEsCorrecto(){
 
-        CircularLinkedList lista = getListaConNombres();
+        ram.fichaspokerapp.modelo.linkedList.ListaCircular lista = getListaConNombres();
 
-        IterListCircular iter = new IterListCircular(lista);
+        ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular iter = new ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular(lista);
 
         assertEquals("marcos", iter.actual());
 
@@ -47,9 +44,9 @@ public class IterListCircularTest {
     @Test
     public void siguienteDelPrimerElementoDeLaListaEsCorrecto(){
 
-        CircularLinkedList lista = getListaConNombres();
+        ram.fichaspokerapp.modelo.linkedList.ListaCircular lista = getListaConNombres();
 
-        IterListCircular iter = new IterListCircular(lista);
+        ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular iter = new ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular(lista);
 
         assertEquals("andres", iter.next());
 
@@ -58,9 +55,9 @@ public class IterListCircularTest {
     @Test
     public void laListaVuelveAempezarDespuesDelPrimeroCorrecto(){
 
-        CircularLinkedList lista = getListaConNombres();
+        ram.fichaspokerapp.modelo.linkedList.ListaCircular lista = getListaConNombres();
 
-        IterListCircular iter = new IterListCircular(lista);
+        ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular iter = new ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular(lista);
         iter.next();
         iter.next();
         iter.next();
@@ -74,18 +71,18 @@ public class IterListCircularTest {
     @Test
     public void seCreaAliteradorDesdeUnElementoParticularCorrecto(){
 
-        CircularLinkedList lista = getListaConNombres();
+        ram.fichaspokerapp.modelo.linkedList.ListaCircular lista = getListaConNombres();
 
-        IterListCircular iter = new IterListCircular(lista, "robert");
+        ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular iter = new ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular(lista, "robert");
         // luego de robert viene charli.
         assertEquals("charly", iter.next());
     }
     @Test
     public void borrarUnElementoEspecificoLaListaEsCorrecto(){
 
-        CircularLinkedList lista = getListaConNombres();
+        ram.fichaspokerapp.modelo.linkedList.ListaCircular lista = getListaConNombres();
 
-        IterListCircular iter = new IterListCircular(lista, "robert");
+        ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular iter = new ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular(lista, "robert");
 
         iter.removeActual();
         // se elimninó a robert
@@ -99,9 +96,9 @@ public class IterListCircularTest {
     @Test
     public void borrandoUnElementoElActualPasaAserElsiguienteDeLaListaEsCorrecto(){
 
-        CircularLinkedList lista = getListaConNombres();
+        ram.fichaspokerapp.modelo.linkedList.ListaCircular lista = getListaConNombres();
 
-        IterListCircular iter = new IterListCircular(lista, "robert");
+        ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular iter = new ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular(lista, "robert");
 
         iter.removeActual();
         // se elimninó a robert y el actual ahora es charly

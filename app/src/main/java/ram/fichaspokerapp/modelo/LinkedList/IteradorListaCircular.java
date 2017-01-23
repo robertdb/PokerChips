@@ -4,13 +4,13 @@ package ram.fichaspokerapp.modelo.linkedList;
  * Created by Robert on 20/1/17.
  */
 
-public class IterListCircular {
+public class IteradorListaCircular {
 
     private CircularLinkedList listCircular;
     private ListNode actual;
     private int index;
 
-    public IterListCircular(CircularLinkedList list){
+    public IteradorListaCircular(CircularLinkedList list){
 
         listCircular = list;
         actual = listCircular.getFirst();
@@ -27,7 +27,7 @@ public class IterListCircular {
         }
         return null;
     }
-    public IterListCircular(CircularLinkedList list, Object data){
+    public IteradorListaCircular(CircularLinkedList list, Object data){
 
         listCircular = list;
         actual = buscarActual(data);

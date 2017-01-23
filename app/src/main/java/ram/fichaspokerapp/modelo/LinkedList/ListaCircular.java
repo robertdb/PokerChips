@@ -4,12 +4,12 @@ package ram.fichaspokerapp.modelo.linkedList;
  * Created by Robert on 20/1/17.
  */
 
-public class CircularLinkedList {
+public class ListaCircular {
 
     private ListNode start;
     int size;
 
-    public CircularLinkedList()  {
+    public ListaCircular()  {
         start = null;
         size = 0;
     }
@@ -59,7 +59,7 @@ public class CircularLinkedList {
     public int findPositionElement(Object data){
         ListNode  temp = start;//Move pointer to front
         int pos = 0;
-        while (temp != null || pos < size()){
+        while (temp != null && pos < size()){
             if (temp.data == data)
                 break;
             pos++;
@@ -139,6 +139,8 @@ public class CircularLinkedList {
     }
 
     public boolean contains(Object data) {
+        if(findPositionElement(data) == size())
+            return false;
         return true;
     }
 }
