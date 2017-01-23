@@ -166,16 +166,34 @@ public class ListaCircularTest {
 
     }
 
+    @Test
+    public void siguienteDelUltimoElementoEsCorrecto(){
 
+        ListaCircular lista = getListaConNombres();
 
+        assertEquals(marcos, lista.next(braian));
 
+    }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void elementoQueNoSeEncuentraEnLaListaNoTieneSiguienteTest() {
 
+        ListaCircular lista = getListaConNombres();
 
+        String pablo = "pablo";
 
+        lista.next(pablo);
+    }
 
+    @Test
+    public void listaConUnSoloElementoSuSiguienteEsElMismoEsCorrecto(){
 
+        ListaCircular lista = new ListaCircular();
 
+        lista.add(marcos);
 
+        assertEquals(marcos, lista.next(marcos));
+
+    }
 
 }

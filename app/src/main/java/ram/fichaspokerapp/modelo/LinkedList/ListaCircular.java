@@ -1,5 +1,6 @@
 package ram.fichaspokerapp.modelo.linkedList;
-
+import ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular;
+import ram.fichaspokerapp.modelo.linkedList.ListNode;
 /**
  * Created by Robert on 20/1/17.
  */
@@ -22,7 +23,7 @@ public class ListaCircular {
     public void insertAtLast(Object data){
         if(size==0){
             start = new ListNode(data);
-            start.next = null;
+            start.next = start;
             start.data = data;
         }else{
             ListNode currentNode = getNodeAt(size-1);
@@ -142,6 +143,14 @@ public class ListaCircular {
         if(findPositionElement(data) == size())
             return false;
         return true;
+    }
+
+    public Object next(Object data){
+
+        if(!contains(data))
+            throw new IllegalArgumentException();
+        return getNodeAt(findPositionElement(data)).next.data;
+
     }
 }
 
