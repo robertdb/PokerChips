@@ -8,6 +8,15 @@ public class Jugador {
 
 	private int cantidadDeFichas;
 
+	public Jugador() {
+	}
+
+	public Jugador (String nombre) {
+
+		this.nombre = nombre;
+		this.cantidadDeFichas = 1500;
+	}
+
 	public void apostar(int fichasAApostar) {
 
 		if (this.cantidadDeFichas < fichasAApostar) {
@@ -30,20 +39,10 @@ public class Jugador {
 		return nombre;
 	}
 
-	public Jugador() {
-	}
-
-	public Jugador (String nombre) {
-
-		this.nombre = nombre;
-		this.cantidadDeFichas = 1500;
-	}
-
 	public void pasar() {
 
 
 	}
 }
-
 
 
