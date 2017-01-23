@@ -5,7 +5,7 @@ import ram.fichaspokerapp.modelo.linkedList.ListNode;
  * Created by Robert on 20/1/17.
  */
 
-public class ListaCircular {
+public class ListaCircular<E> {
 
     private ListNode start;
     int size;
@@ -93,7 +93,7 @@ public class ListaCircular {
         return getNodeAt(size-1);
     }
 
-    public Object removeAtFirst(){
+    public E removeAtFirst(){
         if(size==0){
             throw new ArrayIndexOutOfBoundsException();
         }
@@ -101,10 +101,10 @@ public class ListaCircular {
         this.getLast().next = start.next;
         start = start.next;
         size--;
-        return data;
+        return (E)data;
     }
 
-    public Object removeAtLast(){
+    public E removeAtLast(){
         if(size==0){
             throw new ArrayIndexOutOfBoundsException();
         }
@@ -112,37 +112,37 @@ public class ListaCircular {
         Object data = tempNode.next.data;
         tempNode.next = start;
         size--;
-        return data;
+        return (E)data;
     }
 
-    protected Object removeAt(int position){
+    protected E removeAt(int position){
         if(position==0){
-            return removeAtFirst();
+            return (E)removeAtFirst();
         }else if(position == size-1){
-            return removeAtLast();
+            return (E)removeAtLast();
         }else{
             ListNode tempNode = getNodeAt(position-1);
             Object data = tempNode.next.data;
             tempNode.next = tempNode.next.next;
             size--;
-            return data;
+            return (E)data;
         }
     }
 
-    public Object removeElement(Object data){
-        return removeAt(findPositionElement(data));
+    public E removeElement(Object data){
+        return (E)removeAt(findPositionElement(data));
     }
 
     public int size(){
         return size;
     }
 
-    public Object getFirstElement(){
-        return getFirst().data;
+    public E getFirstElement(){
+        return (E)getFirst().data;
     }
 
-    public Object getLastElement() {
-        return getLast().data;
+    public E getLastElement() {
+        return (E)getLast().data;
     }
 
     public boolean contains(Object data) {
@@ -154,9 +154,9 @@ public class ListaCircular {
         return true;
     }
 
-    public Object next(Object data){
+    public E next(Object data){
 
-        return getNodeAt(findPositionElement(data)).next.data;
+        return (E)getNodeAt(findPositionElement(data)).next.data;
 
     }
 }

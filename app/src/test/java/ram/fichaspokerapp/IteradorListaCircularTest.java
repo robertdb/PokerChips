@@ -20,7 +20,7 @@ public class IteradorListaCircularTest {
 
     private ListaCircular getListaConNombres(){
 
-        ListaCircular lista = new ListaCircular();
+        ListaCircular<String> lista = new ListaCircular<String>();
 
         lista.add(marcos);
         lista.add(andres);
@@ -107,11 +107,4 @@ public class IteradorListaCircularTest {
         assertEquals("charly", iter.actual());
 
     }
-
-
-
-
-
-
-
 }

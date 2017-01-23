@@ -1,14 +1,19 @@
 package ram.fichaspokerapp.modelo;
 
+import ram.fichaspokerapp.error.MesaNoSoportaMasDeDiezJugadoresError;
 import ram.fichaspokerapp.error.PartidaNoPuedeComenzarConUnSoloJugadorError;
+import ram.fichaspokerapp.error.UnJugadorNoPuedeEstarRepetidoError;
+import ram.fichaspokerapp.modelo.linkedList.ListaCircular;
 
 public class Mesa {
 
-	private ListaDeJugadores listaDeJugadores;
+	private ListaCircular<Jugador> listaDeJugadores;
 
 	private String nombre;
 
 	private int cantidadDeFichasIniciales;
+
+	private int cantidadMaximaDeJugadores;
 
 	private TipoDePoker tipoDePoker;
 
@@ -19,9 +24,10 @@ public class Mesa {
 	public Mesa(String nombre, Jugador jugador) {
 
 		this.nombre = nombre;
-		this.listaDeJugadores = new ListaDeJugadores();
+		this.listaDeJugadores = new ListaCircular<Jugador>();
 		this.listaDeJugadores.add(jugador);
 		this.boton = jugador;
+		this.cantidadMaximaDeJugadores = 10;
 
 	}
 
@@ -34,8 +40,19 @@ public class Mesa {
 	public void agregarJugador(Jugador jugador) {
 
 		jugador.acreditarFichas(1500);
-		listaDeJugadores.add(jugador);
 
+		if(mesaLlena())
+			throw new MesaNoSoportaMasDeDiezJugadoresError();
+
+		if(listaDeJugadores.contains(jugador))
+			throw new UnJugadorNoPuedeEstarRepetidoError();
+
+		listaDeJugadores.add(jugador);
+		
+	}
+
+	private boolean mesaLlena() {
+		return (cantidadMaximaDeJugadores == listaDeJugadores.size());
 	}
 
 	public void comenzarPartida() {
@@ -43,7 +60,7 @@ public class Mesa {
 		if (this.listaDeJugadores.size() == 1) {
 			throw new PartidaNoPuedeComenzarConUnSoloJugadorError();
 		}	else {
-
+			// Comienza la partida.
 		}
 
 	}
@@ -53,11 +70,11 @@ public class Mesa {
 	}
 
 	public Jugador getCiegaChica() {
-		return listaDeJugadores.siguiente(this.getBoton());
+		return listaDeJugadores.next(getBoton());
 	}
 
 	public Jugador getCiegaGrande() {
-		return listaDeJugadores.siguiente(this.getCiegaChica());
+		return listaDeJugadores.next(getCiegaChica());
 	}
 
 	public int getPozo() {
