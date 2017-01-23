@@ -20,7 +20,7 @@ public class ListaCircular {
         insertAtLast(data);
     }
 
-    public void insertAtLast(Object data){
+    private void insertAtLast(Object data){
         if(size==0){
             start = new ListNode(data);
             start.next = start;
@@ -34,7 +34,7 @@ public class ListaCircular {
         size++;
     }
 
-    public void insertAtFirst(Object data){
+    private void insertAtFirst(Object data){
         if(size==0){
             start = new ListNode(data);
             start.next = null;
@@ -46,7 +46,7 @@ public class ListaCircular {
         size++;
     }
 
-    public ListNode  getNodeAt(int nodePos) throws ArrayIndexOutOfBoundsException{
+    protected ListNode  getNodeAt(int nodePos) throws ArrayIndexOutOfBoundsException{
         if(nodePos>=size || nodePos<0){
             throw new ArrayIndexOutOfBoundsException();
         }
@@ -57,7 +57,7 @@ public class ListaCircular {
         }
         return temp;
     }
-    public int findPositionElement(Object data){
+    protected int findPositionElement(Object data){
         ListNode  temp = start;//Move pointer to front
         int pos = 0;
         while (temp != null && pos < size()){
@@ -66,10 +66,12 @@ public class ListaCircular {
             pos++;
             temp = temp.next;
         }
+        if(pos == size())
+            throw new IllegalArgumentException();
         return pos;
     }
 
-    public void insertAt(int position, Object data){
+    private void insertAt(int position, Object data){
         if(position == 0){
             insertAtFirst(data);
         }else if(position==size-1){
@@ -83,11 +85,11 @@ public class ListaCircular {
         }
     }
 
-    public ListNode  getFirst(){
+    protected ListNode  getFirst(){
         return getNodeAt(0);
     }
 
-    public ListNode  getLast(){
+    protected ListNode  getLast(){
         return getNodeAt(size-1);
     }
 
@@ -113,7 +115,7 @@ public class ListaCircular {
         return data;
     }
 
-    public Object removeAt(int position){
+    protected Object removeAt(int position){
         if(position==0){
             return removeAtFirst();
         }else if(position == size-1){
@@ -125,6 +127,10 @@ public class ListaCircular {
             size--;
             return data;
         }
+    }
+
+    public Object removeElement(Object data){
+        return removeAt(findPositionElement(data));
     }
 
     public int size(){
@@ -140,15 +146,16 @@ public class ListaCircular {
     }
 
     public boolean contains(Object data) {
-        if(findPositionElement(data) == size())
+        try{
+            findPositionElement(data);
+        }catch (IllegalArgumentException e){
             return false;
+        }
         return true;
     }
 
     public Object next(Object data){
 
-        if(!contains(data))
-            throw new IllegalArgumentException();
         return getNodeAt(findPositionElement(data)).next.data;
 
     }

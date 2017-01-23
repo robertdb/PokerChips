@@ -58,7 +58,7 @@ public class ListaCircularTest {
 
         ListaCircular lista = getListaConNombres();
 
-        assertEquals("andres", lista.getFirst().next.data);
+        assertEquals("andres", lista.next(lista.getFirstElement()));
 
     }
 
@@ -67,7 +67,7 @@ public class ListaCircularTest {
 
         ListaCircular lista = getListaConNombres();
 
-        assertEquals("marcos", lista.getLast().next.data);
+        assertEquals("marcos", lista.next(braian));
 
     }
 
@@ -87,7 +87,7 @@ public class ListaCircularTest {
 
         lista.removeAtFirst();
         // andres pasa a ser el primero de la lista ahora, se elimino a marcos.
-        assertEquals("andres", lista.getLast().next.data);
+        assertEquals("andres", lista.getFirstElement());
 
     }
 
@@ -99,7 +99,7 @@ public class ListaCircularTest {
         lista.removeAtLast();
         // se elimninó a braian ahora charly es ultimo de la lista. Marcos es el primero.
         assertEquals("charly", lista.getLastElement());
-        assertEquals("marcos", lista.getLast().next.data);
+        assertEquals("marcos", lista.getFirstElement());
 
     }
 
@@ -109,7 +109,7 @@ public class ListaCircularTest {
         ListaCircular lista = getListaConNombres();
 
         // se elimninó a braian
-        assertEquals("braian", lista.removeAt(4));
+        assertEquals("braian", lista.removeElement(braian));
 
     }
 
@@ -193,6 +193,15 @@ public class ListaCircularTest {
         lista.add(marcos);
 
         assertEquals(marcos, lista.next(marcos));
+
+    }
+
+    @Test
+    public void listaVaciaEsCorrecto(){
+
+        ListaCircular lista = new ListaCircular();
+
+        assertEquals(0 , lista.size());
 
     }
 
