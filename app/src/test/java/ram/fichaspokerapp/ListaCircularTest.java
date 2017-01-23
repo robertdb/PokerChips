@@ -134,15 +134,38 @@ public class ListaCircularTest {
     }
 
     @Test
-    public void siguienteDeUnElementoEsCorrecto(){
+    public void siguienteDeUnElementoConIteradorEsCorrecto(){
 
         ListaCircular lista = getListaConNombres();
 
-        IteradorListaCircular iterador = new IteradorListaCircular(lista, marcos);
+        IteradorListaCircular iterador = new IteradorListaCircular(lista, robert);
+
+        assertEquals(charly, iterador.next());
+
+    }
+
+    @Test
+    public void siguienteDelUltimoElementoConIteradorEsCorrecto(){
+
+        ListaCircular lista = getListaConNombres();
+
+        IteradorListaCircular iterador = new IteradorListaCircular(lista, lista.getLastElement());
+
+        assertEquals(marcos, iterador.next());
+
+    }
+
+    @Test
+    public void siguienteDelPrimerElementoConIteradorEsCorrecto(){
+
+        ListaCircular lista = getListaConNombres();
+
+        IteradorListaCircular iterador = new IteradorListaCircular(lista, lista.getFirstElement());
 
         assertEquals(andres, iterador.next());
 
     }
+
 
 
 
