@@ -5,8 +5,19 @@ package ram.fichaspokerapp.modelo.jugadas;
  */
 
 public class Retirar extends Jugada {
+
+    private Jugada jugada;
+
+    public Retirar(Jugada anterior) {
+
+        this.jugada = anterior;
+
+    }
+
     @Override
     public void pasar() {
+
+        jugada.pasar();
 
     }
 
