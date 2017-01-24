@@ -46,7 +46,7 @@ public class RetirarTest {
         //jugador 5 se retira.
         Jugada retirada4 = new Retirar(retirada3);
 
-        // jugador  intenta pasar y no puede ya que hubo una subida previa.
+        // jugador intenta pasar y no puede ya que hubo una subida previa.
         Jugada jugada = new Pasar(retirada4);
 
     }
