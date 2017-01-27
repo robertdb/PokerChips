@@ -32,7 +32,7 @@ public class JugadorTest {
     @Test(expected = JugadorNoPuedeApostarMasFichasQueSuPilaError.class)
     public void jugadorNoPuedeApostarMasFichasQueSuPilaTest() {
 
-        jugador.apostar(1501);
+        jugador.subir(new InfoJugada(60 ,40), 1501);
 
     }
 
