@@ -36,14 +36,6 @@ public class JugadorTest {
 
     }
 
-    @Test
-    public void laApuestaSeDebitaCorrectamenteTest() {
-
-        jugador.apostar(1500);
-        assertEquals(0, jugador.getFichas());
-
-    }
-
     @Ignore
     @Test(expected = JugadorNoPuedePasarSiHayAgresorError.class)
     public void jugadorNoPuedePasarSiHayAgresorTest() {
