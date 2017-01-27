@@ -80,4 +80,7 @@ public class Mesa {
 	public int getPozo() {
 		return pozo;
 	}
+
+	public void actualizarVista(InfoJugada infoJugada) {
+	}
 }

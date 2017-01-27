@@ -8,16 +8,19 @@ public class Jugador {
 
 	private int cantidadDeFichas;
 
+	private Crupier crupier;
+
 	public Jugador() {
 	}
 
-	public Jugador (String nombre) {
+	public Jugador (String nombre, Crupier crupier) {
 
 		this.nombre = nombre;
 		this.cantidadDeFichas = 1500;
+		this.crupier = crupier;
 	}
 
-	public void apostar(int fichasAApostar) {
+	private void apostar(int fichasAApostar) {
 
 		if (this.cantidadDeFichas < fichasAApostar) {
 			throw new JugadorNoPuedeApostarMasFichasQueSuPilaError();
@@ -41,6 +44,24 @@ public class Jugador {
 
 	public void pasar() {
 
+
+	}
+
+	public void actuar(InfoJugada infoJugada, String jugada, int apuesta  ) {
+
+		// actualizarVista
+
+		if (jugada == "subir"){
+			
+			this.subir(infoJugada,apuesta);
+		}
+	}
+
+	private void subir(InfoJugada infoJugada, int apuesta) {
+
+		this.apostar(apuesta);
+		infoJugada.actualizar(apuesta);
+		this.crupier.subir(infoJugada);
 
 	}
 }
