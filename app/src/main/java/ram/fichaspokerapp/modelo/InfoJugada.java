@@ -20,4 +20,8 @@ public class InfoJugada {
 
 
     }
+
+    public int apuestaMinima() {
+        return apuestaMinima;
+    }
 }

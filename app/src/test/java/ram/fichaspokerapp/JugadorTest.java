@@ -4,6 +4,7 @@ import org.junit.*;
 
 import ram.fichaspokerapp.error.JugadorNoPuedeApostarMasFichasQueSuPilaError;
 import ram.fichaspokerapp.error.JugadorNoPuedePasarSiHayAgresorError;
+import ram.fichaspokerapp.error.JugadorNoPuedeSubirSiNoSuperaLaApuestaMinimaError;
 import ram.fichaspokerapp.modelo.Crupier;
 import ram.fichaspokerapp.modelo.InfoJugada;
 import ram.fichaspokerapp.modelo.Jugador;
@@ -36,27 +37,33 @@ public class JugadorTest {
 
     }
 
-    /*
     @Ignore
     @Test(expected = JugadorNoPuedePasarSiHayAgresorError.class)
     public void jugadorNoPuedePasarSiHayAgresorTest() {
 
-        jugador.apostar(500);
-        jugador2.pasar();
-
-    }*/
+    }
 
     @Test
-    public void realizarUnaSubidaDebitaCorrectamente(){
+    public void realizarUnaSubidaDebitaCorrectamenteTest(){
 
         // pozo = 60 apuestaMinima = 40
         InfoJugada infoJugada = new InfoJugada(60 ,40);
 
         // Hipotetico caso: el jugador realiza una subida +60,
-        // pago los 40 de la ciega grande y agrega +20.
+        // paga los 40 de la ciega grande y agrega +20.
         jugador.subir(infoJugada, 60);
 
         assertEquals(1440, jugador.getFichas());
+
+    }
+
+    @Test(expected = JugadorNoPuedeSubirSiNoSuperaLaApuestaMinimaError.class)
+    public void jugadorNoPuedeSubirSiNoSuperaLaApuestaMinimaTest(){
+
+        // pozo = 60 apuestaMinima = 40
+        InfoJugada infoJugada = new InfoJugada(60 ,40);
+
+        jugador.subir(infoJugada, 20);
 
     }
 }
