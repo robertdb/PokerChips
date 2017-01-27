@@ -4,7 +4,10 @@ import org.junit.*;
 
 import ram.fichaspokerapp.error.JugadorNoPuedeApostarMasFichasQueSuPilaError;
 import ram.fichaspokerapp.error.JugadorNoPuedePasarSiHayAgresorError;
+import ram.fichaspokerapp.modelo.Crupier;
+import ram.fichaspokerapp.modelo.InfoJugada;
 import ram.fichaspokerapp.modelo.Jugador;
+import ram.fichaspokerapp.modelo.Mesa;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,12 +19,13 @@ public class JugadorTest {
 
     private Jugador jugador;
     private Jugador jugador2;
-
+    private Crupier crupier;
     @Before
     public void setUp() {
 
-        jugador = new Jugador("RAM", null);
-        jugador2 = new Jugador("Braian de America",null);
+        crupier = new Crupier(new Mesa(null, null));
+        jugador = new Jugador("RAM", crupier);
+        jugador2 = new Jugador("Braian de America",crupier);
 
     }
 
@@ -46,6 +50,20 @@ public class JugadorTest {
 
         jugador.apostar(500);
         jugador2.pasar();
+
+    }
+
+    @Test
+    public void realizarUnaSubidaDebitaCorrectamente(){
+
+        // pozo = 60 apuestaMinima = 40
+        InfoJugada infoJugada = new InfoJugada(60 ,40);
+
+        // Hipotetico caso: el jugador realiza una subida +60,
+        // pago los 40 de la ciega grande y agrega +20.
+        jugador.subir(infoJugada, 60);
+
+        assertEquals(1440, jugador.getFichas());
 
     }
 }

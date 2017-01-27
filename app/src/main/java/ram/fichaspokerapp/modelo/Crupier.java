@@ -11,7 +11,9 @@ public class Crupier {
 
     private Mesa mesa;
 
-    public Crupier() {
+    public Crupier(Mesa mesa) {
+
+        this.mesa = mesa;
 
     }
 

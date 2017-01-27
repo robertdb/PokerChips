@@ -3,8 +3,7 @@ package ram.fichaspokerapp.testIntegracion;
 import org.junit.*;
 import ram.fichaspokerapp.modelo.*;
 import ram.fichaspokerapp.modelo.linkedList.*;
-import ram.fichaspokerapp.error.*;
-import static org.junit.Assert.*;
+
 /**
  * Created by Samsung on 27/01/2017.
  */
@@ -19,7 +18,7 @@ public class RondaTest {
     public void setUp() {
 
 
-        crupier = new Crupier();
+        crupier = new Crupier(new Mesa(null, null));
         Jugador marcos = new Jugador("Marcos",crupier);
         Jugador braian = new Jugador("Braian",crupier);
         Jugador robert = new Jugador("Robert",crupier);

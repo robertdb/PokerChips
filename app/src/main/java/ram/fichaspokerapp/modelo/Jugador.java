@@ -20,12 +20,12 @@ public class Jugador {
 		this.crupier = crupier;
 	}
 
-	public void apostar(int fichasAApostar) {
+	public void apostar(int fichasAapostar) {
 
-		if (this.cantidadDeFichas < fichasAApostar) {
+		if (this.cantidadDeFichas < fichasAapostar) {
 			throw new JugadorNoPuedeApostarMasFichasQueSuPilaError();
 		}	else {
-			this.cantidadDeFichas -= fichasAApostar;
+			this.cantidadDeFichas -= fichasAapostar;
 		}
 
 	}
@@ -57,7 +57,7 @@ public class Jugador {
 		}
 	}
 
-	private void subir(InfoJugada infoJugada, int apuesta) {
+	public void subir(InfoJugada infoJugada, int apuesta) {
 
 		this.apostar(apuesta);
 		infoJugada.actualizar(apuesta);
