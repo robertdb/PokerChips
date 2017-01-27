@@ -36,6 +36,7 @@ public class JugadorTest {
 
     }
 
+    /*
     @Ignore
     @Test(expected = JugadorNoPuedePasarSiHayAgresorError.class)
     public void jugadorNoPuedePasarSiHayAgresorTest() {
@@ -43,7 +44,7 @@ public class JugadorTest {
         jugador.apostar(500);
         jugador2.pasar();
 
-    }
+    }*/
 
     @Test
     public void realizarUnaSubidaDebitaCorrectamente(){

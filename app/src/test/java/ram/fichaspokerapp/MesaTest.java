@@ -91,8 +91,8 @@ public class MesaTest {
         mesa.comenzarPartida();
         ciegaChica = mesa.getCiegaChica();
         ciegaGrande = mesa.getCiegaGrande();
-        ciegaChica.apostar(10);
-        ciegaGrande.apostar(20);
+        ciegaChica.apuestaObligatoria(10);
+        ciegaGrande.apuestaObligatoria(20);
         assertEquals(1490, ciegaChica.getFichas());
         assertEquals(1480, ciegaGrande.getFichas());
 
@@ -111,8 +111,8 @@ public class MesaTest {
         mesa.comenzarPartida();
         ciegaChica = mesa.getCiegaChica();
         ciegaGrande = mesa.getCiegaGrande();
-        ciegaChica.apostar(10);
-        ciegaGrande.apostar(20);
+        ciegaChica.apuestaObligatoria(10);
+        ciegaGrande.apuestaObligatoria(20);
         assertEquals(30, mesa.getPozo());
 
     }
