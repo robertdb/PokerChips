@@ -20,7 +20,7 @@ public class Jugador {
 		this.crupier = crupier;
 	}
 
-	private void apostar(int fichasAApostar) {
+	public void apostar(int fichasAApostar) {
 
 		if (this.cantidadDeFichas < fichasAApostar) {
 			throw new JugadorNoPuedeApostarMasFichasQueSuPilaError();

@@ -15,14 +15,16 @@ public class RondaTest {
     private ListaCircular<Jugador> lista = new ListaCircular<Jugador>();
 
     @Before
+
     public void setUp() {
 
+
+        crupier = new Crupier();
         Jugador marcos = new Jugador("Marcos",crupier);
         Jugador braian = new Jugador("Braian",crupier);
         Jugador robert = new Jugador("Robert",crupier);
         Jugador andres = new Jugador("Andres",crupier);
         Jugador charly = new Jugador("Charly",crupier);
-
 
         lista.add(marcos); //ciega chica
         lista.add(andres); //ciega grande
@@ -33,7 +35,11 @@ public class RondaTest {
 
         IteradorListaCircular iter = new IteradorListaCircular(lista, robert);
         Mesa mesa = new Mesa("RAM", braian);
-        crupier = new Crupier(iter, mesa);
+
+        crupier.asignarJuego(iter, mesa);
+
+
+
 
     }
     @Test

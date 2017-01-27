@@ -20,8 +20,8 @@ public class JugadorTest {
     @Before
     public void setUp() {
 
-        jugador = new Jugador("RAM");
-        jugador2 = new Jugador("Braian de America");
+        jugador = new Jugador("RAM", null);
+        jugador2 = new Jugador("Braian de America",null);
 
     }
 

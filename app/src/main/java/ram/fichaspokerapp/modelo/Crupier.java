@@ -11,11 +11,7 @@ public class Crupier {
 
     private Mesa mesa;
 
-    public Crupier(IteradorListaCircular iter, Mesa mesa) {
-
-        this.jugadoresActivos = iter;
-
-        this.mesa = mesa;
+    public Crupier() {
 
     }
 
@@ -26,6 +22,14 @@ public class Crupier {
     public void subir(InfoJugada infoJugada) {
 
         this.mesa.actualizarVista(infoJugada);
+
+    }
+
+    public void asignarJuego(IteradorListaCircular iter, Mesa mesa) {
+
+        this.jugadoresActivos = iter;
+
+        this.mesa = mesa;
 
     }
 }
