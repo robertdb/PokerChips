@@ -18,6 +18,7 @@ public class PozoTest {
 
         // Es un pozo limitado en cantidad de fichas.
         int cantidadMaximaDeFichas = 15000;
+
         Pozo pozo = new Pozo(cantidadMaximaDeFichas);
 
         pozo.agregarFichas(60);
@@ -31,6 +32,7 @@ public class PozoTest {
 
         // Es un pozo limitado en cantidad de fichas.
         int cantidadMaximaDeFichas = 15000;
+
         Pozo pozo = new Pozo(cantidadMaximaDeFichas);
 
         pozo.agregarFichas(1000);
@@ -45,9 +47,24 @@ public class PozoTest {
     public void seAgreganFichasQueSuperanElLimiteDelPozoTest(){
 
         int cantidadMaximaDeFichas = 15000;
+
         Pozo pozo = new Pozo(cantidadMaximaDeFichas);
 
         pozo.agregarFichas(15001);
+
+    }
+
+    @Test
+    public void pozoSecreaConApuestasObligatoriasTest(){
+
+        int cantidadMaximaDeFichas = 15000;
+
+        int cantidadCiegaChica = 20;
+
+        Pozo pozo = new Pozo(cantidadMaximaDeFichas, cantidadCiegaChica);
+
+        // El pozo se creo con la suma de la ciega chica y la grande.
+        assertEquals(60, pozo.getCantidadDeFichasActuales());
 
     }
 

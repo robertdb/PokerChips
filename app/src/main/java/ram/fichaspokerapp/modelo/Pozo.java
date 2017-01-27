@@ -9,13 +9,20 @@ public class Pozo {
 
     private int maximoFichas;
 
-    private int fichasActuales;
+    private int fichasActuales = 0;
 
     public Pozo(int cantidadMaximaDeFichas) {
 
         this.maximoFichas = cantidadMaximaDeFichas;
 
-        this.fichasActuales = 0;
+    }
+
+    // Este constructor es opcional, se carga con las apuestas obligatorias.
+    public Pozo(int cantidadMaximaDeFichas, int cantidadCiegaChica) {
+
+        this.maximoFichas = cantidadMaximaDeFichas;
+
+        this.agregarFichas(cantidadCiegaChica + (cantidadCiegaChica * 2));
 
     }
 
