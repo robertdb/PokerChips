@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void apostar(View vista) {
-        this.cantidad ++;
+        this.cantidad++;
         mostrar(cantidad);
     }
 
