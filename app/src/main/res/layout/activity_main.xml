@@ -1,24 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ram.fichaspokerapp.controlador.MainActivity">
+    android:padding="16dp"
+    tools:context="ram.fichaspokerapp.controlador.MainActivity"
+    android:orientation="vertical">
 
     <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:contentDescription="FichaAzul"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/fichaazulpng"/>
+        android:src="@drawable/fichaazulpng"
+        android:id="@+id/imageView" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RAMB"
-        android:textSize="50sp"
+        android:textAllCaps="true"
+        android:text="Cantidad"
         android:textColor="#7986CB"
-        android:layout_centerInParent="true"
-        android:id="@+id/textView" />
+        android:textSize="20sp" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/laCantidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Subir"
+        android:onClick="apostar" />
+
+</LinearLayout>
