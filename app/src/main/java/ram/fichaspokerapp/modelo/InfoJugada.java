@@ -5,11 +5,11 @@ package ram.fichaspokerapp.modelo;
  */
 public class InfoJugada {
 
-    private int pozo;
+    private Pozo pozo;
     private int apuestaMinima;
 
 
-    public InfoJugada(int pozo, int apuestaMinima) {
+    public InfoJugada(Pozo pozo, int apuestaMinima) {
 
         this.pozo = pozo;
         this.apuestaMinima = apuestaMinima;

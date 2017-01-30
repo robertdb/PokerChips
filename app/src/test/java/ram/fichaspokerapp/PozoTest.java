@@ -55,7 +55,7 @@ public class PozoTest {
     }
 
     @Test
-    public void pozoSecreaConApuestasObligatoriasTest(){
+    public void pozoSeCreaConApuestasObligatoriasTest(){
 
         int cantidadMaximaDeFichas = 15000;
 

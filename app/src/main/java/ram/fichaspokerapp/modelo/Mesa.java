@@ -17,7 +17,7 @@ public class Mesa {
 
 	private TipoDePoker tipoDePoker;
 
-	private int pozo;
+	private Pozo pozo;
 
 	private Jugador boton;
 
@@ -77,7 +77,7 @@ public class Mesa {
 		return listaDeJugadores.next(getCiegaChica());
 	}
 
-	public int getPozo() {
+	public Pozo getPozo() {
 		return pozo;
 	}
 
