@@ -1,5 +1,6 @@
 package ram.fichaspokerapp.modelo;
 
+import ram.fichaspokerapp.error.NoSePuedeIgualarSiNoHuboSubidaError;
 import ram.fichaspokerapp.error.NoSePuedePasarSiSeSubeError;
 import ram.fichaspokerapp.error.NoSePuedeSubirMenosQueLaSubidaMinimaError;
 
@@ -48,6 +49,18 @@ public class Jugada {
         }
         this.pozo.agregarFichas(apuesta);
         this.apuestaMinima = apuesta;
+
+    }
+
+
+
+    public void igualar() {
+        if (this.apuestaMinima == 0 ){
+
+            throw new NoSePuedeIgualarSiNoHuboSubidaError();
+
+        }
+        this.pozo.agregarFichas(this.apuestaMinima);
 
     }
 }

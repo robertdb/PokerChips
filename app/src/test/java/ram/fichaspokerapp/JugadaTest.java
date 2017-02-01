@@ -2,6 +2,7 @@ package ram.fichaspokerapp;
 
 import org.junit.*;
 
+import ram.fichaspokerapp.error.NoSePuedeIgualarSiNoHuboSubidaError;
 import ram.fichaspokerapp.error.NoSePuedePasarSiSeSubeError;
 import ram.fichaspokerapp.error.NoSePuedeSubirMenosQueLaSubidaMinimaError;
 import ram.fichaspokerapp.modelo.*;
@@ -69,5 +70,17 @@ public class JugadaTest {
         int apuesta = 30;
 
         jugada.subir(apuesta);
+    }
+
+    @Test(expected = NoSePuedeIgualarSiNoHuboSubidaError.class)
+    public void noSePuedeIgualarSiNoHuboSubidaTest(){
+
+        // 10 jugadores con 1500 fichas c/u y ciegaChica = 20
+        Pozo pozo = new Pozo(15000,20);
+        int apuestaMinima = 0;
+        int ciegaGrande = 40;
+        Jugada jugada = new Jugada(pozo,apuestaMinima,ciegaGrande);
+
+        jugada.igualar();
     }
 }

@@ -32,4 +32,10 @@ public class Crupier {
         this.mesa = mesa;
 
     }
+
+    public void igualar(Jugada jugada) {
+    }
+
+    public void retirar() {
+    }
 }

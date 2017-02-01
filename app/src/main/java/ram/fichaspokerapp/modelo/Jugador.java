@@ -23,11 +23,7 @@ public class Jugador {
 
 	private void apostar(int fichasAapostar) {
 
-		if (this.cantidadDeFichas < fichasAapostar) {
-			throw new JugadorNoPuedeApostarMasFichasQueSuPilaError();
-		}	else {
 			this.cantidadDeFichas -= fichasAapostar;
-		}
 
 	}
 
@@ -58,17 +54,40 @@ public class Jugador {
 		}
 	}
 
+	private void fichasSuficientes(int apuesta){
+		if (this.cantidadDeFichas < apuesta) {
+			throw new JugadorNoPuedeApostarMasFichasQueSuPilaError();
+		}
+	}
+
 	public void subir(Jugada jugada, int apuesta) {
 
-		if(jugada.getApuestaMinima() >=  apuesta)
-			throw new JugadorNoPuedeSubirSiNoSuperaLaApuestaMinimaError();
-
-		this.apostar(apuesta);
+		this.fichasSuficientes(apuesta);
 
 		jugada.subir(apuesta);
 
+		this.apostar(apuesta);
+
 		this.crupier.subir(jugada);
 
+	}
+
+	public void igualar(Jugada jugada) {
+
+		int apuestaMinima = jugada.getApuestaMinima();
+
+		this.fichasSuficientes(apuestaMinima);
+
+		jugada.igualar();
+
+		this.apostar(apuestaMinima);
+
+		this.crupier.igualar(jugada);
+	}
+
+	public void retirar() {
+
+		this.crupier.retirar();
 	}
 
 	public void apuestaObligatoria(int apuesta) {
@@ -76,6 +95,9 @@ public class Jugador {
 		apostar(apuesta);
 
 	}
+
+
+
 }
 
 
