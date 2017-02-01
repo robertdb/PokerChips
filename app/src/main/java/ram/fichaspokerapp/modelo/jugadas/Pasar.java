@@ -4,14 +4,14 @@ package ram.fichaspokerapp.modelo.jugadas;
  * Created by Marcos on 22/01/2017.
  */
 
-public class Pasar extends Jugada {
+public class Pasar extends Jugadas {
 
     public Pasar () {
     }
 
-    public Pasar(Jugada jugadaAnterior) {
+    public Pasar(Jugadas jugadasAnterior) {
 
-        this.actuar(jugadaAnterior);
+        this.actuar(jugadasAnterior);
 
     }
 
@@ -37,7 +37,7 @@ public class Pasar extends Jugada {
     }
 
     @Override
-    public void actuar(Jugada jugadaAnterior) {
-        jugadaAnterior.pasar();
+    public void actuar(Jugadas jugadasAnterior) {
+        jugadasAnterior.pasar();
     }
 }

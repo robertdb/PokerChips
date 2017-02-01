@@ -6,7 +6,7 @@ import ram.fichaspokerapp.error.NoSePuedePasarSiSeSubeError;
  * Created by Marcos on 22/01/2017.
  */
 
-public class Subir extends Jugada {
+public class Subir extends Jugadas {
     @Override
     public void pasar() {
         throw new NoSePuedePasarSiSeSubeError();
@@ -28,7 +28,7 @@ public class Subir extends Jugada {
     }
 
     @Override
-    public void actuar(Jugada jugadaAnterior) {
+    public void actuar(Jugadas jugadasAnterior) {
 
     }
 }

@@ -81,6 +81,6 @@ public class Mesa {
 		return pozo;
 	}
 
-	public void actualizarVista(InfoJugada infoJugada) {
+	public void actualizarVista(Jugada jugada) {
 	}
 }

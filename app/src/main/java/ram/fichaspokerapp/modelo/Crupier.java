@@ -19,9 +19,9 @@ public class Crupier {
         return (Jugador) this.jugadoresActivos.actual();
     }
 
-    public void subir(InfoJugada infoJugada) {
+    public void subir(Jugada jugada) {
 
-        this.mesa.actualizarVista(infoJugada);
+        this.mesa.actualizarVista(jugada);
 
     }
 

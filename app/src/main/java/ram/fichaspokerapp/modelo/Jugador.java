@@ -48,7 +48,7 @@ public class Jugador {
 
 	}
 
-	public void actuar(InfoJugada infoJugada, String jugada, int apuesta  ) {
+	public void actuar(Jugada infoJugada, String jugada, int apuesta  ) {
 
 		// actualizarVista
 
@@ -58,16 +58,16 @@ public class Jugador {
 		}
 	}
 
-	public void subir(InfoJugada infoJugada, int apuesta) {
+	public void subir(Jugada jugada, int apuesta) {
 
-		if(infoJugada.apuestaMinima() >=  apuesta)
+		if(jugada.getApuestaMinima() >=  apuesta)
 			throw new JugadorNoPuedeSubirSiNoSuperaLaApuestaMinimaError();
 
 		this.apostar(apuesta);
 
-		infoJugada.actualizar(apuesta);
+		jugada.actualizar(apuesta);
 
-		this.crupier.subir(infoJugada);
+		this.crupier.subir(jugada);
 
 	}
 

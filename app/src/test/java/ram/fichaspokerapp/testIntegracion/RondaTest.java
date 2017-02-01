@@ -41,9 +41,9 @@ public class RondaTest {
     public void actualizarFichasSubidaPrimerJugadorTest() {
 
         int apuestaMinima = 40;
-        InfoJugada infoJugada = new InfoJugada(new Pozo(15000), apuestaMinima);
+        Jugada jugada = new Jugada(new Pozo(15000), apuestaMinima, 40);
         // antes de que el jugador actue mostramos la vista
-        crupier.getJugadorActual().actuar(infoJugada,"subir", 500);
+        crupier.getJugadorActual().actuar(jugada,"subir", 500);
 
     }
 }

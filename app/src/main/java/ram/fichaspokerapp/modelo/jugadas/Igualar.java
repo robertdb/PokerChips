@@ -6,7 +6,7 @@ import ram.fichaspokerapp.error.NoSePuedePasarSiSeIgualaError;
  * Created by Marcos on 22/01/2017.
  */
 
-public class Igualar extends Jugada {
+public class Igualar extends Jugadas {
     @Override
     public void pasar() {
         throw new NoSePuedePasarSiSeIgualaError();
@@ -28,7 +28,7 @@ public class Igualar extends Jugada {
     }
 
     @Override
-    public void actuar(Jugada jugadaAnterior) {
-        jugadaAnterior.igualar();
+    public void actuar(Jugadas jugadasAnterior) {
+        jugadasAnterior.igualar();
     }
 }

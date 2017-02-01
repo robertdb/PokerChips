@@ -4,20 +4,20 @@ package ram.fichaspokerapp.modelo.jugadas;
  * Created by Marcos on 22/01/2017.
  */
 
-public class Retirar extends Jugada {
+public class Retirar extends Jugadas {
 
-    private Jugada jugada;
+    private Jugadas jugadas;
 
-    public Retirar(Jugada anterior) {
+    public Retirar(Jugadas anterior) {
 
-        this.jugada = anterior;
+        this.jugadas = anterior;
 
     }
 
     @Override
     public void pasar() {
 
-        jugada.pasar();
+        jugadas.pasar();
 
     }
 
@@ -37,7 +37,7 @@ public class Retirar extends Jugada {
     }
 
     @Override
-    public void actuar(Jugada jugadaAnterior) {
+    public void actuar(Jugadas jugadasAnterior) {
 
     }
 }

@@ -6,12 +6,10 @@ import ram.fichaspokerapp.error.JugadorNoPuedeApostarMasFichasQueSuPilaError;
 import ram.fichaspokerapp.error.JugadorNoPuedePasarSiHayAgresorError;
 import ram.fichaspokerapp.error.JugadorNoPuedeSubirSiNoSuperaLaApuestaMinimaError;
 import ram.fichaspokerapp.modelo.Crupier;
-import ram.fichaspokerapp.modelo.InfoJugada;
+import ram.fichaspokerapp.modelo.Jugada;
 import ram.fichaspokerapp.modelo.Jugador;
 import ram.fichaspokerapp.modelo.Mesa;
 import ram.fichaspokerapp.modelo.Pozo;
-import ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular;
-import ram.fichaspokerapp.modelo.linkedList.ListaCircular;
 
 import static org.junit.Assert.assertEquals;
 
@@ -22,7 +20,7 @@ import static org.junit.Assert.assertEquals;
 public class JugadorTest {
 
     private Jugador jugador;
-    private  InfoJugada infoJugada;
+    private Jugada jugada;
     private Crupier crupier = new Crupier();
 
     @Before
@@ -32,14 +30,14 @@ public class JugadorTest {
 
         jugador = new Jugador("RAM", crupier);
 
-        infoJugada = new InfoJugada(new Pozo(15000), 40);
+        jugada = new Jugada(new Pozo(15000), 40,40);
 
     }
 
     @Test(expected = JugadorNoPuedeApostarMasFichasQueSuPilaError.class)
     public void jugadorNoPuedeApostarMasFichasQueSuPilaTest() {
 
-        jugador.subir(infoJugada, 1501);
+        jugador.subir(jugada, 1501);
 
     }
 
@@ -54,7 +52,7 @@ public class JugadorTest {
 
         // Hipotetico caso: el jugador realiza una subida +60,
         // paga los 40 de la ciega grande y agrega +20.
-        jugador.subir(infoJugada, 60);
+        jugador.subir(jugada, 60);
 
         assertEquals(1440, jugador.getFichas());
 
@@ -64,7 +62,7 @@ public class JugadorTest {
     public void jugadorNoPuedeSubirSiNoSuperaLaApuestaMinimaTest(){
 
         // Apuesta minima es de 40.
-        jugador.subir(infoJugada, 20);
+        jugador.subir(jugada, 20);
 
     }
 }
