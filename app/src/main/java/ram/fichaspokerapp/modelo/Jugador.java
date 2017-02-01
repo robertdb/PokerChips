@@ -65,7 +65,7 @@ public class Jugador {
 
 		this.apostar(apuesta);
 
-		jugada.actualizar(apuesta);
+		jugada.subir(apuesta);
 
 		this.crupier.subir(jugada);
 

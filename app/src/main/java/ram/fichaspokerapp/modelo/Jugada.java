@@ -1,6 +1,7 @@
 package ram.fichaspokerapp.modelo;
 
 import ram.fichaspokerapp.error.NoSePuedePasarSiSeSubeError;
+import ram.fichaspokerapp.error.NoSePuedeSubirMenosQueLaSubidaMinimaError;
 
 /**
  * Created by Samsung on 27/01/2017.
@@ -20,10 +21,6 @@ public class Jugada {
 
     }
 
-    public void actualizar(int apuesta) {
-
-
-    }
 
     public int getApuestaMinima() {
         return apuestaMinima;
@@ -31,15 +28,24 @@ public class Jugada {
 
     public void pasar() {
 
-        if (this.apuestaMinima>0){
+        if (this.apuestaMinima > 0){
             throw new NoSePuedePasarSiSeSubeError();
 
         }
 
     }
 
-    public void subir(int apuesta) {
+    private int calcularSubidaMinima(){
 
+        return (this.apuestaMinima + this.ciegaGrande);
+    }
+
+    public void subir(int apuesta) {
+        if (this.calcularSubidaMinima() > apuesta ){
+
+            throw new NoSePuedeSubirMenosQueLaSubidaMinimaError();
+
+        }
         this.pozo.agregarFichas(apuesta);
         this.apuestaMinima = apuesta;
 

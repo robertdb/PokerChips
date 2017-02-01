@@ -3,6 +3,7 @@ package ram.fichaspokerapp;
 import org.junit.*;
 
 import ram.fichaspokerapp.error.NoSePuedePasarSiSeSubeError;
+import ram.fichaspokerapp.error.NoSePuedeSubirMenosQueLaSubidaMinimaError;
 import ram.fichaspokerapp.modelo.*;
 
 import static org.junit.Assert.assertEquals;
@@ -55,5 +56,18 @@ public class JugadaTest {
         jugada.subir(apuesta);
 
         assertEquals(500,jugada.getApuestaMinima());
+    }
+
+    @Test(expected = NoSePuedeSubirMenosQueLaSubidaMinimaError.class )
+    public void noSePuedeSubirMenosQueLaSubidaMinimaTest(){
+
+        // 10 jugadores con 1500 fichas c/u y ciegaChica = 20
+        Pozo pozo = new Pozo(15000,20);
+        int apuestaMinima = 100;
+        int ciegaGrande = 40;
+        Jugada jugada = new Jugada(pozo,apuestaMinima,ciegaGrande);
+        int apuesta = 30;
+
+        jugada.subir(apuesta);
     }
 }
