@@ -52,9 +52,9 @@ public class JugadorTest {
 
         // Hipotetico caso: el jugador realiza una subida +60,
         // paga los 40 de la ciega grande y agrega +20.
-        jugador.subir(jugada, 60);
+        jugador.subir(jugada, 80);
 
-        assertEquals(1440, jugador.getFichas());
+        assertEquals(1420, jugador.getFichas());
 
     }
 
