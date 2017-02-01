@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 public class PozoTest {
 
     @Test
-    public void seIngresanFichaEnElPozoCorrectamenteTest(){
+    public void seIngresanFichaEnElPozoCorrectamenteTest() {
 
         // Es un pozo limitado en cantidad de fichas.
         int cantidadMaximaDeFichas = 15000;
@@ -28,7 +28,7 @@ public class PozoTest {
     }
 
     @Test
-    public void elPozoSeReiniciaConCeroFichasEsCorrectoTest(){
+    public void elPozoSeReiniciaConCeroFichasEsCorrectoTest() {
 
         // Es un pozo limitado en cantidad de fichas.
         int cantidadMaximaDeFichas = 15000;
@@ -44,7 +44,7 @@ public class PozoTest {
     }
 
     @Test(expected = PozoDesbordadoPorFichasError.class)
-    public void seAgreganFichasQueSuperanElLimiteDelPozoTest(){
+    public void seAgreganFichasQueSuperanElLimiteDelPozoTest() {
 
         int cantidadMaximaDeFichas = 15000;
 
@@ -55,7 +55,7 @@ public class PozoTest {
     }
 
     @Test
-    public void pozoSeCreaConApuestasObligatoriasTest(){
+    public void pozoSeCreaConApuestasObligatoriasTest() {
 
         int cantidadMaximaDeFichas = 15000;
 
@@ -67,8 +67,4 @@ public class PozoTest {
         assertEquals(60, pozo.getCantidadDeFichasActuales());
 
     }
-
-    @Test
-    public void
-
 }
