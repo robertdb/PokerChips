@@ -7,6 +7,8 @@ import ram.fichaspokerapp.modelo.Jugada;
 import ram.fichaspokerapp.modelo.Pozo;
 import ram.fichaspokerapp.modelo.PreFlop;
 import ram.fichaspokerapp.modelo.Ronda;
+import ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular;
+import ram.fichaspokerapp.modelo.linkedList.ListaCircular;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -44,6 +46,27 @@ public class PreFlopTest {
         Ronda ronda = preFlop.rondaTerminada();
 
         assertTrue(ronda instanceof Flop);
+
+    }
+
+    @Test
+    public void determinarGanadorEsCorrectoTest(){
+
+        int ciegaGrande = 40;
+
+        Pozo pozo = new Pozo(1000);
+
+        Jugada jugada = new Jugada(pozo, ciegaGrande);
+
+        Ronda preFlop = new PreFlop(jugada);
+
+        ListaCircular lista = new ListaCircular();
+
+        lista.add("simulador");
+
+        IteradorListaCircular candidatosIter = new IteradorListaCircular(lista);
+
+        assertTrue(preFlop.comprobarGanador(candidatosIter, pozo));
 
     }
 
