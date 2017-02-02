@@ -2,7 +2,7 @@ package ram.fichaspokerapp;
 
 import org.junit.Test;
 
-import ram.fichaspokerapp.modelo.Flop;
+
 import ram.fichaspokerapp.modelo.Jugada;
 import ram.fichaspokerapp.modelo.Pozo;
 import ram.fichaspokerapp.modelo.River;
