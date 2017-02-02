@@ -18,7 +18,7 @@ public class PreFlop extends Ronda {
 
         jugada.apuestaMinimaNula();
 
-        return null;
+        return new Flop();
 
     }
 }
