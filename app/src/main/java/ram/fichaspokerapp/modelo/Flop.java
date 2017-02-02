@@ -18,7 +18,7 @@ public class Flop extends Ronda{
 
         this.jugada.apuestaMinimaNula();
 
-        return (Ronda) new Turn();
+        return (Ronda) new Turn(jugada);
 
     }
 }

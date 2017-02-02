@@ -21,6 +21,7 @@ public class PreFlopTest {
     public void laRondaPreFlopTerminaYlaApuestaMinimaVuelveACeroEsCorrectoTest(){
 
         int ciegaGrande = 40;
+
         Jugada jugada = new Jugada(new Pozo(1000), ciegaGrande);
 
         Ronda preFlop = new PreFlop(jugada);
@@ -35,6 +36,7 @@ public class PreFlopTest {
     public void laRondaPreFlopTerminaYarrancaElFlopEsCorrectoTest(){
 
         int ciegaGrande = 40;
+
         Jugada jugada = new Jugada(new Pozo(1000), ciegaGrande);
 
         Ronda preFlop = new PreFlop(jugada);

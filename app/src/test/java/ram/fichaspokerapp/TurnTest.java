@@ -5,7 +5,7 @@ import org.junit.Test;
 import ram.fichaspokerapp.modelo.Flop;
 import ram.fichaspokerapp.modelo.Jugada;
 import ram.fichaspokerapp.modelo.Pozo;
-import ram.fichaspokerapp.modelo.PreFlop;
+import ram.fichaspokerapp.modelo.River;
 import ram.fichaspokerapp.modelo.Ronda;
 import ram.fichaspokerapp.modelo.Turn;
 
@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
  * Created by Robert on 2/2/17.
  */
 
-public class FlopTest {
+public class TurnTest {
 
     @Test
     public void laRondaFlopTerminaYlaApuestaMinimaVuelveACeroEsCorrectoTest(){
@@ -25,26 +25,27 @@ public class FlopTest {
 
         Jugada jugada = new Jugada(new Pozo(1000), ciegaGrande);
 
-        Ronda flop = new Flop(jugada);
+        Ronda turn = new Turn(jugada);
 
-        flop.rondaTerminada();
+        turn.rondaTerminada();
 
         assertEquals(0, jugada.getApuestaMinima());
 
     }
 
     @Test
-    public void laRondaFlopTerminaYarrancaElTurnEsCorrectoTest(){
+    public void laRondaTurnTerminaYarrancaElRiverEsCorrectoTest(){
 
         int ciegaGrande = 40;
 
         Jugada jugada = new Jugada(new Pozo(1000), ciegaGrande);
 
-        Ronda flop = new Flop(jugada);
+        Ronda turn = new Turn(jugada);
 
-        Ronda ronda = flop.rondaTerminada();
+        Ronda ronda = turn.rondaTerminada();
 
-        assertTrue(ronda instanceof Turn);
+        assertTrue(ronda instanceof River);
 
     }
+
 }
