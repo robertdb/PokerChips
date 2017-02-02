@@ -18,11 +18,13 @@ public class JugadaTest {
 
     @Test(expected = NoSePuedePasarSiSeSubeError.class )
     public void noSePuedePasarDespuesDeLaCiegaGrandeTest(){
+
         // 10 jugadores con 1500 fichas c/u y ciegaChica = 20
         Pozo pozo = new Pozo(15000,20);
-        int apuestaIgualar = 40;
+
         int ciegaGrande = 40;
-        Jugada jugada = new Jugada(pozo,apuestaIgualar,ciegaGrande);
+
+        Jugada jugada = new Jugada(pozo, ciegaGrande);
 
         jugada.pasar();
 
@@ -33,9 +35,8 @@ public class JugadaTest {
 
         // 10 jugadores con 1500 fichas c/u y ciegaChica = 20
         Pozo pozo = new Pozo(15000,20);
-        int apuestaIgualar = 40;
         int ciegaGrande = 40;
-        Jugada jugada = new Jugada(pozo,apuestaIgualar,ciegaGrande);
+        Jugada jugada = new Jugada(pozo, ciegaGrande);
         int apuesta = 500;
 
         jugada.subir(apuesta);
@@ -49,9 +50,8 @@ public class JugadaTest {
 
         // 10 jugadores con 1500 fichas c/u y ciegaChica = 20
         Pozo pozo = new Pozo(15000,20);
-        int apuestaIgualar = 40;
         int ciegaGrande = 40;
-        Jugada jugada = new Jugada(pozo,apuestaIgualar,ciegaGrande);
+        Jugada jugada = new Jugada(pozo, ciegaGrande);
         int apuesta = 500;
 
         jugada.subir(apuesta);
@@ -66,20 +66,26 @@ public class JugadaTest {
         Pozo pozo = new Pozo(15000,20);
         int apuestaMinima = 100;
         int ciegaGrande = 40;
-        Jugada jugada = new Jugada(pozo,apuestaMinima,ciegaGrande);
-        int apuesta = 30;
+        Jugada jugada = new Jugada(pozo, ciegaGrande);
+        jugada.subir(apuestaMinima);
 
-        jugada.subir(apuesta);
+        int intentoApuesta = 30;
+
+        jugada.subir(intentoApuesta);
+
     }
 
     @Test(expected = NoSePuedeIgualarSiNoHuboSubidaError.class)
     public void noSePuedeIgualarSiNoHuboSubidaTest(){
 
         // 10 jugadores con 1500 fichas c/u y ciegaChica = 20
+        // La mano puede estar arrancando el flop, turn o river.
+        // en cada una de estas etapas se empieza con apuestaMinima cero.
         Pozo pozo = new Pozo(15000,20);
-        int apuestaMinima = 0;
         int ciegaGrande = 40;
-        Jugada jugada = new Jugada(pozo,apuestaMinima,ciegaGrande);
+        Jugada jugada = new Jugada(pozo, ciegaGrande);
+
+        jugada.apuestaMinimaNula();
 
         jugada.igualar();
     }

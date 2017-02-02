@@ -40,8 +40,8 @@ public class RondaTest {
     @Test
     public void actualizarFichasSubidaPrimerJugadorTest() {
 
-        int apuestaMinima = 40;
-        Jugada jugada = new Jugada(new Pozo(15000), apuestaMinima, 40);
+        int ciegaGrande = 40;
+        Jugada jugada = new Jugada(new Pozo(15000), ciegaGrande);
         // antes de que el jugador actue mostramos la vista
         crupier.getJugadorActual().actuar(jugada,"subir", 500);
 

@@ -4,7 +4,6 @@ import org.junit.*;
 
 import ram.fichaspokerapp.error.JugadorNoPuedeApostarMasFichasQueSuPilaError;
 import ram.fichaspokerapp.error.JugadorNoPuedePasarSiHayAgresorError;
-import ram.fichaspokerapp.error.JugadorNoPuedeSubirSiNoSuperaLaApuestaMinimaError;
 import ram.fichaspokerapp.error.NoSePuedeSubirMenosQueLaSubidaMinimaError;
 import ram.fichaspokerapp.modelo.Crupier;
 import ram.fichaspokerapp.modelo.Jugada;
@@ -31,9 +30,8 @@ public class JugadorTest {
 
         jugador = new Jugador("RAM", crupier);
 
-        int apuestaMinima = 40;
         int ciegaGrande = 40;
-        jugada = new Jugada(new Pozo(15000), apuestaMinima,ciegaGrande);
+        jugada = new Jugada(new Pozo(15000), ciegaGrande);
 
     }
 
@@ -72,21 +70,39 @@ public class JugadorTest {
     @Test
     public void realizarUnaIgualadaDebitaCorrectamenteTest() {
 
-        // el jugador realiza una igualada +400.
-        int apuestaMinima = 400;
+
+        // Un jugador sube +400.
+        Jugador  otroJugador = new Jugador("RAM", crupier);
+        int apuesta = 400;
         int ciegaGrande = 60;
-        Jugada jugadaNueva = new Jugada(new Pozo(15000),apuestaMinima,ciegaGrande);
+        Jugada jugadaNueva = new Jugada(new Pozo(15000), ciegaGrande);
+        otroJugador.subir(jugadaNueva, apuesta);
+
+        // jugador intenta igualar los 400.
         jugador.igualar(jugadaNueva);
 
         assertEquals(1100, jugador.getFichas());
     }
 
     @Test
+    public void primerJugadorEnJugarIgualaLaCiegaGrandeDeLaRondaDebitandoCorrectamenteTest() {
+
+        // el jugador iguala los 60 de la ciega grande.
+        int ciegaGrande = 60;
+        Jugada jugadaNueva = new Jugada(new Pozo(15000), ciegaGrande);
+        jugador.igualar(jugadaNueva);
+
+        assertEquals(1440, jugador.getFichas());
+    }
+
+
+
+    @Test
     public void jugadorSeRetiraNoModificaPozoTest() {
 
         int apuestaMinima = 400;
         int ciegaGrande = 60;
-        Jugada jugadaNueva = new Jugada(new Pozo(15000),apuestaMinima,ciegaGrande);
+        Jugada jugadaNueva = new Jugada(new Pozo(15000), ciegaGrande);
         jugador.retirar();
 
         assertEquals(1500, jugador.getFichas());

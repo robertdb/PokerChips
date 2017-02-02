@@ -14,14 +14,13 @@ public class Jugada {
     private int ciegaGrande;
 
 
-    public Jugada(Pozo pozo, int apuestaMinima, int ciegaGrande) {
+    public Jugada(Pozo pozo, int ciegaGrande) {
 
         this.pozo = pozo;
-        this.apuestaMinima = apuestaMinima;
+        this.apuestaMinima = ciegaGrande;
         this.ciegaGrande = ciegaGrande;
 
     }
-
 
     public int getApuestaMinima() {
         return apuestaMinima;
@@ -61,6 +60,12 @@ public class Jugada {
 
         }
         this.pozo.agregarFichas(this.apuestaMinima);
+
+    }
+
+    public void apuestaMinimaNula() {
+
+        this.apuestaMinima = 0;
 
     }
 }
