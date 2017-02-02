@@ -13,7 +13,6 @@ import ram.fichaspokerapp.R;
 
 import static ram.fichaspokerapp.R.id.laCantidad;
 import static ram.fichaspokerapp.R.id.seekBar1;
-import static ram.fichaspokerapp.R.id.textView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,19 +34,16 @@ public class MainActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 this.progress = progress;
                 textViewCantidad.setText(String.valueOf(progress));
-                Toast.makeText(getApplicationContext(), "Que tocas?",Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
                 textViewCantidad.setText(String.valueOf(progress));
-                Toast.makeText(getApplicationContext(), "Bueno, bueno",Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 textViewCantidad.setText(String.valueOf(progress));
-                Toast.makeText(getApplicationContext(), "Asi mejor",Toast.LENGTH_SHORT).show();
             }
         });
     }
