@@ -123,4 +123,15 @@ public class IteradorListaCircularTest {
 
     }
 
+    @Test
+    public void verAlsiguieteAlActualSinModificarAlActualEsCorrectoTest(){
+
+        ListaCircular lista = getListaConNombres();
+
+        IteradorListaCircular iter = new IteradorListaCircular(lista, marcos);
+
+        assertEquals(andres, iter.seeNext());
+
+    }
+
 }

@@ -74,4 +74,10 @@ public class IteradorListaCircular {
         this.actual = buscarActual(data);
 
     }
+
+    public Object seeNext() {
+
+        return actual.next.data;
+
+    }
 }
