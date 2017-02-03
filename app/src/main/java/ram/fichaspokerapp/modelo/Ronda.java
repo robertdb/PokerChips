@@ -15,7 +15,7 @@ public abstract class Ronda {
 
     }
 
-    public boolean cambiarRonda(Agresor agresor, Jugador proximoJugador,){
+    public boolean cambiarRonda(Agresor agresor, Jugador proximoJugador){
 
         return (!agresor.seguirRonda(proximoJugador));
 

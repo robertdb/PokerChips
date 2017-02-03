@@ -32,12 +32,12 @@ public class PreFlop extends Ronda {
     }
 
     @Override
-    public boolean cambiarRonda(Agresor agresor, Jugador proximoJugador,){
+    public boolean cambiarRonda(Agresor agresor, Jugador proximoJugador){
 
-        if(!apuestaMinimaSuperadaLuegoDeLaJugadaDeLaCiegaGrande() || super.cambiarRonda(agresor, proximoJugador) || )
+        if(!apuestaMinimaSuperadaLuegoDeLaJugadaDeLaCiegaGrande() || super.cambiarRonda(agresor, proximoJugador))
             return true;
 
-
+        return false;
 
     }
 
