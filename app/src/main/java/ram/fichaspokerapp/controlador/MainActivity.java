@@ -5,30 +5,23 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.text.NumberFormat;
-
 import ram.fichaspokerapp.R;
-
-import static ram.fichaspokerapp.R.id.laCantidad;
-import static ram.fichaspokerapp.R.id.seekBar1;
 
 public class MainActivity extends AppCompatActivity {
 
     private SeekBar seekBar;
     private TextView textViewCantidad;
-    private int cantidad = 0;
+    private TextView textViewPote;
+    private int pote = 500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         this.inicializarVariables();
-        textViewCantidad.setText(String.valueOf(seekBar.getProgress()));
+
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            int progress =0;
+            int progress = 0;
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -51,17 +44,29 @@ public class MainActivity extends AppCompatActivity {
     private void inicializarVariables() {
         seekBar = (SeekBar) findViewById(R.id.seekBar1);
         textViewCantidad = (TextView) findViewById(R.id.laCantidad);
+        textViewPote = (TextView) findViewById(R.id.pote);
+        textViewCantidad.setText(String.valueOf(seekBar.getProgress()));
+        textViewPote.setText("Pote: " + String.valueOf(pote));
     }
 
-    public void subir(View vista) {
-        this.cantidad++;
-        mostrar(cantidad);
+    public void medioPote(View vista) {
+        actualizarProgresoSeekBar(pote / 2);
     }
 
-    private void mostrar(int numero) {
-//        TextView quantityTextView = (TextView) findViewById(R.id.laCantidad);
-//        textViewCantidad.setText(NumberFormat.getCurrencyInstance().format(numero));
-        textViewCantidad.setText(String.valueOf(numero));
+    public void tresCuartosPote(View vista) {
+        actualizarProgresoSeekBar(pote * 3 / 4);
     }
 
+    public void pote(View vista) {
+        actualizarProgresoSeekBar(pote);
+    }
+
+    public void allIn(View vista) {
+        actualizarProgresoSeekBar(seekBar.getMax());
+    }
+
+    private void actualizarProgresoSeekBar(int progreso) {
+        seekBar.setProgress(progreso);
+        textViewCantidad.setText(String.valueOf(seekBar.getProgress()));
+    }
 }
