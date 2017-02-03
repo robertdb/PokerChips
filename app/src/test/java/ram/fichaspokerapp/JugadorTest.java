@@ -26,12 +26,12 @@ public class JugadorTest {
     @Before
     public void setUp() {
 
-        crupier.asignarJuego(null, new Mesa(null,null));
-
-        jugador = new Jugador("RAM", crupier);
-
         int ciegaGrande = 40;
         jugada = new Jugada(new Pozo(15000), ciegaGrande);
+
+        crupier.asignarJuego(null, new Mesa(null,null), jugada);
+
+        jugador = new Jugador("RAM", crupier);
 
     }
 

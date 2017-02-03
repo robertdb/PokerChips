@@ -10,17 +10,13 @@ public class Crupier {
     private IteradorListaCircular jugadoresActivos;
 
     private Mesa mesa;
-    
-    // se crea una jugada falopa, todavia no se sabe donde se va a crear
-    // pero es seguro que crupier la tiene que conocer.
+
     private Jugada jugada;
     
     
 
     public Crupier() {
 
-        this.jugada = new Jugada(new Pozo(15000), 40);
-        
     }
 
     public Jugador getJugadorActual(){
@@ -33,11 +29,13 @@ public class Crupier {
 
     }
 
-    public void asignarJuego(IteradorListaCircular iter, Mesa mesa) {
+    public void asignarJuego(IteradorListaCircular iter, Mesa mesa, Jugada jugada) {
 
         this.jugadoresActivos = iter;
 
         this.mesa = mesa;
+
+        this.jugada = jugada;
         
     }
 

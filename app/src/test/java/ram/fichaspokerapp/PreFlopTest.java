@@ -2,9 +2,13 @@ package ram.fichaspokerapp;
 
 import org.junit.Test;
 
+import ram.fichaspokerapp.modelo.Agresor;
+import ram.fichaspokerapp.modelo.AgresorPasivo;
 import ram.fichaspokerapp.modelo.Crupier;
 import ram.fichaspokerapp.modelo.Flop;
 import ram.fichaspokerapp.modelo.Jugada;
+import ram.fichaspokerapp.modelo.Jugador;
+import ram.fichaspokerapp.modelo.Mesa;
 import ram.fichaspokerapp.modelo.Pozo;
 import ram.fichaspokerapp.modelo.PreFlop;
 import ram.fichaspokerapp.modelo.Ronda;
@@ -24,10 +28,21 @@ public class PreFlopTest {
     public void laRondaPreFlopTerminaYlaApuestaMinimaVuelveACeroEsCorrectoTest(){
 
 
-        /*int ciegaGrande = 40;
-        Jugada jugada = new Jugada(new Pozo(1000), ciegaGrande);*/
-        // Dentro de crupier se crea la jugada.
         Crupier crupier = new Crupier();
+
+        ListaCircular<Jugador> lista = new ListaCircular<Jugador>();
+        Jugador ciegaGrande = new Jugador("pepe", crupier);
+        Jugador siguienteAlaCiegaGrande = new Jugador("jaimito", crupier);
+
+        lista.add(ciegaGrande);
+        lista.add(siguienteAlaCiegaGrande);
+
+        IteradorListaCircular iter = new IteradorListaCircular(lista, ciegaGrande);
+
+        int ciegaGrandeApuesta = 40;
+        Jugada jugada = new Jugada(new Pozo(1000), ciegaGrandeApuesta);
+
+        crupier.asignarJuego(iter, new Mesa("--",new Jugador()), jugada);
 
         Ronda preFlop = new PreFlop(crupier);
 
@@ -40,7 +55,23 @@ public class PreFlopTest {
     @Test
     public void laRondaPreFlopTerminaYarrancaElFlopEsCorrectoTest(){
 
-        Ronda preFlop = new PreFlop(new Crupier());
+        Crupier crupier = new Crupier();
+
+        ListaCircular<Jugador> lista = new ListaCircular<Jugador>();
+        Jugador ciegaGrande = new Jugador("pepe", crupier);
+        Jugador siguienteAlaCiegaGrande = new Jugador("jaimito", crupier);
+
+        lista.add(ciegaGrande);
+        lista.add(siguienteAlaCiegaGrande);
+
+        IteradorListaCircular iter = new IteradorListaCircular(lista, ciegaGrande);
+
+        int ciegaGrandeApuesta = 40;
+        Jugada jugada = new Jugada(new Pozo(1000), ciegaGrandeApuesta);
+
+        crupier.asignarJuego(iter, new Mesa("--",new Jugador()), jugada);
+
+        Ronda preFlop = new PreFlop(crupier);
 
         Ronda ronda = preFlop.rondaTerminada();
 
@@ -49,22 +80,91 @@ public class PreFlopTest {
     }
 
     @Test
-    public void determinarGanadorEsCorrectoTest(){
+    public void cambiarRondaSiLaCiegaGrandeNoApostoEnSuTurnoEsTrueTest(){
 
-        Pozo pozo = new Pozo(1000);
+        Crupier crupier = new Crupier();
 
-        Ronda preFlop = new PreFlop(new Crupier());
+        ListaCircular<Jugador> lista = new ListaCircular<Jugador>();
+        Jugador ciegaGrande = new Jugador();
+        Jugador siguienteAlaCiegaGrande = new Jugador();
 
-        ListaCircular lista = new ListaCircular();
+        lista.add(ciegaGrande);
+        lista.add(siguienteAlaCiegaGrande);
 
-        lista.add("simulador");
+        IteradorListaCircular iter = new IteradorListaCircular(lista, ciegaGrande);
 
-        IteradorListaCircular candidatosIter = new IteradorListaCircular(lista);
+        int ciegaGrandeApuesta = 40;
+        Jugada jugada = new Jugada(new Pozo(1000), ciegaGrandeApuesta);
 
-        assertTrue(preFlop.comprobarGanador(candidatosIter, pozo));
+        crupier.asignarJuego(iter, new Mesa("--",new Jugador()), jugada);
+
+        Ronda preFlop = new PreFlop(crupier);
+
+        // Estado del juego: el jugador con la ciega grande ya jugo
+        // y la apuestaMinima se mantuvo con el valor de la ciegaGrande
+        // en este caso termina la ronda.
+        assertEquals(ciegaGrande, crupier.getJugadorActual());
+        assertTrue(preFlop.cambiarRonda(new AgresorPasivo(), new Jugador()));
 
     }
 
 
+    @Test
+    public void rondaNoCambiaSiLaCiegaGrandeApuestaEnSuTurnoTest(){
+
+
+        Crupier crupier = new Crupier();
+
+        ListaCircular<Jugador> lista = new ListaCircular<Jugador>();
+        Jugador ciegaGrande = new Jugador("pepe", crupier);
+        Jugador siguienteAlaCiegaGrande = new Jugador("jaimito", crupier);
+
+        lista.add(ciegaGrande);
+        lista.add(siguienteAlaCiegaGrande);
+
+        IteradorListaCircular iter = new IteradorListaCircular(lista, ciegaGrande);
+
+        int ciegaGrandeApuesta = 40;
+        Jugada jugada = new Jugada(new Pozo(1000), ciegaGrandeApuesta);
+
+        crupier.asignarJuego(iter, new Mesa("--",new Jugador()), jugada);
+
+
+        Ronda preFlop = new PreFlop(crupier);
+
+
+        int apuestaDelJugadorConLaCiegaGrande = 80;
+        crupier.getJugadorActual().subir(jugada, apuestaDelJugadorConLaCiegaGrande);
+
+        // Estado del juego: el jugador con la ciega grande ya jugo
+        // y la apuestaMinima se mantuvo con el valor de la ciegaGrande
+        // en este caso termina la ronda.
+        assertEquals(ciegaGrande, crupier.getJugadorActual());
+
+        assertTrue(preFlop.cambiarRonda(new AgresorPasivo(), new Jugador()));
+
+    }
+
+
+    @Test
+    public void determinarGanadorEsCorrectoTest(){
+
+    Crupier crupier = new Crupier();
+
+    ListaCircular<Jugador> lista = new ListaCircular<Jugador>();
+
+    lista.add(new Jugador("pepe", crupier));
+
+    IteradorListaCircular iter = new IteradorListaCircular(lista);
+
+    Pozo pozo = new Pozo(1000);
+
+    crupier.asignarJuego(iter, new Mesa(" ", new Jugador()), new Jugada(pozo, 20));
+
+    Ronda preFlop = new PreFlop(crupier);
+
+    assertTrue(preFlop.comprobarGanador(new IteradorListaCircular(lista), pozo));
+
+    }
 
 }

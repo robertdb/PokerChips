@@ -11,6 +11,7 @@ import ram.fichaspokerapp.modelo.linkedList.*;
 public class RondaTest {
 
     private Crupier crupier;
+    private Jugada jugada;
     private ListaCircular<Jugador> lista = new ListaCircular<Jugador>();
 
     @Before
@@ -33,15 +34,16 @@ public class RondaTest {
 
         IteradorListaCircular iter = new IteradorListaCircular(lista, braian);
 
-        crupier.asignarJuego(iter,mesa);
+        int ciegaGrande = 40;
+        jugada = new Jugada(new Pozo(15000), ciegaGrande);
+
+        crupier.asignarJuego(iter,mesa, jugada);
 
     }
 
     @Test
     public void actualizarFichasSubidaPrimerJugadorTest() {
 
-        int ciegaGrande = 40;
-        Jugada jugada = new Jugada(new Pozo(15000), ciegaGrande);
         // antes de que el jugador actue mostramos la vista
         crupier.getJugadorActual().actuar(jugada,"subir", 500);
 
