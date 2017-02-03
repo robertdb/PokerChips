@@ -68,4 +68,10 @@ public class IteradorListaCircular {
                 actual = aux;
         }
     }
+
+    public void moverActual(Object data) {
+
+        this.actual = buscarActual(data);
+
+    }
 }

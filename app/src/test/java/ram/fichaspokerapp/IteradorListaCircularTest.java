@@ -107,4 +107,20 @@ public class IteradorListaCircularTest {
         assertEquals("charly", iter.actual());
 
     }
+
+    @Test
+    public void moverElIteradorAunElementoParticularEsCorrectoTest(){
+
+        ListaCircular lista = getListaConNombres();
+
+        IteradorListaCircular iter = new IteradorListaCircular(lista, "robert");
+
+        assertEquals(robert, iter.actual());
+
+        iter.moverActual(marcos);
+
+        assertEquals(marcos, iter.actual());
+
+    }
+
 }
