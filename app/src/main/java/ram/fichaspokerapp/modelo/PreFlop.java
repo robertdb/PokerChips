@@ -9,7 +9,7 @@ public class PreFlop extends Ronda {
 
     private Jugador jugadorCiegaGrande;
 
-    private Agresor agresor;
+    private int apuestaMinima;
 
     public PreFlop(Crupier crupier) {
 
@@ -17,7 +17,7 @@ public class PreFlop extends Ronda {
 
         this.jugadorCiegaGrande = crupier.getJugadorCiegaGrande();
 
-        this.agresor = new AgresorPasivo();
+        this.apuestaMinima = crupier.getApuestaMinima();
 
     }
 
@@ -28,6 +28,25 @@ public class PreFlop extends Ronda {
         crupier.nuevaRonda();
 
         return (Ronda)new Flop(crupier);
+
+    }
+
+    @Override
+    public boolean cambiarRonda(Agresor agresor, Jugador proximoJugador,){
+
+        if(!apuestaMinimaSuperadaLuegoDeLaJugadaDeLaCiegaGrande() || super.cambiarRonda(agresor, proximoJugador) || )
+            return true;
+
+
+
+    }
+
+    private boolean apuestaMinimaSuperadaLuegoDeLaJugadaDeLaCiegaGrande(){
+
+        if(crupier.getJugadorActual() == jugadorCiegaGrande &&  apuestaMinima == crupier.getApuestaMinima())
+            return false;
+
+        return true;
 
     }
 }
