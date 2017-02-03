@@ -2,6 +2,7 @@ package ram.fichaspokerapp;
 
 import org.junit.Test;
 
+import ram.fichaspokerapp.modelo.Crupier;
 import ram.fichaspokerapp.modelo.Flop;
 import ram.fichaspokerapp.modelo.Jugada;
 import ram.fichaspokerapp.modelo.Pozo;
@@ -22,26 +23,24 @@ public class PreFlopTest {
     @Test
     public void laRondaPreFlopTerminaYlaApuestaMinimaVuelveACeroEsCorrectoTest(){
 
-        int ciegaGrande = 40;
 
-        Jugada jugada = new Jugada(new Pozo(1000), ciegaGrande);
+        /*int ciegaGrande = 40;
+        Jugada jugada = new Jugada(new Pozo(1000), ciegaGrande);*/
+        // Dentro de crupier se crea la jugada.
+        Crupier crupier = new Crupier();
 
-        Ronda preFlop = new PreFlop(jugada);
+        Ronda preFlop = new PreFlop(crupier);
 
         preFlop.rondaTerminada();
 
-        assertEquals(0, jugada.getApuestaMinima());
+        assertEquals(0, crupier.getApuestaMinima());
 
     }
 
     @Test
     public void laRondaPreFlopTerminaYarrancaElFlopEsCorrectoTest(){
 
-        int ciegaGrande = 40;
-
-        Jugada jugada = new Jugada(new Pozo(1000), ciegaGrande);
-
-        Ronda preFlop = new PreFlop(jugada);
+        Ronda preFlop = new PreFlop(new Crupier());
 
         Ronda ronda = preFlop.rondaTerminada();
 
@@ -52,13 +51,9 @@ public class PreFlopTest {
     @Test
     public void determinarGanadorEsCorrectoTest(){
 
-        int ciegaGrande = 40;
-
         Pozo pozo = new Pozo(1000);
 
-        Jugada jugada = new Jugada(pozo, ciegaGrande);
-
-        Ronda preFlop = new PreFlop(jugada);
+        Ronda preFlop = new PreFlop(new Crupier());
 
         ListaCircular lista = new ListaCircular();
 

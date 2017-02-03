@@ -2,6 +2,7 @@ package ram.fichaspokerapp;
 
 import org.junit.Test;
 
+import ram.fichaspokerapp.modelo.Crupier;
 import ram.fichaspokerapp.modelo.Flop;
 import ram.fichaspokerapp.modelo.Jugada;
 import ram.fichaspokerapp.modelo.Pozo;
@@ -20,26 +21,24 @@ public class FlopTest {
     @Test
     public void laRondaFlopTerminaYlaApuestaMinimaVuelveACeroEsCorrectoTest(){
 
-        int ciegaGrande = 40;
 
-        Jugada jugada = new Jugada(new Pozo(1000), ciegaGrande);
-
-        Ronda flop = new Flop(jugada);
+        /*int ciegaGrande = 40;
+        Jugada jugada = new Jugada(new Pozo(1000), ciegaGrande);*/
+        // Dentro de crupier se crea la jugada.
+        Crupier crupier = new Crupier();
+        Ronda flop = new Flop(crupier);
 
         flop.rondaTerminada();
 
-        assertEquals(0, jugada.getApuestaMinima());
+        assertEquals(0, crupier.getApuestaMinima());
 
     }
 
     @Test
     public void laRondaFlopTerminaYarrancaElTurnEsCorrectoTest(){
 
-        int ciegaGrande = 40;
 
-        Jugada jugada = new Jugada(new Pozo(1000), ciegaGrande);
-
-        Ronda flop = new Flop(jugada);
+        Ronda flop = new Flop(new Crupier());
 
         Ronda ronda = flop.rondaTerminada();
 

@@ -5,20 +5,20 @@ package ram.fichaspokerapp.modelo;
  */
 public class Flop extends Ronda{
 
-    private Jugada jugada;
+    private Crupier crupier;
 
-    public Flop(Jugada jugada) {
+    public Flop(Crupier crupier) {
 
-        this.jugada = jugada;
+        this.crupier = crupier;
 
     }
 
     @Override
     public Ronda rondaTerminada() {
 
-        this.jugada.apuestaMinimaNula();
+        crupier.nuevaRonda();
 
-        return (Ronda) new Turn(jugada);
+        return (Ronda) new Turn(crupier);
 
     }
 }

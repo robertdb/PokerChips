@@ -5,20 +5,29 @@ package ram.fichaspokerapp.modelo;
  */
 public class PreFlop extends Ronda {
 
-    private Jugada jugada;
+    private Crupier crupier;
 
-    public PreFlop(Jugada jugada) {
+    private Jugador jugadorCiegaGrande;
 
-        this.jugada = jugada;
+    private Agresor agresor;
+
+    public PreFlop(Crupier crupier) {
+
+        this.crupier = crupier;
+
+        this.jugadorCiegaGrande = crupier.getJugadorCiegaGrande();
+
+        this.agresor = new AgresorPasivo();
+
     }
 
 
     @Override
     public Ronda rondaTerminada() {
 
-        jugada.apuestaMinimaNula();
+        crupier.nuevaRonda();
 
-        return (Ronda)new Flop(jugada);
+        return (Ronda)new Flop(crupier);
 
     }
 }

@@ -5,18 +5,18 @@ package ram.fichaspokerapp.modelo;
  */
 public class Turn extends Ronda{
 
-    private Jugada jugada;
+    private Crupier crupier;
 
-    public Turn(Jugada jugada) {
+    public Turn(Crupier crupier) {
 
-        this.jugada = jugada;
+        this.crupier = crupier;
 
     }
 
     @Override
     public Ronda rondaTerminada() {
 
-        jugada.apuestaMinimaNula();
+        crupier.nuevaRonda();
 
         return (Ronda) new River();
 
