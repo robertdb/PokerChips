@@ -12,8 +12,6 @@ public class Crupier {
     private Mesa mesa;
 
     private Jugada jugada;
-    
-    
 
     public Crupier() {
 
