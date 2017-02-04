@@ -11,6 +11,8 @@ public class Mano {
 
     private Ronda ronda;
 
+    private Agresor agresor;
+
     public Mano(Pozo pozo, Crupier crupier) {
 
         this.pozo = pozo;
@@ -19,12 +21,14 @@ public class Mano {
 
         this.ronda = new PreFlop(crupier);
 
+        this.agresor = new AgresorPasivo();
+
     }
 
 
     public boolean cambiarRonda() {
 
-        return true;
+        return ronda.cambiarRonda(agresor, crupier.getProximoJugador());
 
     }
 }

@@ -41,6 +41,7 @@ public class Jugador {
 
 	public void pasar() {
 
+		crupier.pasar();
 
 	}
 

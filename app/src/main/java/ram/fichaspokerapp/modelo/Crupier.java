@@ -15,6 +15,8 @@ public class Crupier {
 
     private Jugador ciegaChica;
 
+    private Jugador ciegaGrande;
+
     public Crupier() {
 
     }
@@ -38,10 +40,15 @@ public class Crupier {
         this.jugada = jugada;
 
         this.ciegaChica = mesa.getCiegaChica();
+
+        this.ciegaGrande = mesa.getCiegaGrande();
         
     }
 
     public void igualar(Jugada jugada) {
+
+        iterJugadoresActivos.next();
+
     }
 
     // Si el jugador actual se retira el actual pasa a ser su siguiente.
@@ -52,13 +59,11 @@ public class Crupier {
 
         iterJugadoresActivos.removeActual();
 
-
-
     }
 
     public Jugador getJugadorCiegaGrande() {
 
-        return null;
+        return ciegaGrande;
     }
 
     public void nuevaRonda() {
@@ -71,7 +76,7 @@ public class Crupier {
 
     private void ciegaChicaIniciaNuevaRonda() {
 
-        iterJugadoresActivos.moverActual(ciegaChica);
+        iterJugadoresActivos.moveActual(ciegaChica);
 
     }
 
@@ -84,6 +89,18 @@ public class Crupier {
     public Jugada getJugada() {
 
         return jugada;
+
+    }
+
+    public Jugador getProximoJugador() {
+
+        return (Jugador) iterJugadoresActivos.seeNext();
+
+    }
+
+    public void pasar() {
+
+        iterJugadoresActivos.next();
 
     }
 }

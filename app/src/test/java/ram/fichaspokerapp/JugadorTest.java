@@ -10,6 +10,8 @@ import ram.fichaspokerapp.modelo.Jugada;
 import ram.fichaspokerapp.modelo.Jugador;
 import ram.fichaspokerapp.modelo.Mesa;
 import ram.fichaspokerapp.modelo.Pozo;
+import ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular;
+import ram.fichaspokerapp.modelo.linkedList.ListaCircular;
 
 import static org.junit.Assert.assertEquals;
 
@@ -31,7 +33,10 @@ public class JugadorTest {
 
         jugador = new Jugador("RAM", crupier);
 
-        crupier.asignarJuego(null, new Mesa("mesa", jugador), jugada);
+        ListaCircular<String> lista = new ListaCircular<String>();
+        lista.add(jugador);
+
+        crupier.asignarJuego(new IteradorListaCircular(lista), new Mesa("mesa", jugador), jugada);
 
     }
 
