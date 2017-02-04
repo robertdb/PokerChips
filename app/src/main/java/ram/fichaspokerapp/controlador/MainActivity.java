@@ -3,15 +3,19 @@ package ram.fichaspokerapp.controlador;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import ram.fichaspokerapp.R;
 
+import static ram.fichaspokerapp.R.id.checkBox;
+
 public class MainActivity extends AppCompatActivity {
 
     private SeekBar seekBar;
     private TextView textViewCantidad;
+    private CheckBox checkBox;
     private int pote = 500;
 
     @Override
@@ -44,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     private void inicializarVariables() {
         seekBar = (SeekBar) findViewById(R.id.seekBar1);
         textViewCantidad = (TextView) findViewById(R.id.laCantidad);
-        textViewCantidad.setText(String.valueOf(seekBar.getProgress()));
+        checkBox = (CheckBox) findViewById(R.id.checkBox);
     }
 
     public void medioPote(View vista) {
@@ -66,5 +70,10 @@ public class MainActivity extends AppCompatActivity {
     private void actualizarProgresoSeekBar(int progreso) {
         seekBar.setProgress(progreso);
         textViewCantidad.setText(String.valueOf(seekBar.getProgress()));
+    }
+
+    public void setPrueba(View view) {
+        boolean prueba = checkBox.isChecked();
+        pote ++;
     }
 }

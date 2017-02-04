@@ -11,11 +11,11 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_above="@+id/linearLayout"
+        android:layout_above="@+id/linearLayoutSeekBar"
         android:background="@android:color/darker_gray" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linearLayoutSeekBar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_above="@+id/botonera"
@@ -35,9 +35,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:text="0"
             android:textColor="@android:color/black"
-            android:textSize="16sp"
-            android:text="0"/>
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -53,7 +53,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="medioPote"
-            android:padding="8dp"
             android:text="1/2" />
 
         <Button
@@ -61,7 +60,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="tresCuartosPote"
-            android:padding="8dp"
             android:text="3/4" />
 
         <Button
@@ -69,7 +67,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="pote"
-            android:padding="8dp"
             android:text="Pot" />
 
         <Button
@@ -77,9 +74,17 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="allIn"
-            android:padding="8dp"
             android:text="All-in" />
 
     </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:onClick="setPrueba"
+        android:paddingLeft="4dp"
+        android:text="Prueba" />
 
 </RelativeLayout>
