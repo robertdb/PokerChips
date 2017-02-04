@@ -116,6 +116,36 @@ public class CrupierTest {
 
     }
 
+    @Test
+    public void siUnjugadorApuestaYnoHayNuevoAgresorLaRontaTerminaTest(){
+
+        Crupier  crupier = getCrupierCargado(new Crupier());
+
+        crupier.crearMano();
+
+        // Se simula una vuelta entera.
+        //charly
+        crupier.getJugadorActual().igualar(crupier.getJugada());
+
+        // marcos
+        crupier.getJugadorActual().subir(crupier.getJugada(), 80);
+
+        // andres
+        crupier.getJugadorActual().igualar(crupier.getJugada());
+
+        // robert
+        crupier.getJugadorActual().igualar(crupier.getJugada());
+
+        // charly iguala la apuesta de marcos y termina la ronda.
+        crupier.getJugadorActual().igualar(crupier.getJugada());
+
+        // Si una ronda termino la apuesta minima tiene que ser cero.
+        // Y el jugador actual tiene que la ciega chica.
+        assertEquals(0, crupier.getApuestaMinima());
+        assertEquals(andres, crupier.getJugadorActual());
+        
+    }
+
 
 
 

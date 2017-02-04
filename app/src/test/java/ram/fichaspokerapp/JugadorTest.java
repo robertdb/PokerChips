@@ -38,6 +38,8 @@ public class JugadorTest {
 
         crupier.asignarJuego(new IteradorListaCircular(lista), new Mesa("mesa", jugador), jugada);
 
+        crupier.crearMano();
+
     }
 
     @Test(expected = JugadorNoPuedeApostarMasFichasQueSuPilaError.class)

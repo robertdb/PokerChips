@@ -17,6 +17,8 @@ public class Crupier implements CrupierMediador{
 
     private Jugador ciegaGrande;
 
+    private Mano mano;
+
     public Crupier() {
 
     }
@@ -40,22 +42,47 @@ public class Crupier implements CrupierMediador{
 
     }
 
+    // asignarJuego() y este metedo probablemte se hagan un solo metedo despues
+    // por ahora lo dejo asi
+    public void crearMano() {
+
+        mano = new Mano(jugada.getFalopaPozo(), this);
+
+    }
+
     @Override
     public void subir() {
 
         this.mesa.actualizarVista(jugada);
 
-    }
+        mano.nuevoAgresor(getJugadorActual());
 
-    @Override
-    public void pasar() {
+        mano.comprobarSiGanadores();
 
         iterJugadoresActivos.next();
 
     }
 
     @Override
+    public void pasar() {
+
+        // FALTA VER COMO VA MANEJAR LA MANO AL PASAR.
+        // QUE PASA SI EN UNA RONDA COMO EL FLOP TURN RIVER TODOS DECIDEN PASAR
+        iterJugadoresActivos.next();
+
+    }
+
+    @Override
     public void igualar() {
+
+        if(mano.cambiarRonda()){
+
+            mano.terminarRonda();
+
+            return;
+        }
+
+        mano.comprobarSiGanadores();
 
         iterJugadoresActivos.next();
 
@@ -78,7 +105,7 @@ public class Crupier implements CrupierMediador{
     }
 
     public void nuevaRonda() {
-        
+
         jugada.apuestaMinimaNula();
         
         ciegaChicaIniciaNuevaRonda();
@@ -103,17 +130,16 @@ public class Crupier implements CrupierMediador{
 
     }
 
-    public Jugador getProximoJugador() {
+    public Jugador verProximoJugador() {
 
         return (Jugador) iterJugadoresActivos.seeNext();
 
     }
-
-
 
     public IteradorListaCircular getCandidatos() {
 
         return null;
 
     }
+
 }

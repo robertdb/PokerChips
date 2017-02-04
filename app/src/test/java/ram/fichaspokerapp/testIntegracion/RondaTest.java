@@ -39,6 +39,8 @@ public class RondaTest {
 
         crupier.asignarJuego(iter,mesa, jugada);
 
+        crupier.crearMano();
+
     }
 
     @Test

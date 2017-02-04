@@ -68,4 +68,10 @@ public class Jugada {
         this.apuestaMinima = 0;
 
     }
+
+    // NO DEBERIA CONOCER AL POZO JUGADA, LA MANO DEBERIA ENCARGARSE.
+    // lo dejo por ahora aca.
+    public Pozo getFalopaPozo(){
+        return pozo;
+    }
 }

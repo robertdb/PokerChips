@@ -30,7 +30,7 @@ public class Mano {
 
     public boolean cambiarRonda() {
 
-        return ronda.cambiarRonda(agresor, crupier.getProximoJugador());
+        return ronda.cambiarRonda(agresor, crupier.verProximoJugador());
 
     }
 
@@ -40,29 +40,28 @@ public class Mano {
 
     }
 
-    public void verificarEstadoDeLaMano(){
+    public void comprobarSiGanadores(){
 
-        ronda.comprobarGanador(crupier.getCandidatos(), pozo);
-
-        if(cambiarRonda()){
-
-            try{
-
-                ronda = ronda.rondaTerminada();
-
-                agresor = new AgresorPasivo();
-
-            }catch(UltimaRondaTerminadaNoHayProximaError e){
-
-                determinarGanadores();
-
-            }
-
-        }
+        //ronda.comprobarGanador(crupier.getCandidatos(), pozo);
 
     }
 
     public void determinarGanadores(){
 
+    }
+
+    public void terminarRonda() {
+
+        try{
+
+            ronda = ronda.rondaTerminada();
+
+            agresor = new AgresorPasivo();
+
+        }catch(UltimaRondaTerminadaNoHayProximaError e){
+
+            determinarGanadores();
+
+        }
     }
 }
