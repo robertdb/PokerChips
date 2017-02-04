@@ -7,20 +7,20 @@ import ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular;
  */
 public class Crupier {
 
-    private IteradorListaCircular jugadoresActivos;
+    private IteradorListaCircular iterJugadoresActivos;
 
     private Mesa mesa;
 
     private Jugada jugada;
-    
-    
+
+    private Jugador ciegaChica;
 
     public Crupier() {
 
     }
 
     public Jugador getJugadorActual(){
-        return (Jugador) this.jugadoresActivos.actual();
+        return (Jugador) this.iterJugadoresActivos.actual();
     }
 
     public void subir(Jugada jugada) {
@@ -31,18 +31,29 @@ public class Crupier {
 
     public void asignarJuego(IteradorListaCircular iter, Mesa mesa, Jugada jugada) {
 
-        this.jugadoresActivos = iter;
+        this.iterJugadoresActivos = iter;
 
         this.mesa = mesa;
 
         this.jugada = jugada;
+
+        this.ciegaChica = mesa.getCiegaChica();
         
     }
 
     public void igualar(Jugada jugada) {
     }
 
+    // Si el jugador actual se retira el actual pasa a ser su siguiente.
     public void retirar() {
+
+        if(iterJugadoresActivos.actual() == ciegaChica)
+            ciegaChica = (Jugador) iterJugadoresActivos.seeNext();
+
+        iterJugadoresActivos.removeActual();
+
+
+
     }
 
     public Jugador getJugadorCiegaGrande() {
@@ -54,15 +65,25 @@ public class Crupier {
         
         jugada.apuestaMinimaNula();
         
-        ciegaChicainiciaRonda();
+        ciegaChicaIniciaNuevaRonda();
+
     }
 
-    private void ciegaChicainiciaRonda() {
+    private void ciegaChicaIniciaNuevaRonda() {
+
+        iterJugadoresActivos.moverActual(ciegaChica);
+
     }
 
     public int getApuestaMinima() {
 
         return jugada.getApuestaMinima();
+
+    }
+
+    public Jugada getJugada() {
+
+        return jugada;
 
     }
 }

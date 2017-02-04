@@ -25,9 +25,9 @@ public class Mesa {
 
 		this.nombre = nombre;
 		this.listaDeJugadores = new ListaCircular<Jugador>();
-		this.listaDeJugadores.add(jugador);
 		this.boton = jugador;
 		this.cantidadMaximaDeJugadores = 10;
+		this.agregarJugador(boton);
 
 	}
 
@@ -39,7 +39,10 @@ public class Mesa {
 
 	public void agregarJugador(Jugador jugador) {
 
-		jugador.acreditarFichas(1500);
+		// ya se le estan agregando en el constructor
+		// de jugador, despues vemos donde se van a agregar.
+		// por ahora dejo comentado aca para que no rompa tests.
+		//jugador.acreditarFichas(1500);
 
 		if(mesaLlena())
 			throw new MesaNoSoportaMasDeDiezJugadoresError();

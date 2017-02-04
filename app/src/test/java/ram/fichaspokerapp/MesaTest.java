@@ -5,16 +5,10 @@ import ram.fichaspokerapp.modelo.*;
 import ram.fichaspokerapp.error.*;
 import static org.junit.Assert.*;
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
-
 public class MesaTest {
 
-    private Jugador unJugador = new Jugador();
-    private Jugador otroJugador = new Jugador();
+    private Jugador unJugador = new Jugador("p1", null);
+    private Jugador otroJugador = new Jugador("p2", null);
     private Mesa mesa;
 
     @Before
@@ -82,7 +76,7 @@ public class MesaTest {
     @Test
     public void lasCiegasSeDebitanCorrectamenteTest() { // no se si este es unitario, pero buen...
 
-        Jugador jugador3 = new Jugador();
+        Jugador jugador3 = new Jugador("p3", null);
         Jugador ciegaChica;
         Jugador ciegaGrande;
 
