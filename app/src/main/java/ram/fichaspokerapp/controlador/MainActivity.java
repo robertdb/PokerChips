@@ -5,13 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
 import ram.fichaspokerapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
     private SeekBar seekBar;
     private TextView textViewCantidad;
-    private TextView textViewPote;
     private int pote = 500;
 
     @Override
@@ -44,9 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private void inicializarVariables() {
         seekBar = (SeekBar) findViewById(R.id.seekBar1);
         textViewCantidad = (TextView) findViewById(R.id.laCantidad);
-        textViewPote = (TextView) findViewById(R.id.pote);
         textViewCantidad.setText(String.valueOf(seekBar.getProgress()));
-        textViewPote.setText("Pote: " + String.valueOf(pote));
     }
 
     public void medioPote(View vista) {
