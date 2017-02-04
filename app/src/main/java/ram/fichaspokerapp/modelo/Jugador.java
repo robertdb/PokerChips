@@ -8,12 +8,12 @@ public class Jugador {
 
 	private int cantidadDeFichas;
 
-	private Crupier crupier;
+	private CrupierMediador crupier;
 
 	public Jugador() {
 	}
 
-	public Jugador (String nombre, Crupier crupier) {
+	public Jugador (String nombre, CrupierMediador crupier) {
 
 		this.nombre = nombre;
 		this.cantidadDeFichas = 1500;
