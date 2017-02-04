@@ -143,7 +143,7 @@ public class CrupierTest {
         // Y el jugador actual tiene que la ciega chica.
         assertEquals(0, crupier.getApuestaMinima());
         assertEquals(andres, crupier.getJugadorActual());
-        
+
     }
 
 

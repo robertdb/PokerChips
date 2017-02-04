@@ -12,7 +12,6 @@ import ram.fichaspokerapp.modelo.Pozo;
 import ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular;
 import ram.fichaspokerapp.modelo.linkedList.ListaCircular;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -64,8 +63,6 @@ public class ManoTest {
         // arrancaLaMano = charly.
         crupier.asignarJuego(iterActivos, mesa, jugada);
 
-        crupier.crearMano();
-
         return new Mano(pozo, crupier);
 
     }
@@ -79,7 +76,7 @@ public class ManoTest {
 
     }
 
-    @Ignore
+    @Ignore // La mano se crea en crupier. Este test puede que quede obsoleto.
     @Test
     public void cambiarRondaAlInicioSiNoHayApuestasQueSuperanLaMinimaEnLaPrimerVueltaTest(){
 
