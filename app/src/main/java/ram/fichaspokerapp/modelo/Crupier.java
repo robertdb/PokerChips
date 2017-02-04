@@ -5,7 +5,7 @@ import ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular;
 /**
  * Created by Samsung on 27/01/2017.
  */
-public class Crupier {
+public class Crupier implements CrupierMediador{
 
     private IteradorListaCircular iterJugadoresActivos;
 
@@ -25,11 +25,6 @@ public class Crupier {
         return (Jugador) this.iterJugadoresActivos.actual();
     }
 
-    public void subir(Jugada jugada) {
-
-        this.mesa.actualizarVista(jugada);
-
-    }
 
     public void asignarJuego(IteradorListaCircular iter, Mesa mesa, Jugada jugada) {
 
@@ -42,9 +37,24 @@ public class Crupier {
         this.ciegaChica = mesa.getCiegaChica();
 
         this.ciegaGrande = mesa.getCiegaGrande();
-        
+
     }
 
+    @Override
+    public void subir() {
+
+        this.mesa.actualizarVista(jugada);
+
+    }
+
+    @Override
+    public void pasar() {
+
+        iterJugadoresActivos.next();
+
+    }
+
+    @Override
     public void igualar() {
 
         iterJugadoresActivos.next();
@@ -52,6 +62,7 @@ public class Crupier {
     }
 
     // Si el jugador actual se retira el actual pasa a ser su siguiente.
+    @Override
     public void retirar() {
 
         if(iterJugadoresActivos.actual() == ciegaChica)
@@ -98,11 +109,7 @@ public class Crupier {
 
     }
 
-    public void pasar() {
 
-        iterJugadoresActivos.next();
-
-    }
 
     public IteradorListaCircular getCandidatos() {
 
