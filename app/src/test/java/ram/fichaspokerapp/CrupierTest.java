@@ -96,5 +96,27 @@ public class CrupierTest {
 
     }
 
+    @Test
+    public void siSeTerminaUnaRondaYElJugadorConlaCiegaChicaSeRetiroArrancaSuSiguienteEnLaNuevaRondaDeLaManoTest() {
+
+        Crupier  crupier = getCrupierCargado(new Crupier());
+
+        // Arranca una ronda y el jugador con la ciega chica es turno para jugar.
+        crupier.nuevaRonda();
+
+        // Se retira el jugador con la ciega chica de la ronda.
+        crupier.retirar();
+
+        // Termina otra ronda.
+        crupier.nuevaRonda();
+
+        // la ciega chica era andres pero al retirarse en
+        // la siguiente ronda de la mano arranca robert.
+        assertEquals(robert, crupier.getJugadorActual());
+
+    }
+
+
+
 
 }

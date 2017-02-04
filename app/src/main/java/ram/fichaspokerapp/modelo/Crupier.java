@@ -44,7 +44,16 @@ public class Crupier {
     public void igualar(Jugada jugada) {
     }
 
+    // Si el jugador actual se retira el actual pasa a ser su siguiente.
     public void retirar() {
+
+        if(iterJugadoresActivos.actual() == ciegaChica)
+            ciegaChica = (Jugador) iterJugadoresActivos.seeNext();
+
+        iterJugadoresActivos.removeActual();
+
+
+
     }
 
     public Jugador getJugadorCiegaGrande() {

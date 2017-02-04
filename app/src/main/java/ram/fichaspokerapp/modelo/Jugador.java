@@ -87,7 +87,8 @@ public class Jugador {
 
 	public void retirar() {
 
-		this.crupier.retirar();
+		// Todavia no le avisen al crupier jeje
+		//this.crupier.retirar();
 	}
 
 	public void apuestaObligatoria(int apuesta) {
