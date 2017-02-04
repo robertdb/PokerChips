@@ -103,4 +103,10 @@ public class Crupier {
         iterJugadoresActivos.next();
 
     }
+
+    public IteradorListaCircular getCandidatos() {
+
+        return null;
+
+    }
 }
