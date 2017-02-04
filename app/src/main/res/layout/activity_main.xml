@@ -8,6 +8,31 @@
     android:padding="16dp"
     tools:context="ram.fichaspokerapp.controlador.MainActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+    <EditText
+        android:id="@+id/nombre"
+        android:hint="Nombre"
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:inputType="textCapWords"
+        android:layout_height="wrap_content" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:onClick="setPrueba"
+        android:paddingLeft="3dp"
+        android:text="Listo" />
+
+    </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -77,14 +102,5 @@
             android:text="All-in" />
 
     </LinearLayout>
-
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:onClick="setPrueba"
-        android:paddingLeft="4dp"
-        android:text="Prueba" />
 
 </RelativeLayout>

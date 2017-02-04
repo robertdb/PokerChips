@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private SeekBar seekBar;
     private TextView textViewCantidad;
     private CheckBox checkBox;
+    private EditText editText;
     private int pote = 500;
 
     @Override
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         seekBar = (SeekBar) findViewById(R.id.seekBar1);
         textViewCantidad = (TextView) findViewById(R.id.laCantidad);
         checkBox = (CheckBox) findViewById(R.id.checkBox);
+        editText = (EditText) findViewById(R.id.nombre);
     }
 
     public void medioPote(View vista) {
