@@ -11,6 +11,8 @@ import ram.fichaspokerapp.modelo.Pozo;
 import ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular;
 import ram.fichaspokerapp.modelo.linkedList.ListaCircular;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -19,29 +21,80 @@ import static org.junit.Assert.assertTrue;
 
 public class ManoTest {
 
-    @Test
-    public void elAgresorEnUnaNuevaManoEsElJugadorConLaCiegaGrandeCorrectoTest(){
+    private Jugador marcos;
+    private Jugador andres;
+    private Jugador robert;
+    private Jugador charly;
 
+    private Mano getManoCargado(Crupier crupier){
+
+        // Pozo vacio.
+        Pozo pozo = new Pozo(15000);
+
+        // Jugada inical con apuesta minima de 40.
         int ciegaGrandeApuesta = 40;
-
-        Pozo pozo = new Pozo(1000);
-
         Jugada jugada = new Jugada(pozo, ciegaGrandeApuesta);
+
+        // Lista Con jugadores activos para jugar.
+        ListaCircular<String> listaJugadoreActivos = new ListaCircular<String>();
+        marcos = new Jugador("marcos", crupier);
+        andres = new Jugador("andres", crupier);
+        robert = new Jugador("robert", crupier);
+        charly = new Jugador("charly", crupier);
+        listaJugadoreActivos.add(marcos);
+        listaJugadoreActivos.add(andres);
+        listaJugadoreActivos.add(robert);
+        listaJugadoreActivos.add(charly);
+
+        // Iterador de los jugadores activos.
+        IteradorListaCircular iterActivos = new IteradorListaCircular(listaJugadoreActivos, charly);
+
+        // Mesa se crea con el jugador marcos
+        Mesa mesa = new Mesa("Ram", marcos);
+        mesa.agregarJugador(andres);
+        mesa.agregarJugador(robert);
+        mesa.agregarJugador(charly);
+
+
+        // Comienza una nueva mano.
+        // boton = marcos.
+        // ciegaChica = andres.
+        // ciegaGrande = robert.
+        // arrancaLaMano = charly.
+        crupier.asignarJuego(iterActivos, mesa, jugada);
+
+
+        return new Mano(pozo, crupier);
+
+    }
+
+    @Test
+    public void cambiarRondaAlInicioDeLaManoEsFalsoTest(){
+
+        Mano mano = getManoCargado(new Crupier());
+
+        assertFalse(mano.cambiarRonda());
+
+    }
+    @Test
+    public void cambiarRondaAlInicioSiNoHayApuestasQueSuperanLaMinimaEnLaPrimerVueltaTest(){
 
         Crupier crupier = new Crupier();
 
-        ListaCircular<Jugador> lista = new ListaCircular<Jugador>();
-        Jugador ciegaGrande = new Jugador("pepe", crupier);
-        Jugador siguienteAlaCiegaGrande = new Jugador("jaimito", crupier);
-        lista.add(ciegaGrande);
-        lista.add(siguienteAlaCiegaGrande);
-        IteradorListaCircular iter = new IteradorListaCircular(lista, ciegaGrande);
+        Mano mano = getManoCargado(crupier);
+
+        // la ronda la empieza charly
+        charly.igualar(crupier.getJugada());
+        marcos.igualar(crupier.getJugada());
+        andres.igualar(crupier.getJugada());
+
+        // Cuando la mano recibe a un jugador se considera que este ya jugo.
+        // Por lo tanto vamos a suponer que robert paso y no aposto.
+        // robert.pasar();
 
 
-        crupier.asignarJuego(iter, new Mesa("--",new Jugador()), jugada);
-
-        Mano mano = new Mano(pozo, crupier);
-
+        // Como la apuesta minima no se modifico durante una vuelta entera,
+        // el jugador con la ciega grande (robert) no aposto se cambia de ronda.
         assertTrue(mano.cambiarRonda());
 
     }

@@ -34,17 +34,19 @@ public class PreFlop extends Ronda {
     @Override
     public boolean cambiarRonda(Agresor agresor, Jugador proximoJugador){
 
-        if(apuestaMinimaSuperadaLuegoDeLaJugadaDeLaCiegaGrande() || super.cambiarRonda(agresor, proximoJugador))
+        if(seguirRonda() == false || super.cambiarRonda(agresor, proximoJugador) == true)
             return true;
 
         return false;
 
     }
 
-    private boolean apuestaMinimaSuperadaLuegoDeLaJugadaDeLaCiegaGrande(){
+    private boolean seguirRonda(){
 
-        if(crupier.getJugadorActual() == jugadorCiegaGrande &&  apuestaMinima == crupier.getApuestaMinima())
+        if (crupier.getJugadorActual() == jugadorCiegaGrande && apuestaMinima == crupier.getApuestaMinima()) {
+
             return false;
+        }
 
         return true;
 

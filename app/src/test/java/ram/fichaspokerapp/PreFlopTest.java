@@ -16,6 +16,7 @@ import ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular;
 import ram.fichaspokerapp.modelo.linkedList.ListaCircular;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -84,19 +85,26 @@ public class PreFlopTest {
 
         Crupier crupier = new Crupier();
 
-        ListaCircular<Jugador> lista = new ListaCircular<Jugador>();
+        Jugador boton = new Jugador();
+        Jugador ciegaChica = new Jugador();
         Jugador ciegaGrande = new Jugador();
-        Jugador siguienteAlaCiegaGrande = new Jugador();
 
+        ListaCircular<Jugador> lista = new ListaCircular<Jugador>();
+        lista.add(boton);
+        lista.add(ciegaChica);
         lista.add(ciegaGrande);
-        lista.add(siguienteAlaCiegaGrande);
 
         IteradorListaCircular iter = new IteradorListaCircular(lista, ciegaGrande);
 
         int ciegaGrandeApuesta = 40;
         Jugada jugada = new Jugada(new Pozo(1000), ciegaGrandeApuesta);
 
-        crupier.asignarJuego(iter, new Mesa("--",new Jugador()), jugada);
+
+        Mesa mesa = new Mesa("Ram", boton);
+        mesa.agregarJugador(ciegaChica);
+        mesa.agregarJugador(ciegaGrande);
+
+        crupier.asignarJuego(iter, mesa, jugada);
 
         Ronda preFlop = new PreFlop(crupier);
 
@@ -104,6 +112,7 @@ public class PreFlopTest {
         // y la apuestaMinima se mantuvo con el valor de la ciegaGrande
         // en este caso termina la ronda.
         assertEquals(ciegaGrande, crupier.getJugadorActual());
+        assertEquals(ciegaGrande, crupier.getJugadorCiegaGrande());
         assertTrue(preFlop.cambiarRonda(new AgresorPasivo(), new Jugador()));
 
     }
@@ -141,7 +150,7 @@ public class PreFlopTest {
         // en este caso termina la ronda.
         assertEquals(ciegaGrande, crupier.getJugadorActual());
 
-        assertTrue(preFlop.cambiarRonda(new AgresorPasivo(), new Jugador()));
+        assertFalse(preFlop.cambiarRonda(new AgresorPasivo(), new Jugador()));
 
     }
 

@@ -29,7 +29,7 @@ public class AgresorActivoTest {
     }
 
     @Test
-    public void seguirRondaSiElProximoJugadorEnJugarEsElAgresor(){
+    public void terminarRondaSiElProximoJugadorEnJugarEsElAgresor(){
 
         Jugador charli = new Jugador("charli", new Crupier());
 

@@ -69,7 +69,7 @@ public class IteradorListaCircular {
         }
     }
 
-    public void moverActual(Object data) {
+    public void moveActual(Object data) {
 
         this.actual = buscarActual(data);
 

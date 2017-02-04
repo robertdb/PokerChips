@@ -1,7 +1,6 @@
 package ram.fichaspokerapp.modelo;
 
 import ram.fichaspokerapp.error.JugadorNoPuedeApostarMasFichasQueSuPilaError;
-import ram.fichaspokerapp.error.JugadorNoPuedeSubirSiNoSuperaLaApuestaMinimaError;
 
 public class Jugador {
 
@@ -9,12 +8,12 @@ public class Jugador {
 
 	private int cantidadDeFichas;
 
-	private Crupier crupier;
+	private CrupierMediador crupier;
 
 	public Jugador() {
 	}
 
-	public Jugador (String nombre, Crupier crupier) {
+	public Jugador (String nombre, CrupierMediador crupier) {
 
 		this.nombre = nombre;
 		this.cantidadDeFichas = 1500;
@@ -41,6 +40,7 @@ public class Jugador {
 
 	public void pasar() {
 
+		crupier.pasar();
 
 	}
 
@@ -68,7 +68,7 @@ public class Jugador {
 
 		this.apostar(apuesta);
 
-		this.crupier.subir(jugada);
+		this.crupier.subir();
 
 	}
 
@@ -82,7 +82,7 @@ public class Jugador {
 
 		this.apostar(apuestaMinima);
 
-		this.crupier.igualar(jugada);
+		this.crupier.igualar();
 	}
 
 	public void retirar() {

@@ -117,7 +117,7 @@ public class IteradorListaCircularTest {
 
         assertEquals(robert, iter.actual());
 
-        iter.moverActual(marcos);
+        iter.moveActual(marcos);
 
         assertEquals(marcos, iter.actual());
 
