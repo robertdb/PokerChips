@@ -18,6 +18,52 @@ import static org.junit.Assert.assertEquals;
 
 public class CrupierTest {
 
+    private Jugador marcos;
+    private Jugador andres;
+    private Jugador robert;
+    private Jugador charly;
+
+    private Crupier getCrupierCargado(Crupier crupier){
+
+        // Pozo vacio.
+        Pozo pozo = new Pozo(15000);
+
+        // Jugada inical con apuesta minima de 40.
+        int ciegaGrandeApuesta = 40;
+        Jugada jugada = new Jugada(pozo, ciegaGrandeApuesta);
+
+        // Lista Con jugadores activos para jugar.
+        ListaCircular<String> listaJugadoreActivos = new ListaCircular<String>();
+        marcos = new Jugador("marcos", crupier);
+        andres = new Jugador("andres", crupier);
+        robert = new Jugador("robert", crupier);
+        charly = new Jugador("charly", crupier);
+        listaJugadoreActivos.add(marcos);
+        listaJugadoreActivos.add(andres);
+        listaJugadoreActivos.add(robert);
+        listaJugadoreActivos.add(charly);
+
+        // Iterador de los jugadores activos.
+        IteradorListaCircular iterActivos = new IteradorListaCircular(listaJugadoreActivos, charly);
+
+        // Mesa se crea con el jugador marcos
+        Mesa mesa = new Mesa("Ram", marcos);
+        mesa.agregarJugador(andres);
+        mesa.agregarJugador(robert);
+        mesa.agregarJugador(charly);
+
+
+        // Comienza una nueva mano.
+        // boton = marcos.
+        // ciegaChica = andres.
+        // ciegaGrande = robert.
+        // arrancaLaMano = charly.
+        crupier.asignarJuego(iterActivos, mesa, jugada);
+
+        return crupier;
+
+    }
+
     @Test
     public void siSeTerminaUnaRondaLaApuestaMinimaEsCeroTest() {
 
@@ -33,36 +79,22 @@ public class CrupierTest {
 
     }
 
-    private Crupier getCrupierCargado(Crupier crupier){
+    @Test
+    public void siSeTerminaUnaRondaElJugadorConlaCiegaChicaArrancaLaNuevaRondaSiContinuaEnLaManoTest() {
 
-        // Pozo vacio.
-        Pozo pozo = new Pozo(15000);
+        Crupier  crupier = getCrupierCargado(new Crupier());
 
-        // Jugada inical.
-        int ciegaGrandeApuesta = 40;
-        Jugada jugada = new Jugada(pozo, ciegaGrandeApuesta);
+        // El jugador actual es el que ya termino su turno o lo esta por realizar.
+        // En el inicio de cada mano(pre flop) charly va empezar a jugar.
+        assertEquals(charly, crupier.getJugadorActual());
 
-        // Lista Con jugadores activos para jugar.
-        ListaCircular<String> lista = new ListaCircular<String>();
-        Jugador marcos = new Jugador("marcos", crupier);
-        Jugador andres = new Jugador("andres", crupier);
-        Jugador robert = new Jugador("robert", crupier);
-        Jugador charly = new Jugador("charly", crupier);
-        lista.add(marcos);
-        lista.add(andres);
-        lista.add(robert);
-        lista.add(charly);
+        // se termina una ronda.
+        crupier.nuevaRonda();
 
-        // Iterador de los jugadores activos.
-        IteradorListaCircular iterActivos = new IteradorListaCircular(lista);
-
-        // Mesa
-        Mesa mesa = new Mesa("Ram", marcos);
-
-        // Comienza una nueva mano.
-        crupier.asignarJuego(iterActivos, mesa, jugada);
-
-        return crupier;
+        // la ciega chica es andres por la tanto debe arrancar la nueva mano.
+        assertEquals(andres, crupier.getJugadorActual());
 
     }
+
+
 }

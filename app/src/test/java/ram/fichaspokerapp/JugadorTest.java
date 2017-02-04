@@ -29,16 +29,16 @@ public class JugadorTest {
         int ciegaGrande = 40;
         jugada = new Jugada(new Pozo(15000), ciegaGrande);
 
-        crupier.asignarJuego(null, new Mesa(null,null), jugada);
-
         jugador = new Jugador("RAM", crupier);
+
+        crupier.asignarJuego(null, new Mesa("mesa", jugador), jugada);
 
     }
 
     @Test(expected = JugadorNoPuedeApostarMasFichasQueSuPilaError.class)
     public void jugadorNoPuedeApostarMasFichasQueSuPilaTest() {
 
-        jugador.subir(jugada, 1501);
+        jugador.subir(crupier.getJugada(), 1501);
 
     }
 

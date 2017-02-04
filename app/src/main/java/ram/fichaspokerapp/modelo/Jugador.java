@@ -23,7 +23,7 @@ public class Jugador {
 
 	private void apostar(int fichasAapostar) {
 
-			this.cantidadDeFichas -= fichasAapostar;
+		this.cantidadDeFichas -= fichasAapostar;
 
 	}
 
