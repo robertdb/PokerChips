@@ -45,7 +45,7 @@ public class Crupier {
         
     }
 
-    public void igualar(Jugada jugada) {
+    public void igualar() {
 
         iterJugadoresActivos.next();
 
