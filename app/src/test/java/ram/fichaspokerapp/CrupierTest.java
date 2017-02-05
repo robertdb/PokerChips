@@ -30,7 +30,7 @@ public class CrupierTest {
 
         // Jugada inical con apuesta minima de 40.
         int ciegaGrandeApuesta = 40;
-        Jugada jugada = new Jugada(pozo, ciegaGrandeApuesta);
+        Jugada jugada = new Jugada(ciegaGrandeApuesta);
 
         // Lista Con jugadores activos para jugar.
         ListaCircular<String> listaJugadoreActivos = new ListaCircular<String>();
@@ -45,7 +45,7 @@ public class CrupierTest {
 
         // Iterador de los jugadores activos.
         IteradorListaCircular iterActivos = new IteradorListaCircular(listaJugadoreActivos, charly);
-
+        // TODO refactorizar constructor de mesa sin boton
         // Mesa se crea con el jugador marcos
         Mesa mesa = new Mesa("Ram", marcos);
         mesa.agregarJugador(andres);
@@ -58,6 +58,7 @@ public class CrupierTest {
         // ciegaChica = andres.
         // ciegaGrande = robert.
         // arrancaLaMano = charly.
+        // TODO mesa inicia la partida creando al crupier
         crupier.asignarJuego(iterActivos, mesa, jugada);
 
         return crupier;
@@ -117,7 +118,7 @@ public class CrupierTest {
     }
 
     @Test
-    public void siUnjugadorApuestaYnoHayNuevoAgresorLaRontaTerminaTest(){
+    public void siUnjugadorApuestaYnoHayNuevoAgresorLaRondaTerminaTest(){
 
         Crupier  crupier = getCrupierCargado(new Crupier());
 
@@ -139,7 +140,7 @@ public class CrupierTest {
         // charly iguala la apuesta de marcos y termina la ronda.
         crupier.getJugadorActual().igualar(crupier.getJugada());
 
-        // Si una ronda termino la apuesta minima tiene que ser cero.
+        // Si una ronda termino, la apuesta minima tiene que ser cero.
         // Y el jugador actual tiene que la ciega chica.
         assertEquals(0, crupier.getApuestaMinima());
         assertEquals(andres, crupier.getJugadorActual());

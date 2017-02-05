@@ -7,7 +7,6 @@ import ram.fichaspokerapp.modelo.Crupier;
 import ram.fichaspokerapp.modelo.Jugada;
 import ram.fichaspokerapp.modelo.Jugador;
 import ram.fichaspokerapp.modelo.Mesa;
-import ram.fichaspokerapp.modelo.Pozo;
 import ram.fichaspokerapp.modelo.River;
 import ram.fichaspokerapp.modelo.Ronda;
 import ram.fichaspokerapp.modelo.Turn;
@@ -38,7 +37,7 @@ public class TurnTest {
         IteradorListaCircular iter = new IteradorListaCircular(lista, ciegaGrande);
 
         int ciegaGrandeApuesta = 40;
-        Jugada jugada = new Jugada(new Pozo(1000), ciegaGrandeApuesta);
+        Jugada jugada = new Jugada(ciegaGrandeApuesta);
 
         crupier.asignarJuego(iter, new Mesa("--",new Jugador()), jugada);
 
@@ -65,7 +64,7 @@ public class TurnTest {
         IteradorListaCircular iter = new IteradorListaCircular(lista, ciegaGrande);
 
         int ciegaGrandeApuesta = 40;
-        Jugada jugada = new Jugada(new Pozo(1000), ciegaGrandeApuesta);
+        Jugada jugada = new Jugada(ciegaGrandeApuesta);
 
         crupier.asignarJuego(iter, new Mesa("--",new Jugador()), jugada);
 

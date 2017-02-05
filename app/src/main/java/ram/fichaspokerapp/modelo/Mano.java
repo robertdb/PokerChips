@@ -15,12 +15,11 @@ public class Mano {
 
     private Agresor agresor;
 
-    public Mano(Pozo pozo, Crupier crupier) {
+    public Mano(Crupier crupier) {
 
-        this.pozo = pozo;
 
         this.crupier = crupier;
-
+        this.pozo = new Pozo(crupier.getFichasTotales());
         this.ronda = new PreFlop(crupier);
 
         this.agresor = new AgresorPasivo();

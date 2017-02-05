@@ -24,24 +24,9 @@ public class JugadaTest {
 
         int ciegaGrande = 40;
 
-        Jugada jugada = new Jugada(pozo, ciegaGrande);
+        Jugada jugada = new Jugada(ciegaGrande);
 
         jugada.pasar();
-
-    }
-
-    @Test
-    public void seActualizaElPozoLuegoDeSubidaTest(){
-
-        // 10 jugadores con 1500 fichas c/u y ciegaChica = 20
-        Pozo pozo = new Pozo(15000,20);
-        int ciegaGrande = 40;
-        Jugada jugada = new Jugada(pozo, ciegaGrande);
-        int apuesta = 500;
-
-        jugada.subir(apuesta);
-
-        assertEquals(560,pozo.getCantidadDeFichasActuales());
 
     }
 
@@ -51,7 +36,7 @@ public class JugadaTest {
         // 10 jugadores con 1500 fichas c/u y ciegaChica = 20
         Pozo pozo = new Pozo(15000,20);
         int ciegaGrande = 40;
-        Jugada jugada = new Jugada(pozo, ciegaGrande);
+        Jugada jugada = new Jugada(ciegaGrande);
         int apuesta = 500;
 
         jugada.subir(apuesta);
@@ -66,7 +51,7 @@ public class JugadaTest {
         Pozo pozo = new Pozo(15000,20);
         int apuestaMinima = 100;
         int ciegaGrande = 40;
-        Jugada jugada = new Jugada(pozo, ciegaGrande);
+        Jugada jugada = new Jugada(ciegaGrande);
         jugada.subir(apuestaMinima);
 
         int intentoApuesta = 30;
@@ -83,7 +68,7 @@ public class JugadaTest {
         // en cada una de estas etapas se empieza con apuestaMinima cero.
         Pozo pozo = new Pozo(15000,20);
         int ciegaGrande = 40;
-        Jugada jugada = new Jugada(pozo, ciegaGrande);
+        Jugada jugada = new Jugada(ciegaGrande);
 
         jugada.apuestaMinimaNula();
 

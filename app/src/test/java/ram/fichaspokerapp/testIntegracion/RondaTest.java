@@ -35,7 +35,7 @@ public class RondaTest {
         IteradorListaCircular iter = new IteradorListaCircular(lista, braian);
 
         int ciegaGrande = 40;
-        jugada = new Jugada(new Pozo(15000), ciegaGrande);
+        jugada = new Jugada(ciegaGrande);
 
         crupier.asignarJuego(iter,mesa, jugada);
 

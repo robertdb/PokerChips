@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import ram.fichaspokerapp.error.UltimaRondaTerminadaNoHayProximaError;
 import ram.fichaspokerapp.modelo.Jugada;
-import ram.fichaspokerapp.modelo.Pozo;
 import ram.fichaspokerapp.modelo.River;
 import ram.fichaspokerapp.modelo.Ronda;
 
@@ -24,7 +23,7 @@ public class RiverTest {
 
         int ciegaGrande = 40;
 
-        Jugada jugada = new Jugada(new Pozo(1000), ciegaGrande);
+        Jugada jugada = new Jugada(ciegaGrande);
 
         Ronda river = new River();
 

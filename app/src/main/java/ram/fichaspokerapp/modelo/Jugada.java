@@ -9,14 +9,12 @@ import ram.fichaspokerapp.error.NoSePuedeSubirMenosQueLaSubidaMinimaError;
  */
 public class Jugada {
 
-    private Pozo pozo;
     private int apuestaMinima;
     private int ciegaGrande;
 
 
-    public Jugada(Pozo pozo, int ciegaGrande) {
+    public Jugada(int ciegaGrande) {
 
-        this.pozo = pozo;
         this.apuestaMinima = ciegaGrande;
         this.ciegaGrande = ciegaGrande;
 
@@ -46,7 +44,7 @@ public class Jugada {
             throw new NoSePuedeSubirMenosQueLaSubidaMinimaError();
 
         }
-        this.pozo.agregarFichas(apuesta);
+
         this.apuestaMinima = apuesta;
 
     }
@@ -59,7 +57,6 @@ public class Jugada {
             throw new NoSePuedeIgualarSiNoHuboSubidaError();
 
         }
-        this.pozo.agregarFichas(this.apuestaMinima);
 
     }
 
@@ -69,9 +66,4 @@ public class Jugada {
 
     }
 
-    // NO DEBERIA CONOCER AL POZO JUGADA, LA MANO DEBERIA ENCARGARSE.
-    // lo dejo por ahora aca.
-    public Pozo getFalopaPozo(){
-        return pozo;
-    }
 }

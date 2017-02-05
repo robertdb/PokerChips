@@ -3,7 +3,6 @@ package ram.fichaspokerapp;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import ram.fichaspokerapp.modelo.Agresor;
 import ram.fichaspokerapp.modelo.AgresorPasivo;
 import ram.fichaspokerapp.modelo.Crupier;
 import ram.fichaspokerapp.modelo.Flop;
@@ -42,7 +41,7 @@ public class PreFlopTest {
         IteradorListaCircular iter = new IteradorListaCircular(lista, ciegaGrande);
 
         int ciegaGrandeApuesta = 40;
-        Jugada jugada = new Jugada(new Pozo(1000), ciegaGrandeApuesta);
+        Jugada jugada = new Jugada(ciegaGrandeApuesta);
 
         crupier.asignarJuego(iter, new Mesa("--",new Jugador()), jugada);
 
@@ -69,7 +68,7 @@ public class PreFlopTest {
         IteradorListaCircular iter = new IteradorListaCircular(lista, ciegaGrande);
 
         int ciegaGrandeApuesta = 40;
-        Jugada jugada = new Jugada(new Pozo(1000), ciegaGrandeApuesta);
+        Jugada jugada = new Jugada(ciegaGrandeApuesta);
 
         crupier.asignarJuego(iter, new Mesa("--",new Jugador()), jugada);
 
@@ -98,7 +97,7 @@ public class PreFlopTest {
         IteradorListaCircular iter = new IteradorListaCircular(lista, ciegaGrande);
 
         int ciegaGrandeApuesta = 40;
-        Jugada jugada = new Jugada(new Pozo(1000), ciegaGrandeApuesta);
+        Jugada jugada = new Jugada(ciegaGrandeApuesta);
 
 
         Mesa mesa = new Mesa("Ram", boton);
@@ -135,7 +134,7 @@ public class PreFlopTest {
         IteradorListaCircular iter = new IteradorListaCircular(lista, ciegaGrande);
 
         int ciegaGrandeApuesta = 40;
-        Jugada jugada = new Jugada(new Pozo(1000), ciegaGrandeApuesta);
+        Jugada jugada = new Jugada(ciegaGrandeApuesta);
 
         crupier.asignarJuego(iter, new Mesa("--",new Jugador()), jugada);
 
@@ -170,7 +169,7 @@ public class PreFlopTest {
 
     Pozo pozo = new Pozo(1000);
 
-    crupier.asignarJuego(iter, new Mesa(" ", new Jugador()), new Jugada(pozo, 20));
+    crupier.asignarJuego(iter, new Mesa(" ", new Jugador()), new Jugada(20));
 
     Ronda preFlop = new PreFlop(crupier);
 

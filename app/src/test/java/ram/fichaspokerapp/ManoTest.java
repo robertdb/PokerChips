@@ -12,6 +12,7 @@ import ram.fichaspokerapp.modelo.Pozo;
 import ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular;
 import ram.fichaspokerapp.modelo.linkedList.ListaCircular;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -33,7 +34,7 @@ public class ManoTest {
 
         // Jugada inical con apuesta minima de 40.
         int ciegaGrandeApuesta = 40;
-        Jugada jugada = new Jugada(pozo, ciegaGrandeApuesta);
+        Jugada jugada = new Jugada(ciegaGrandeApuesta);
 
         // Lista Con jugadores activos para jugar.
         ListaCircular<String> listaJugadoreActivos = new ListaCircular<String>();
@@ -63,7 +64,7 @@ public class ManoTest {
         // arrancaLaMano = charly.
         crupier.asignarJuego(iterActivos, mesa, jugada);
 
-        return new Mano(pozo, crupier);
+        return new Mano(crupier);
 
     }
 
@@ -97,6 +98,21 @@ public class ManoTest {
         // Como la apuesta minima no se modifico durante una vuelta entera,
         // el jugador con la ciega grande (robert) no aposto se cambia de ronda.
         assertTrue(mano.cambiarRonda());
+
+    }
+    @Ignore
+    @Test
+    public void seActualizaElPozoLuegoDeSubidaTest(){
+
+        // 10 jugadores con 1500 fichas c/u y ciegaChica = 20
+        Pozo pozo = new Pozo(15000,20);
+        int ciegaGrande = 40;
+        Jugada jugada = new Jugada(ciegaGrande);
+        int apuesta = 500;
+
+        jugada.subir(apuesta);
+
+        assertEquals(560,pozo.getCantidadDeFichasActuales());
 
     }
 }

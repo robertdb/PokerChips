@@ -46,7 +46,7 @@ public class Crupier implements CrupierMediador{
     // por ahora lo dejo asi
     public void crearMano() {
 
-        mano = new Mano(jugada.getFalopaPozo(), this);
+        mano = new Mano(this);
 
     }
 
@@ -142,4 +142,8 @@ public class Crupier implements CrupierMediador{
 
     }
 
+    public int getFichasTotales() {
+
+        return mesa.getFichasTotales();
+    }
 }

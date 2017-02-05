@@ -9,7 +9,6 @@ import ram.fichaspokerapp.modelo.Crupier;
 import ram.fichaspokerapp.modelo.Jugada;
 import ram.fichaspokerapp.modelo.Jugador;
 import ram.fichaspokerapp.modelo.Mesa;
-import ram.fichaspokerapp.modelo.Pozo;
 import ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular;
 import ram.fichaspokerapp.modelo.linkedList.ListaCircular;
 
@@ -29,7 +28,7 @@ public class JugadorTest {
     public void setUp() {
 
         int ciegaGrande = 40;
-        jugada = new Jugada(new Pozo(15000), ciegaGrande);
+        jugada = new Jugada(ciegaGrande);
 
         jugador = new Jugador("RAM", crupier);
 
@@ -82,7 +81,7 @@ public class JugadorTest {
         Jugador  otroJugador = new Jugador("RAM", crupier);
         int apuesta = 400;
         int ciegaGrande = 60;
-        Jugada jugadaNueva = new Jugada(new Pozo(15000), ciegaGrande);
+        Jugada jugadaNueva = new Jugada(ciegaGrande);
         otroJugador.subir(jugadaNueva, apuesta);
 
         // jugador intenta igualar los 400.
@@ -96,7 +95,7 @@ public class JugadorTest {
 
         // el jugador iguala los 60 de la ciega grande.
         int ciegaGrande = 60;
-        Jugada jugadaNueva = new Jugada(new Pozo(15000), ciegaGrande);
+        Jugada jugadaNueva = new Jugada(ciegaGrande);
         jugador.igualar(jugadaNueva);
 
         assertEquals(1440, jugador.getFichas());
@@ -109,7 +108,7 @@ public class JugadorTest {
 
         int apuestaMinima = 400;
         int ciegaGrande = 60;
-        Jugada jugadaNueva = new Jugada(new Pozo(15000), ciegaGrande);
+        Jugada jugadaNueva = new Jugada(ciegaGrande);
         jugador.retirar();
 
         assertEquals(1500, jugador.getFichas());

@@ -21,6 +21,8 @@ public class Mesa {
 
 	private Jugador boton;
 
+	private int fichasTotales;
+
 	public Mesa(String nombre, Jugador jugador) {
 
 		this.nombre = nombre;
@@ -31,6 +33,10 @@ public class Mesa {
 
 	}
 
+	public void iniciarJuego(){
+		this.fichasTotales = listaDeJugadores.size() * this.cantidadDeFichasIniciales;
+	}
+
 	public int cantidadDeJugadoresSentados() {
 
 		return this.listaDeJugadores.size();
@@ -38,7 +44,7 @@ public class Mesa {
 	}
 
 	public void agregarJugador(Jugador jugador) {
-
+		// TODO refactorizar
 		// ya se le estan agregando en el constructor
 		// de jugador, despues vemos donde se van a agregar.
 		// por ahora dejo comentado aca para que no rompa tests.
@@ -85,5 +91,9 @@ public class Mesa {
 	}
 
 	public void actualizarVista(Jugada jugada) {
+	}
+
+	public int getFichasTotales() {
+		return fichasTotales;
 	}
 }
