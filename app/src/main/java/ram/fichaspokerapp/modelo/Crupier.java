@@ -51,7 +51,7 @@ public class Crupier implements CrupierMediador{
     }
 
     @Override
-    public void subir() {
+    public void subir(int apuesta) {
 
         this.mesa.actualizarVista(jugada);
 
@@ -73,7 +73,7 @@ public class Crupier implements CrupierMediador{
     }
 
     @Override
-    public void igualar() {
+    public void igualar(int debitar) {
 
         if(mano.cambiarRonda()){
 

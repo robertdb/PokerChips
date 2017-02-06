@@ -41,13 +41,6 @@ public class JugadorTest {
 
     }
 
-    @Test(expected = JugadorNoPuedeApostarMasFichasQueSuPilaError.class)
-    public void jugadorNoPuedeApostarMasFichasQueSuPilaTest() {
-
-        jugador.subir(crupier.getJugada(), 1501);
-
-    }
-
     @Ignore
     @Test(expected = JugadorNoPuedePasarSiHayAgresorError.class)
     public void jugadorNoPuedePasarSiHayAgresorTest() {
@@ -115,4 +108,5 @@ public class JugadorTest {
 
 
     }
+
 }

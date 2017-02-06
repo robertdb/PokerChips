@@ -5,8 +5,8 @@ import ram.fichaspokerapp.error.JugadorNoPuedeApostarMasFichasQueSuPilaError;
 public class Jugador {
 
 	private String nombre;
+	private PilaDeFichas pilaDeFichas;
 
-	private int cantidadDeFichas;
 
 	private CrupierMediador crupier;
 
@@ -16,24 +16,20 @@ public class Jugador {
 	public Jugador (String nombre, CrupierMediador crupier) {
 
 		this.nombre = nombre;
-		this.cantidadDeFichas = 1500;
+	//	this.cantidadDeFichas = 1500;
 		this.crupier = crupier;
-	}
-
-	private void apostar(int fichasAapostar) {
-
-		this.cantidadDeFichas -= fichasAapostar;
+		this.pilaDeFichas = new PilaDeFichas(1500);
 
 	}
 
 	public int getFichas() {
-		return cantidadDeFichas;
+		return pilaDeFichas.getCantidadDeFichas();
 	}
-
+/*
 	public void acreditarFichas(int fichas) {
 		this.cantidadDeFichas = this.cantidadDeFichas + fichas;
 	}
-
+*/
 	public String getNombre() {
 		return nombre;
 	}
@@ -44,31 +40,12 @@ public class Jugador {
 
 	}
 
-	public void actuar(Jugada infoJugada, String jugada, int apuesta  ) {
-
-		// actualizarVista
-
-		if (jugada == "subir"){
-			
-			this.subir(infoJugada,apuesta);
-		}
-	}
-
-	private void fichasSuficientes(int apuesta){
-		if (this.cantidadDeFichas < apuesta) {
-			throw new JugadorNoPuedeApostarMasFichasQueSuPilaError();
-		}
-	}
 
 	public void subir(Jugada jugada, int apuesta) {
 
-		this.fichasSuficientes(apuesta);
-
 		jugada.subir(apuesta);
 
-		this.apostar(apuesta);
-
-		this.crupier.subir();
+		this.crupier.subir(this.pilaDeFichas.debitar(apuesta));
 
 	}
 
@@ -76,13 +53,13 @@ public class Jugador {
 
 		int apuestaMinima = jugada.getApuestaMinima();
 
-		this.fichasSuficientes(apuestaMinima);
+//		this.fichasSuficientes(apuestaMinima);
 
 		jugada.igualar();
 
-		this.apostar(apuestaMinima);
+//		this.apostar(apuestaMinima);
 
-		this.crupier.igualar();
+		this.crupier.igualar(this.pilaDeFichas.debitar(apuestaMinima));
 	}
 
 	public void retirar() {
@@ -93,7 +70,9 @@ public class Jugador {
 
 	public void apuestaObligatoria(int apuesta) {
 
-		apostar(apuesta);
+		this.pilaDeFichas.debitar(apuesta);
+
+//		apostar(apuesta);
 
 	}
 

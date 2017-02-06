@@ -6,9 +6,9 @@ package ram.fichaspokerapp.modelo;
 
 public interface CrupierMediador {
 
-    public void subir();
+    public void subir(int apuesta);
 
-    public void igualar();
+    public void igualar(int debitar);
 
     public void retirar();
 

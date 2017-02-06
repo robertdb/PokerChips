@@ -19,7 +19,8 @@ public class Mano {
 
 
         this.crupier = crupier;
-        this.pozo = new Pozo(crupier.getFichasTotales());
+
+        this.pozo = new Pozo(crupier.getFichasTotales()); //TODO test
         this.ronda = new PreFlop(crupier);
 
         this.agresor = new AgresorPasivo();
