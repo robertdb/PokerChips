@@ -13,6 +13,7 @@ public class PilaDeFichas {
 
     public PilaDeFichas(int fichas) {
 
+        this.cantidadDeFichas = 0;
         acreditar(fichas);
         this.fichasEnJuego = 0;
     }

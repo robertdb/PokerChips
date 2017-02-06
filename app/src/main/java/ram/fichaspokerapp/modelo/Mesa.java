@@ -1,9 +1,13 @@
 package ram.fichaspokerapp.modelo;
 
+import java.util.List;
+
 import ram.fichaspokerapp.error.MesaNoSoportaMasDeDiezJugadoresError;
 import ram.fichaspokerapp.error.PartidaNoPuedeComenzarConUnSoloJugadorError;
 import ram.fichaspokerapp.error.UnJugadorNoPuedeEstarRepetidoError;
 import ram.fichaspokerapp.modelo.linkedList.ListaCircular;
+
+import static android.os.Build.VERSION_CODES.M;
 
 public class Mesa {
 
@@ -17,8 +21,6 @@ public class Mesa {
     public Mesa() {
         this.listaDeJugadores = new ListaCircular<Jugador>();
         this.crupier = new Crupier();
-        // Todo: el jugador tiene que volar del constructor. Hay que crear una instancia de crupier o
-        // Todo: o que lo reciba en el constructor.
     }
 
     public int cantidadDeJugadoresSentados() {
