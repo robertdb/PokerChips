@@ -7,96 +7,82 @@ import ram.fichaspokerapp.modelo.linkedList.ListaCircular;
 
 public class Mesa {
 
-	private ListaCircular<Jugador> listaDeJugadores;
+    private final static int cantidadMaximaDeJugadores = 10; // le frutee el static porque es atributo de clase, jeje
+    private Crupier crupier;
+    private ListaCircular<Jugador> listaDeJugadores;
+    private Jugador boton;
+    private int cantidadDeFichasIniciales = 1500; // por ahora lo hardcodeo, en el futuro estaria encapsulado en ReglasDePartida o algo asi.
+    private int fichasTotales;
 
-	private String nombre;
+    public Mesa() {
+        this.listaDeJugadores = new ListaCircular<Jugador>();
+        this.crupier = new Crupier();
+        // Todo: el jugador tiene que volar del constructor. Hay que crear una instancia de crupier o
+        // Todo: o que lo reciba en el constructor.
+    }
 
-	private int cantidadDeFichasIniciales;
+    public int cantidadDeJugadoresSentados() {
+        return this.listaDeJugadores.size();
+    }
 
-	private int cantidadMaximaDeJugadores;
+    public void agregarJugador(String nombre) {
 
-	private TipoDePoker tipoDePoker;
+        if (mesaLlena())
+            throw new MesaNoSoportaMasDeDiezJugadoresError();
 
-	private Pozo pozo;
+        Jugador jugador = new Jugador(nombre, crupier, cantidadDeFichasIniciales);
 
-	private Jugador boton;
+        if (listaDeJugadores.contains(jugador))
+            throw new UnJugadorNoPuedeEstarRepetidoError();
 
-	private int fichasTotales;
+        listaDeJugadores.add(jugador);
 
-	public Mesa(String nombre, Jugador jugador) {
+    }
 
-		this.nombre = nombre;
-		this.listaDeJugadores = new ListaCircular<Jugador>();
-		this.boton = jugador;
-		this.cantidadMaximaDeJugadores = 10;
-		// Todo: el jugador tiene que volar del contructor. Hay que crear una instancia de crupier o
-		// Todo: o que lo reciba en el constructor.
+    private boolean mesaLlena() {
+        return (cantidadMaximaDeJugadores == listaDeJugadores.size());
+    }
 
-		this.agregarJugador(jugador.getNombre());
+    public void comenzarPartida() {
+        // Todo determinar el boton y las ciegas.
+        if (this.listaDeJugadores.size() == 1) {
+            throw new PartidaNoPuedeComenzarConUnSoloJugadorError();
+        } else {
+            // Comienza la partida.
+            this.fichasTotales = listaDeJugadores.size() * this.cantidadDeFichasIniciales;
+//            boton = sortearBoton();
+        }
 
-	}
+    }
 
-	public int cantidadDeJugadoresSentados() {
+//    private Jugador sortearBoton() {
+//        // TODO: 06/02/2017
+//    }
 
-		return this.listaDeJugadores.size();
+    public Jugador getBoton() {
+        return boton;
+    }
 
-	}
+    public Jugador getCiegaChica() {
+        return listaDeJugadores.next(getBoton());
+    }
 
-	public void agregarJugador(String nombre) {
-		// TODO refactorizar
-		// ya se le estan agregando en el constructor
-		// de jugador, despues vemos donde se van a agregar.
-		// por ahora dejo comentado aca para que no rompa tests.
-		//jugador.acreditarFichas(1500);
-		Jugador jugador = new Jugador(nombre, new Crupier());
+    public Jugador getCiegaGrande() {
+        return listaDeJugadores.next(getCiegaChica());
+    }
 
+    public void actualizarVista(Jugada jugada) {
+    }
 
-		if(mesaLlena())
-			throw new MesaNoSoportaMasDeDiezJugadoresError();
+    public int getFichasTotales() {
+        return fichasTotales;
+    }
 
-		if(listaDeJugadores.contains(nombre))
-			throw new UnJugadorNoPuedeEstarRepetidoError();
-
-		listaDeJugadores.add(nombre);
-		
-	}
-
-	private boolean mesaLlena() {
-		return (cantidadMaximaDeJugadores == listaDeJugadores.size());
-	}
-
-	public void comenzarPartida() {
-		// Todo determinar el boton y las ciegas.
-		if (this.listaDeJugadores.size() == 1) {
-			throw new PartidaNoPuedeComenzarConUnSoloJugadorError();
-		}	else {
-			// Comienza la partida.
-			this.fichasTotales = listaDeJugadores.size() * this.cantidadDeFichasIniciales;
-
-		}
-
-	}
-
-	public Jugador getBoton() {
-		return boton;
-	}
-
-	public Jugador getCiegaChica() {
-		return listaDeJugadores.next(getBoton());
-	}
-
-	public Jugador getCiegaGrande() {
-		return listaDeJugadores.next(getCiegaChica());
-	}
-
-	public Pozo getPozo() {
-		return pozo;
-	}
-
-	public void actualizarVista(Jugada jugada) {
-	}
-
-	public int getFichasTotales() {
-		return fichasTotales;
-	}
+    public ListaCircular<Jugador> getListaDeJugadores() {
+        return listaDeJugadores;
+    }
+//  No se si esto esta bien, ya que por ahora solo lo estoy usando para un test
+    public Crupier getCrupier() {
+        return crupier;
+    }
 }

@@ -17,7 +17,6 @@ public class Mano {
 
     public Mano(Crupier crupier) {
 
-
         this.crupier = crupier;
 
         this.pozo = new Pozo(crupier.getFichasTotales()); //TODO test
@@ -27,38 +26,37 @@ public class Mano {
 
     }
 
-
     public boolean cambiarRonda() {
 
         return ronda.cambiarRonda(agresor, crupier.verProximoJugador());
 
     }
 
-    public void nuevoAgresor(Jugador jugador){
+    public void nuevoAgresor(Jugador jugador) {
 
         agresor = new AgresorActivo(jugador);
 
     }
 
-    public void comprobarSiGanadores(){
+    public void comprobarSiGanadores() {
 
         //ronda.comprobarGanador(crupier.getCandidatos(), pozo);
 
     }
 
-    public void determinarGanadores(){
+    public void determinarGanadores() {
 
     }
 
     public void terminarRonda() {
 
-        try{
+        try {
 
             ronda = ronda.rondaTerminada();
 
             agresor = new AgresorPasivo();
 
-        }catch(UltimaRondaTerminadaNoHayProximaError e){
+        } catch (UltimaRondaTerminadaNoHayProximaError e) {
 
             determinarGanadores();
 

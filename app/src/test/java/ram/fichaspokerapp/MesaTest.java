@@ -1,36 +1,28 @@
 package ram.fichaspokerapp;
 
 import org.junit.*;
+
 import ram.fichaspokerapp.modelo.*;
 import ram.fichaspokerapp.error.*;
+
 import static org.junit.Assert.*;
 
 public class MesaTest {
 
-    private Jugador unJugador = new Jugador("p1", null);
-    private Jugador otroJugador = new Jugador("p2", null);
     private Mesa mesa;
 
     @Before
     public void setUp() {
 
-        mesa = new Mesa("Prueba", null);
-
-
-
-    }
-
-    @Test
-    public void mesaSeInicializaConUnJugadorTest() {
-
-        assertEquals(1, mesa.cantidadDeJugadoresSentados());
+        mesa = new Mesa();
+        mesa.agregarJugador("j1");
 
     }
 
     @Test
     public void mesaSoportaDosJugadoresTest() {
 
-        mesa.agregarJugador(otroJugador);
+        mesa.agregarJugador("j2");
         assertEquals(2, mesa.cantidadDeJugadoresSentados());
 
     }
@@ -38,9 +30,7 @@ public class MesaTest {
     @Test(expected = MesaNoSoportaMasDeDiezJugadoresError.class)
     public void mesaNoSoportaMasDeDiezJugadoresTest() {
 
-
-
-        mesa.agregarJugador("j1");
+        mesa.agregarJugador("j2");
         mesa.agregarJugador("j3");
         mesa.agregarJugador("j4");
         mesa.agregarJugador("j5");
@@ -63,19 +53,18 @@ public class MesaTest {
     @Test(expected = UnJugadorNoPuedeEstarRepetidoError.class)
     public void unJugadorNoPuedeEstarRepetidoTest() {
 
-        mesa.agregarJugador(unJugador);
+        mesa.agregarJugador("j1");
 
     }
 
     @Test
     public void lasCiegasSeDebitanCorrectamenteTest() { // no se si este es unitario, pero buen...
 
-        Jugador jugador3 = new Jugador("p3", null);
         Jugador ciegaChica;
         Jugador ciegaGrande;
 
-        mesa.agregarJugador(otroJugador);
-        mesa.agregarJugador(jugador3);
+        mesa.agregarJugador("j2");
+        mesa.agregarJugador("j3");
         mesa.comenzarPartida();
         ciegaChica = mesa.getCiegaChica();
         ciegaGrande = mesa.getCiegaGrande();
@@ -86,6 +75,7 @@ public class MesaTest {
 
     }
 
+//    Todo: creo que este es un test de mano
     @Ignore
     @Test
     public void lasCiegasSeAcreditanEnElPozoCorrectamenteTest() {
@@ -94,14 +84,14 @@ public class MesaTest {
         Jugador ciegaChica;
         Jugador ciegaGrande;
 
-        mesa.agregarJugador(otroJugador);
-        mesa.agregarJugador(jugador3);
+        mesa.agregarJugador("j2");
+        mesa.agregarJugador("j3");
         mesa.comenzarPartida();
         ciegaChica = mesa.getCiegaChica();
         ciegaGrande = mesa.getCiegaGrande();
         ciegaChica.apuestaObligatoria(10);
         ciegaGrande.apuestaObligatoria(20);
-        assertEquals(30, mesa.getPozo());
+//        assertEquals(30, mesa.getPozo());
 
     }
 }
