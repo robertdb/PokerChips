@@ -48,8 +48,8 @@ public class CrupierTest {
         // TODO refactorizar constructor de mesa sin boton
         // Mesa se crea con el jugador marcos
         Mesa mesa = new Mesa("Ram", marcos);
-        mesa.agregarJugador(andres);
-        mesa.agregarJugador(robert);
+        mesa.agregarJugador(andres);// Todo (1) COMPILADOR ROTO: las instancias de Jugador
+        mesa.agregarJugador(robert);// Todo: se van a crear en mesa.
         mesa.agregarJugador(charly);
 
 

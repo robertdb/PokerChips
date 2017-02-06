@@ -14,7 +14,9 @@ public class MesaTest {
     @Before
     public void setUp() {
 
-        mesa = new Mesa("Prueba", unJugador);
+        mesa = new Mesa("Prueba", null);
+
+
 
     }
 
@@ -36,26 +38,18 @@ public class MesaTest {
     @Test(expected = MesaNoSoportaMasDeDiezJugadoresError.class)
     public void mesaNoSoportaMasDeDiezJugadoresTest() {
 
-        Jugador jugador3 = new Jugador();
-        Jugador jugador4 = new Jugador();
-        Jugador jugador5 = new Jugador();
-        Jugador jugador6 = new Jugador();
-        Jugador jugador7 = new Jugador();
-        Jugador jugador8 = new Jugador();
-        Jugador jugador9 = new Jugador();
-        Jugador jugador10 = new Jugador();
-        Jugador jugador11 = new Jugador();
 
-        mesa.agregarJugador(otroJugador);
-        mesa.agregarJugador(jugador3);
-        mesa.agregarJugador(jugador4);
-        mesa.agregarJugador(jugador5);
-        mesa.agregarJugador(jugador6);
-        mesa.agregarJugador(jugador7);
-        mesa.agregarJugador(jugador8);
-        mesa.agregarJugador(jugador9);
-        mesa.agregarJugador(jugador10);
-        mesa.agregarJugador(jugador11);
+
+        mesa.agregarJugador("j1");
+        mesa.agregarJugador("j3");
+        mesa.agregarJugador("j4");
+        mesa.agregarJugador("j5");
+        mesa.agregarJugador("j6");
+        mesa.agregarJugador("j7");
+        mesa.agregarJugador("j8");
+        mesa.agregarJugador("j9");
+        mesa.agregarJugador("j10");
+        mesa.agregarJugador("j11");
 
     }
 

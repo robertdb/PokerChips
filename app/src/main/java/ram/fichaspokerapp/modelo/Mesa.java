@@ -29,12 +29,11 @@ public class Mesa {
 		this.listaDeJugadores = new ListaCircular<Jugador>();
 		this.boton = jugador;
 		this.cantidadMaximaDeJugadores = 10;
-		this.agregarJugador(boton);
+		// Todo: el jugador tiene que volar del contructor. Hay que crear una instancia de crupier o
+		// Todo: o que lo reciba en el constructor.
 
-	}
+		this.agregarJugador(jugador.getNombre());
 
-	public void iniciarJuego(){
-		this.fichasTotales = listaDeJugadores.size() * this.cantidadDeFichasIniciales;
 	}
 
 	public int cantidadDeJugadoresSentados() {
@@ -43,20 +42,22 @@ public class Mesa {
 
 	}
 
-	public void agregarJugador(Jugador jugador) {
+	public void agregarJugador(String nombre) {
 		// TODO refactorizar
 		// ya se le estan agregando en el constructor
 		// de jugador, despues vemos donde se van a agregar.
 		// por ahora dejo comentado aca para que no rompa tests.
 		//jugador.acreditarFichas(1500);
+		Jugador jugador = new Jugador(nombre, new Crupier());
+
 
 		if(mesaLlena())
 			throw new MesaNoSoportaMasDeDiezJugadoresError();
 
-		if(listaDeJugadores.contains(jugador))
+		if(listaDeJugadores.contains(nombre))
 			throw new UnJugadorNoPuedeEstarRepetidoError();
 
-		listaDeJugadores.add(jugador);
+		listaDeJugadores.add(nombre);
 		
 	}
 
@@ -65,11 +66,13 @@ public class Mesa {
 	}
 
 	public void comenzarPartida() {
-
+		// Todo determinar el boton y las ciegas.
 		if (this.listaDeJugadores.size() == 1) {
 			throw new PartidaNoPuedeComenzarConUnSoloJugadorError();
 		}	else {
 			// Comienza la partida.
+			this.fichasTotales = listaDeJugadores.size() * this.cantidadDeFichasIniciales;
+
 		}
 
 	}
