@@ -1,4 +1,4 @@
-# FichasPokerApp
+# Poker Chips
 
 Proyecto creado por Robert Diaz Bejar, Andrés Otero y Marcos Pozzo.
 Se trata de una aplicación para Android que cumple la función de sustituir a las fichas de Póker en dicho juego.
