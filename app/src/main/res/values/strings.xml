@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">FichasPokerApp</string>
+    <string name="app_name">Poker Chips</string>
+    <!--Nombre del EditText del inicio-->
+    <string name="nombre">Name</string>
+    <!--Boton de apostar medio pote-->
+    <string name="un_medio">1/2</string>
+    <!--Boton de apostar tres cuartos de pote-->
+    <string name="tres_cuartos">3/4</string>
+    <!--Boton de apostar el pote-->
+    <string name="pote">Pot</string>
+    <!--Boton de apostar all in-->
+    <string name="all_in">All-in</string>
+    <!--CheckBox del inicio-->
+    <string name="listo">Done</string>
+    <!--Numero cero-->
+    <string name="cero">0</string>
 </resources>
