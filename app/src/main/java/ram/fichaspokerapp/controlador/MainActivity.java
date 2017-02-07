@@ -1,5 +1,8 @@
 package ram.fichaspokerapp.controlador;
 
+import android.app.SearchManager;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -77,6 +80,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void setPrueba(View view) {
         boolean prueba = checkBox.isChecked();
-        pote ++;
+        pote++;
+        searchWeb(editText.getText().toString());
+    }
+
+    public void searchWeb(String query) {
+        Uri uri = Uri.parse("http://www.google.com/#q=" + query);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
     }
 }

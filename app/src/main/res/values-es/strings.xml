@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--acá podemos meter tildes, eñes y cosas raras ¡¿?!!!!!!-->
+    <string name="app_name">Fichas de Póker</string>
+    <string name="listo">Listo</string>
+    <string name="nombre">Nombre</string>
+    <string name="pote">Pote</string>
+    <string name="tres_cuartos">3/4</string>
+    <string name="un_medio">1/2</string>
+    <string name="all_in">All-in</string>
+    <string name="cero">0</string>
+</resources>

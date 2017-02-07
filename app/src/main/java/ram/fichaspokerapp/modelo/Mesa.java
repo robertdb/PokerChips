@@ -12,7 +12,7 @@ import static android.os.Build.VERSION_CODES.M;
 
 public class Mesa {
 
-    private final static int cantidadMaximaDeJugadores = 10; // le frutee el static porque es atributo de clase, jeje
+    private final int cantidadMaximaDeJugadores; // le frutee el static porque creo que es atributo de clase, jeje
     private Crupier crupier;
     private ListaCircular<Jugador> listaDeJugadores;
     private Jugador boton;
@@ -20,6 +20,7 @@ public class Mesa {
     private int fichasTotales;
 
     public Mesa() {
+        this.cantidadMaximaDeJugadores = 10;
         this.listaDeJugadores = new ListaCircular<Jugador>();
         this.crupier = new Crupier();
     }

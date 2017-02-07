@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    tools:context="ram.fichaspokerapp.controlador.MainActivity">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/activity_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp"
+                tools:context="ram.fichaspokerapp.controlador.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true">
 
-    <EditText
-        android:id="@+id/nombre"
-        android:hint="Nombre"
-        android:layout_width="0dp"
-        android:layout_weight="3"
-        android:inputType="textCapWords"
-        android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/nombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:hint="@string/nombre"
+            android:inputType="textCapWords"/>
 
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:onClick="setPrueba"
-        android:paddingLeft="3dp"
-        android:text="Listo" />
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_weight="1"
+            android:onClick="setPrueba"
+            android:paddingLeft="3dp"
+            android:text="@string/listo"/>
 
     </LinearLayout>
 
@@ -37,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_above="@+id/linearLayoutSeekBar"
-        android:background="@android:color/darker_gray" />
+        android:background="@android:color/darker_gray"/>
 
     <LinearLayout
         android:id="@+id/linearLayoutSeekBar"
@@ -52,17 +52,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="4"
-            android:max="1500" />
+            android:max="1500"/>
 
         <TextView
             android:id="@+id/laCantidad"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            style="@style/PesoUnoAnchoCeroAltoWrapContent"
             android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="0"
+            android:text="@string/cero"
             android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            android:textSize="16sp"/>
 
     </LinearLayout>
 
@@ -74,32 +72,24 @@
         android:orientation="horizontal">
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            style="@style/PesoUnoAnchoCeroAltoWrapContent"
             android:onClick="medioPote"
-            android:text="1/2" />
+            android:text="@string/un_medio"/>
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            style="@style/PesoUnoAnchoCeroAltoWrapContent"
             android:onClick="tresCuartosPote"
-            android:text="3/4" />
+            android:text="@string/tres_cuartos"/>
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            style="@style/PesoUnoAnchoCeroAltoWrapContent"
             android:onClick="pote"
-            android:text="Pot" />
+            android:text="@string/pote"/>
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            style="@style/PesoUnoAnchoCeroAltoWrapContent"
             android:onClick="allIn"
-            android:text="All-in" />
+            android:text="@string/all_in"/>
 
     </LinearLayout>
 
