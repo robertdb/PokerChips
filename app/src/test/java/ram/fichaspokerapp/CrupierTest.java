@@ -34,10 +34,10 @@ public class CrupierTest {
 
         // Lista Con jugadores activos para jugar.
         ListaCircular<String> listaJugadoreActivos = new ListaCircular<String>();
-        marcos = new Jugador("marcos", crupier, 1500);
-        andres = new Jugador("andres", crupier, 1500);
-        robert = new Jugador("robert", crupier, 1500);
-        charly = new Jugador("charly", crupier, 1500);
+        marcos = new Jugador("marcos", 1500);
+        andres = new Jugador("andres", 1500);
+        robert = new Jugador("robert", 1500);
+        charly = new Jugador("charly", 1500);
         listaJugadoreActivos.add(marcos);
         listaJugadoreActivos.add(andres);
         listaJugadoreActivos.add(robert);
@@ -60,7 +60,7 @@ public class CrupierTest {
         // ciegaGrande = robert.
         // arrancaLaMano = charly.
         // TODO mesa inicia la partida creando al crupier
-        crupier.asignarJuego(iterActivos, mesa, jugada);
+        crupier.asignarJuego(mesa);
 
         return crupier;
 
@@ -127,19 +127,19 @@ public class CrupierTest {
 
         // Se simula una vuelta entera.
         //charly
-        crupier.getJugadorActual().igualar(crupier.getJugada());
+        crupier.getJugadorActual().igualar(crupier);
 
         // marcos
-        crupier.getJugadorActual().subir(crupier.getJugada(), 80);
+        crupier.getJugadorActual().subir(crupier, 80);
 
         // andres
-        crupier.getJugadorActual().igualar(crupier.getJugada());
+        crupier.getJugadorActual().igualar(crupier);
 
         // robert
-        crupier.getJugadorActual().igualar(crupier.getJugada());
+        crupier.getJugadorActual().igualar(crupier);
 
         // charly iguala la apuesta de marcos y termina la ronda.
-        crupier.getJugadorActual().igualar(crupier.getJugada());
+        crupier.getJugadorActual().igualar(crupier);
 
         // Si una ronda termino, la apuesta minima tiene que ser cero.
         // Y el jugador actual tiene que la ciega chica.

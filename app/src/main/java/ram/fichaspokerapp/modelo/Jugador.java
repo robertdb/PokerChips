@@ -5,18 +5,16 @@ import ram.fichaspokerapp.error.JugadorNoPuedeApostarMasFichasQueSuPilaError;
 public class Jugador {
 
     private String nombre;
+
     private PilaDeFichas pilaDeFichas;
-
-
-    private CrupierMediador crupier;
 
     public Jugador() {
     }
 
-    public Jugador(String nombre, CrupierMediador crupier, int cantidadDeFichasIniciales) {
+    public Jugador(String nombre, int cantidadDeFichasIniciales) {
 
         this.nombre = nombre;
-        this.crupier = crupier;
+
         this.pilaDeFichas = new PilaDeFichas(cantidadDeFichasIniciales);
 
     }
@@ -29,19 +27,23 @@ public class Jugador {
         pilaDeFichas.acreditar(fichas);
     }
 
-    public void pasar() {
+    public void pasar(CrupierMediador crupier) {
+
         crupier.pasar();
-    }
-
-    public void subir(Jugada jugada, int apuesta) {
-
-        jugada.subir(apuesta);
-
-        this.crupier.subir(this.pilaDeFichas.debitar(apuesta));
 
     }
 
-    public void igualar(Jugada jugada) {
+    public void subir(CrupierMediador crupier, int apuesta) {
+
+        crupier.getJugada().subir(apuesta);
+
+        crupier.subir(this.pilaDeFichas.debitar(apuesta));
+
+    }
+
+    public void igualar(CrupierMediador crupier) {
+
+        Jugada jugada = crupier.getJugada();
 
         int apuestaMinima = jugada.getApuestaMinima();
 
@@ -51,7 +53,7 @@ public class Jugador {
 
 //		this.apostar(apuestaMinima);
 
-        this.crupier.igualar(this.pilaDeFichas.debitar(apuestaMinima));
+        crupier.igualar(this.pilaDeFichas.debitar(apuestaMinima));
     }
 
     public void retirar() {

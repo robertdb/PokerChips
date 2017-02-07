@@ -38,10 +38,10 @@ public class ManoTest {
 
         // Lista Con jugadores activos para jugar.
         ListaCircular<String> listaJugadoreActivos = new ListaCircular<String>();
-        marcos = new Jugador("marcos", crupier, 1500);
-        andres = new Jugador("andres", crupier, 1500);
-        robert = new Jugador("robert", crupier, 1500);
-        charly = new Jugador("charly", crupier, 1500);
+        marcos = new Jugador("marcos", 1500);
+        andres = new Jugador("andres", 1500);
+        robert = new Jugador("robert", 1500);
+        charly = new Jugador("charly", 1500);
         listaJugadoreActivos.add(marcos);
         listaJugadoreActivos.add(andres);
         listaJugadoreActivos.add(robert);
@@ -63,7 +63,7 @@ public class ManoTest {
         // ciegaChica = andres.
         // ciegaGrande = robert.
         // arrancaLaMano = charly.
-        crupier.asignarJuego(iterActivos, mesa, jugada);
+        crupier.asignarJuego(mesa);
 
         return new Mano(crupier);
 
@@ -87,9 +87,9 @@ public class ManoTest {
         Mano mano = getManoCargado(crupier);
 
         // la ronda la empieza charly
-        charly.igualar(crupier.getJugada());
-        marcos.igualar(crupier.getJugada());
-        andres.igualar(crupier.getJugada());
+        charly.igualar(crupier);
+        marcos.igualar(crupier);
+        andres.igualar(crupier);
 
         // Cuando la mano recibe a un jugador se considera que este ya jugo.
         // Por lo tanto vamos a suponer que robert paso y no aposto.

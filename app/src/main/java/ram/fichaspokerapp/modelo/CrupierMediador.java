@@ -14,4 +14,6 @@ public interface CrupierMediador {
 
     public void pasar();
 
+    public Jugada getJugada();
+
 }

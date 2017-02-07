@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import ram.fichaspokerapp.modelo.Agresor;
 import ram.fichaspokerapp.modelo.AgresorActivo;
-import ram.fichaspokerapp.modelo.Crupier;
 import ram.fichaspokerapp.modelo.Jugador;
 
 
@@ -20,18 +19,18 @@ public class AgresorActivoTest {
     @Test
     public void seguirRondaSiElProximoJugadorEnJugarNoEsElAgresor(){
 
-        Jugador charli = new Jugador("charli", new Crupier(), 1500);
+        Jugador charli = new Jugador("charli", 1500);
 
         Agresor agresor = new AgresorActivo(charli);
 
-        assertTrue(agresor.seguirRonda(new Jugador("veronica", new Crupier(), 1500)));
+        assertTrue(agresor.seguirRonda(new Jugador("veronica", 1500)));
 
     }
 
     @Test
     public void terminarRondaSiElProximoJugadorEnJugarEsElAgresor(){
 
-        Jugador charli = new Jugador("charli", new Crupier(), 1500);
+        Jugador charli = new Jugador("charli", 1500);
 
         Agresor agresor = new AgresorActivo(charli);
 

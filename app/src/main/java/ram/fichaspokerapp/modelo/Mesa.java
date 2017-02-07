@@ -1,14 +1,12 @@
 package ram.fichaspokerapp.modelo;
 
-import java.util.List;
+import javax.crypto.IllegalBlockSizeException;
 
 import ram.fichaspokerapp.error.MesaNoSoportaMasDeDiezJugadoresError;
 import ram.fichaspokerapp.error.PartidaNoPuedeComenzarConUnSoloJugadorError;
 import ram.fichaspokerapp.error.UnJugadorNoPuedeEstarRepetidoError;
 import ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular;
 import ram.fichaspokerapp.modelo.linkedList.ListaCircular;
-
-import static android.os.Build.VERSION_CODES.M;
 
 public class Mesa {
 
@@ -34,7 +32,7 @@ public class Mesa {
         if (mesaLlena())
             throw new MesaNoSoportaMasDeDiezJugadoresError();
 
-        Jugador jugador = new Jugador(nombre, crupier, cantidadDeFichasIniciales);
+        Jugador jugador = new Jugador(nombre, cantidadDeFichasIniciales);
 
         if (jugadorYaEstaEnLaMesa(nombre))
             throw new UnJugadorNoPuedeEstarRepetidoError();
@@ -115,5 +113,11 @@ public class Mesa {
 //  No se si esto esta bien, ya que por ahora solo lo estoy usando para un test
     public Crupier getCrupier() {
         return crupier;
+    }
+
+    public ListaCircular getListaActivos() {
+
+        return listaDeJugadores.cloneList();
+
     }
 }

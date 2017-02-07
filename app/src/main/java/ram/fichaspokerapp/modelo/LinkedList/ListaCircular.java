@@ -2,6 +2,8 @@ package ram.fichaspokerapp.modelo.linkedList;
 
 import javax.crypto.IllegalBlockSizeException;
 
+import ram.fichaspokerapp.error.NoSePuedeClonarUnaListaVaciaError;
+
 /**
  * Created by Robert on 20/1/17.
  */
@@ -163,10 +165,10 @@ public class ListaCircular<E> {
 
     }
 
-    public ListaCircular cloneList() throws IllegalBlockSizeException {
+    public ListaCircular cloneList() {
 
         if(size() == 0)
-            throw new IllegalBlockSizeException();
+            throw new NoSePuedeClonarUnaListaVaciaError();
 
         ListaCircular listaClonada = new ListaCircular();
 

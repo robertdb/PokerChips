@@ -28,9 +28,9 @@ public class Crupier implements CrupierMediador{
     }
 
 
-    public void asignarJuego(IteradorListaCircular iter, Mesa mesa, Jugada jugada) {
+    public void asignarJuego(Mesa mesa) {
 
-        this.iterJugadoresActivos = iter;
+        this.iterJugadoresActivos = new IteradorListaCircular(mesa.getListaActivos());
 
         this.mesa = mesa;
 
@@ -124,6 +124,7 @@ public class Crupier implements CrupierMediador{
 
     }
 
+    @Override
     public Jugada getJugada() {
 
         return jugada;
