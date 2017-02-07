@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--acá podemos meter tildes, eñes y cosas raras ¡¿?!!!!!!-->
-    <string name="app_name">Fichas de Póker</string>
     <string name="listo">Listo</string>
     <string name="nombre">Nombre</string>
     <string name="pote">Pote</string>
