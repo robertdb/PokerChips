@@ -2,6 +2,8 @@ package ram.fichaspokerapp;
 
 import org.junit.Test;
 
+import javax.crypto.IllegalBlockSizeException;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -202,6 +204,36 @@ public class ListaCircularTest {
         ListaCircular lista = new ListaCircular();
 
         assertEquals(0 , lista.size());
+
+    }
+
+    @Test
+    public void listaSeClonaConTamanioCorrectoTest() throws IllegalBlockSizeException {
+
+        ListaCircular lista = getListaConNombres();
+
+        ListaCircular listaClonada = lista.cloneList();
+
+        assertEquals(5, listaClonada.size());
+
+    }
+
+    @Test
+    public void listaSeClonaConElementosCorrectamenteTest() throws IllegalBlockSizeException {
+
+        ListaCircular lista = getListaConNombres();
+
+        ListaCircular listaClonada = lista.cloneList();
+
+        assertEquals(marcos, listaClonada.getFirstElement());
+
+        assertEquals(andres, listaClonada.next(marcos));
+
+        assertEquals(robert, listaClonada.next(andres));
+
+        assertEquals(charly, listaClonada.next(robert));
+
+        assertEquals(braian, listaClonada.next(charly));
 
     }
 

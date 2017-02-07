@@ -20,18 +20,18 @@ public class AgresorActivoTest {
     @Test
     public void seguirRondaSiElProximoJugadorEnJugarNoEsElAgresor(){
 
-        Jugador charli = new Jugador("charli", new Crupier());
+        Jugador charli = new Jugador("charli", new Crupier(), 1500);
 
         Agresor agresor = new AgresorActivo(charli);
 
-        assertTrue(agresor.seguirRonda(new Jugador("veronica", new Crupier())));
+        assertTrue(agresor.seguirRonda(new Jugador("veronica", new Crupier(), 1500)));
 
     }
 
     @Test
     public void terminarRondaSiElProximoJugadorEnJugarEsElAgresor(){
 
-        Jugador charli = new Jugador("charli", new Crupier());
+        Jugador charli = new Jugador("charli", new Crupier(), 1500);
 
         Agresor agresor = new AgresorActivo(charli);
 

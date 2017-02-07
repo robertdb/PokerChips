@@ -30,15 +30,15 @@ public class JugadorTest {
         int ciegaGrande = 40;
         jugada = new Jugada(ciegaGrande);
 
-        jugador = new Jugador("RAM", crupier);
-
+        jugador = new Jugador("RAM", crupier, 1500);
+        /*
         ListaCircular<String> lista = new ListaCircular<String>();
         lista.add(jugador);
 
-        crupier.asignarJuego(new IteradorListaCircular(lista), new Mesa("mesa", jugador), jugada);
+        crupier.asignarJuego(new IteradorListaCircular(lista), new Mesa(), jugada);
 
         crupier.crearMano();
-
+        */
     }
 
     @Ignore
@@ -71,7 +71,7 @@ public class JugadorTest {
 
 
         // Un jugador sube +400.
-        Jugador  otroJugador = new Jugador("RAM", crupier);
+        Jugador  otroJugador = new Jugador("RAM", crupier, 1500);
         int apuesta = 400;
         int ciegaGrande = 60;
         Jugada jugadaNueva = new Jugada(ciegaGrande);

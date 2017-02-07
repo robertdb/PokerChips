@@ -5,6 +5,7 @@ import java.util.List;
 import ram.fichaspokerapp.error.MesaNoSoportaMasDeDiezJugadoresError;
 import ram.fichaspokerapp.error.PartidaNoPuedeComenzarConUnSoloJugadorError;
 import ram.fichaspokerapp.error.UnJugadorNoPuedeEstarRepetidoError;
+import ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular;
 import ram.fichaspokerapp.modelo.linkedList.ListaCircular;
 
 import static android.os.Build.VERSION_CODES.M;
@@ -29,15 +30,43 @@ public class Mesa {
 
     public void agregarJugador(String nombre) {
 
+
         if (mesaLlena())
             throw new MesaNoSoportaMasDeDiezJugadoresError();
 
         Jugador jugador = new Jugador(nombre, crupier, cantidadDeFichasIniciales);
 
-        if (listaDeJugadores.contains(jugador))
+        if (jugadorYaEstaEnLaMesa(nombre))
             throw new UnJugadorNoPuedeEstarRepetidoError();
 
+        //// TODO: Hardcodeo de jugador boton.
+        if(listaDeJugadores.size() == 0)
+            boton = jugador;
+
+
         listaDeJugadores.add(jugador);
+
+    }
+
+    private boolean jugadorYaEstaEnLaMesa(String nombre) {
+
+        if(listaDeJugadores.size() == 0)
+            return false;
+
+        IteradorListaCircular iterJugadores = new IteradorListaCircular(listaDeJugadores);
+
+        int i = 0;
+
+        while (i < listaDeJugadores.size()) {
+
+            if(((Jugador)iterJugadores.actual()).getNombre() == nombre)
+                return true;
+
+            iterJugadores.next();
+            i++;
+        }
+
+        return false;
 
     }
 
@@ -66,7 +95,7 @@ public class Mesa {
     }
 
     public Jugador getCiegaChica() {
-        return listaDeJugadores.next(getBoton());
+        return listaDeJugadores.next((Jugador)getBoton());
     }
 
     public Jugador getCiegaGrande() {

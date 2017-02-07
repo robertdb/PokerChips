@@ -1,5 +1,7 @@
 package ram.fichaspokerapp.modelo.linkedList;
 
+import javax.crypto.IllegalBlockSizeException;
+
 /**
  * Created by Robert on 20/1/17.
  */
@@ -30,6 +32,7 @@ public class ListaCircular<E> {
             newNode.next = start;
             currentNode.next = newNode;
         }
+
         size++;
     }
 
@@ -45,7 +48,8 @@ public class ListaCircular<E> {
         size++;
     }
 
-    protected ListNode  getNodeAt(int nodePos) throws ArrayIndexOutOfBoundsException{
+    protected ListNode  getNodeAt(int nodePos) {
+
         if(nodePos>=size || nodePos<0){
             throw new ArrayIndexOutOfBoundsException();
         }
@@ -156,6 +160,31 @@ public class ListaCircular<E> {
     public E next(Object data){
 
         return (E)getNodeAt(findPositionElement(data)).next.data;
+
+    }
+
+    public ListaCircular cloneList() throws IllegalBlockSizeException {
+
+        if(size() == 0)
+            throw new IllegalBlockSizeException();
+
+        ListaCircular listaClonada = new ListaCircular();
+
+        IteradorListaCircular iter = new IteradorListaCircular(this);
+
+        int i = 0;
+
+        while(i < size()){
+
+            listaClonada.add(iter.actual());
+
+            iter.next();
+
+            i++;
+
+        }
+
+        return listaClonada;
 
     }
 }

@@ -49,8 +49,7 @@ public class MesaTest {
         mesa.comenzarPartida();
 
     }
-    // TODO: falla porque la lista guarda jugadores, no strings.
-    @Ignore
+
     @Test(expected = UnJugadorNoPuedeEstarRepetidoError.class)
     public void unJugadorNoPuedeEstarRepetidoTest() {
 
@@ -76,23 +75,4 @@ public class MesaTest {
 
     }
 
-//    Todo: creo que este es un test de mano
-    @Ignore
-    @Test
-    public void lasCiegasSeAcreditanEnElPozoCorrectamenteTest() {
-
-        Jugador jugador3 = new Jugador();
-        Jugador ciegaChica;
-        Jugador ciegaGrande;
-
-        mesa.agregarJugador("j2");
-        mesa.agregarJugador("j3");
-        mesa.comenzarPartida();
-        ciegaChica = mesa.getCiegaChica();
-        ciegaGrande = mesa.getCiegaGrande();
-        ciegaChica.apuestaObligatoria(10);
-        ciegaGrande.apuestaObligatoria(20);
-//        assertEquals(30, mesa.getPozo());
-
-    }
 }

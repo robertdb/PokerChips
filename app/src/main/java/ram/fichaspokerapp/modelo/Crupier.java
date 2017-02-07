@@ -53,7 +53,7 @@ public class Crupier implements CrupierMediador{
     @Override
     public void subir(int apuesta) {
 
-        this.mesa.actualizarVista(jugada);
+        //this.mesa.actualizarVista(jugada);
 
         mano.nuevoAgresor(getJugadorActual());
 

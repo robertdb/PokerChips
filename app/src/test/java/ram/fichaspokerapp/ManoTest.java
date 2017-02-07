@@ -38,10 +38,10 @@ public class ManoTest {
 
         // Lista Con jugadores activos para jugar.
         ListaCircular<String> listaJugadoreActivos = new ListaCircular<String>();
-        marcos = new Jugador("marcos", crupier);
-        andres = new Jugador("andres", crupier);
-        robert = new Jugador("robert", crupier);
-        charly = new Jugador("charly", crupier);
+        marcos = new Jugador("marcos", crupier, 1500);
+        andres = new Jugador("andres", crupier, 1500);
+        robert = new Jugador("robert", crupier, 1500);
+        charly = new Jugador("charly", crupier, 1500);
         listaJugadoreActivos.add(marcos);
         listaJugadoreActivos.add(andres);
         listaJugadoreActivos.add(robert);
@@ -51,10 +51,11 @@ public class ManoTest {
         IteradorListaCircular iterActivos = new IteradorListaCircular(listaJugadoreActivos, charly);
 
         // Mesa se crea con el jugador marcos
-        Mesa mesa = new Mesa("Ram", marcos);
-        mesa.agregarJugador(andres);
-        mesa.agregarJugador(robert);
-        mesa.agregarJugador(charly);
+        Mesa mesa = new Mesa();
+        mesa.agregarJugador("marcos");
+        mesa.agregarJugador("andres");
+        mesa.agregarJugador("robert");
+        mesa.agregarJugador("charly");
 
 
         // Comienza una nueva mano.
@@ -115,4 +116,25 @@ public class ManoTest {
         assertEquals(560,pozo.getCantidadDeFichasActuales());
 
     }
+    /*
+    //Todo: creo que este es un test de mano
+    @Ignore
+    @Test
+    public void lasCiegasSeAcreditanEnElPozoCorrectamenteTest() {
+
+        Jugador jugador3 = new Jugador();
+        Jugador ciegaChica;
+        Jugador ciegaGrande;
+
+        mesa.agregarJugador("j2");
+        mesa.agregarJugador("j3");
+        mesa.comenzarPartida();
+        ciegaChica = mesa.getCiegaChica();
+        ciegaGrande = mesa.getCiegaGrande();
+        ciegaChica.apuestaObligatoria(10);
+        ciegaGrande.apuestaObligatoria(20);
+//        assertEquals(30, mesa.getPozo());
+
+    }
+    */
 }

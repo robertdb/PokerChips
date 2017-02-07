@@ -21,16 +21,16 @@ public class RondaTest {
         crupier = new Crupier();
 
         //admin y jugador.
-        Jugador braian = new Jugador("Braian",crupier);
+        Jugador braian = new Jugador("Braian",crupier, 1500);
 
-        Mesa mesa = new Mesa("RAM", braian);
+        Mesa mesa = new Mesa();
 
-        lista.add(new Jugador("Marcos",crupier)); // ciega chica.
-        lista.add(new Jugador("Robert",crupier)); // ciega grande.
+        lista.add(new Jugador("Marcos",crupier, 1500)); // ciega chica.
+        lista.add(new Jugador("Robert",crupier, 1500)); // ciega grande.
         lista.add(braian);                        // arranca este jugador.
-        lista.add(new Jugador("Andres",crupier));
-        lista.add(new Jugador("veronica",crupier));
-        lista.add(new Jugador("Charly",crupier));
+        lista.add(new Jugador("Andres",crupier, 1500));
+        lista.add(new Jugador("veronica",crupier, 1500));
+        lista.add(new Jugador("Charly",crupier, 1500));
 
         IteradorListaCircular iter = new IteradorListaCircular(lista, braian);
 

@@ -32,8 +32,8 @@ public class PreFlopTest {
         Crupier crupier = new Crupier();
 
         ListaCircular<Jugador> lista = new ListaCircular<Jugador>();
-        Jugador ciegaGrande = new Jugador("pepe", crupier);
-        Jugador siguienteAlaCiegaGrande = new Jugador("jaimito", crupier);
+        Jugador ciegaGrande = new Jugador("pepe", crupier, 1500);
+        Jugador siguienteAlaCiegaGrande = new Jugador("jaimito", crupier, 1500);
 
         lista.add(ciegaGrande);
         lista.add(siguienteAlaCiegaGrande);
@@ -43,7 +43,7 @@ public class PreFlopTest {
         int ciegaGrandeApuesta = 40;
         Jugada jugada = new Jugada(ciegaGrandeApuesta);
 
-        crupier.asignarJuego(iter, new Mesa("--",new Jugador()), jugada);
+        crupier.asignarJuego(iter, new Mesa(), jugada);
 
         Ronda preFlop = new PreFlop(crupier);
 
@@ -59,8 +59,8 @@ public class PreFlopTest {
         Crupier crupier = new Crupier();
 
         ListaCircular<Jugador> lista = new ListaCircular<Jugador>();
-        Jugador ciegaGrande = new Jugador("pepe", crupier);
-        Jugador siguienteAlaCiegaGrande = new Jugador("jaimito", crupier);
+        Jugador ciegaGrande = new Jugador("pepe", crupier, 1500);
+        Jugador siguienteAlaCiegaGrande = new Jugador("jaimito", crupier, 1500);
 
         lista.add(ciegaGrande);
         lista.add(siguienteAlaCiegaGrande);
@@ -70,7 +70,7 @@ public class PreFlopTest {
         int ciegaGrandeApuesta = 40;
         Jugada jugada = new Jugada(ciegaGrandeApuesta);
 
-        crupier.asignarJuego(iter, new Mesa("--",new Jugador()), jugada);
+        crupier.asignarJuego(iter, new Mesa(), jugada);
 
         Ronda preFlop = new PreFlop(crupier);
 
@@ -100,9 +100,9 @@ public class PreFlopTest {
         Jugada jugada = new Jugada(ciegaGrandeApuesta);
 
 
-        Mesa mesa = new Mesa("Ram", boton);
-        mesa.agregarJugador(ciegaChica);
-        mesa.agregarJugador(ciegaGrande);
+        Mesa mesa = new Mesa();
+        mesa.agregarJugador("ciegaChica");
+        mesa.agregarJugador("ciegaGrande");
 
         crupier.asignarJuego(iter, mesa, jugada);
 
@@ -125,8 +125,8 @@ public class PreFlopTest {
         Crupier crupier = new Crupier();
 
         ListaCircular<Jugador> lista = new ListaCircular<Jugador>();
-        Jugador ciegaGrande = new Jugador("pepe", crupier);
-        Jugador siguienteAlaCiegaGrande = new Jugador("jaimito", crupier);
+        Jugador ciegaGrande = new Jugador("pepe", crupier, 1500);
+        Jugador siguienteAlaCiegaGrande = new Jugador("jaimito", crupier, 1500);
 
         lista.add(ciegaGrande);
         lista.add(siguienteAlaCiegaGrande);
@@ -136,7 +136,7 @@ public class PreFlopTest {
         int ciegaGrandeApuesta = 40;
         Jugada jugada = new Jugada(ciegaGrandeApuesta);
 
-        crupier.asignarJuego(iter, new Mesa("--",new Jugador()), jugada);
+        crupier.asignarJuego(iter, new Mesa(), jugada);
 
         crupier.crearMano();
 
@@ -163,13 +163,13 @@ public class PreFlopTest {
 
     ListaCircular<Jugador> lista = new ListaCircular<Jugador>();
 
-    lista.add(new Jugador("pepe", crupier));
+    lista.add(new Jugador("pepe", crupier, 1500));
 
     IteradorListaCircular iter = new IteradorListaCircular(lista);
 
     Pozo pozo = new Pozo(1000);
 
-    crupier.asignarJuego(iter, new Mesa(" ", new Jugador()), new Jugada(20));
+    crupier.asignarJuego(iter, new Mesa(), new Jugada(20));
 
     Ronda preFlop = new PreFlop(crupier);
 
