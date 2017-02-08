@@ -53,15 +53,17 @@ public class Crupier implements CrupierMediador{
 
         iterJugadoresActivos.next();
 
-    }
+        mano = new Mano(this);
 
+    }
+    /* // Todo
     // asignarJuego() y este metedo probablemte se hagan un solo metedo despues
     // por ahora lo dejo asi
     public void crearMano() {
 
         mano = new Mano(this);
 
-    }
+    }*/
 
     @Override
     public void subir(int apuesta) {

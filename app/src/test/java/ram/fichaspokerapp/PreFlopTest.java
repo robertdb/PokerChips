@@ -125,8 +125,6 @@ public class PreFlopTest {
 
         crupier.asignarJuego(new Mesa(20)); // apuesta ciega chica 20
 
-        crupier.crearMano();
-
         Ronda preFlop = new PreFlop(crupier);
 
 

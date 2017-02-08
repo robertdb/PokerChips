@@ -8,7 +8,7 @@ import ram.fichaspokerapp.modelo.linkedList.*;
  * Created by Samsung on 27/01/2017.
  */
 
-public class RondaTest {
+public class JugarTest {
 
     private Crupier crupier;
     private Jugada jugada;
@@ -38,8 +38,6 @@ public class RondaTest {
         jugada = new Jugada(ciegaGrande);
 
         crupier.asignarJuego(mesa);
-
-        crupier.crearMano();
 
     }
 

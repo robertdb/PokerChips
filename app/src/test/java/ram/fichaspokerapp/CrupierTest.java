@@ -1,5 +1,6 @@
 package ram.fichaspokerapp;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import ram.fichaspokerapp.modelo.Crupier;
@@ -101,8 +102,6 @@ public class CrupierTest {
 
         Crupier  crupier = getCrupierCargado(new Crupier());
 
-        crupier.crearMano();
-
         // Se simula una vuelta entera.
         //charly
         crupier.getJugadorActual().igualar(crupier);
@@ -120,11 +119,56 @@ public class CrupierTest {
         crupier.getJugadorActual().igualar(crupier);
 
         // Si una ronda termino, la apuesta minima tiene que ser cero.
-        // Y el jugador actual tiene que la ciega chica.
+        // Y el jugador actual tiene que ser la ciega chica.
         assertEquals(0, crupier.getApuestaMinima());
         assertEquals("andres", crupier.getJugadorActual().getNombre());
 
     }
+
+
+    @Ignore
+    @Test
+    public void laRondaFlopTerminaSiLaApuestaMinimaSeMantieneEnCeroDuranteUnaVueltaDeRonda(){
+
+        Crupier  crupier = getCrupierCargado(new Crupier());
+
+        // Se simula una ronda PreFlop.
+
+        //charly
+        crupier.getJugadorActual().igualar(crupier);
+
+        // marcos
+        crupier.getJugadorActual().igualar(crupier);
+
+        // andres
+        crupier.getJugadorActual().igualar(crupier);
+
+        // robert
+        crupier.getJugadorActual().pasar(crupier);
+
+        // Se termina el preFlop
+        // Comienza el flop
+        // andres ciega chica
+        crupier.getJugadorActual().pasar(crupier);
+
+        // robert ciega grande
+        crupier.getJugadorActual().pasar(crupier);
+
+        // charly post ciega grande
+        crupier.getJugadorActual().pasar(crupier);
+
+        // marcos boton
+        crupier.getJugadorActual().pasar(crupier);
+
+
+        // Si una ronda termino, la apuesta minima tiene que ser cero.
+        // Y el jugador actual tiene que ser la ciega chica.
+        assertEquals(0, crupier.getApuestaMinima());
+        assertEquals("andres", crupier.getJugadorActual().getNombre());
+
+    }
+
+
 
 
 
