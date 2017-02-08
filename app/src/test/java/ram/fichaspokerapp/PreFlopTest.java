@@ -104,43 +104,6 @@ public class PreFlopTest {
 
     }
 
-    @Ignore// necesita correciones o eliminarlo.
-    @Test
-    public void rondaNoCambiaSiLaCiegaGrandeApuestaEnSuTurnoTest(){
-
-
-        Crupier crupier = new Crupier();
-
-        ListaCircular<Jugador> lista = new ListaCircular<Jugador>();
-        Jugador ciegaGrande = new Jugador("pepe", 1500);
-        Jugador siguienteAlaCiegaGrande = new Jugador("jaimito", 1500);
-
-        lista.add(ciegaGrande);
-        lista.add(siguienteAlaCiegaGrande);
-
-        IteradorListaCircular iter = new IteradorListaCircular(lista, ciegaGrande);
-
-        int ciegaGrandeApuesta = 40;
-        Jugada jugada = new Jugada(ciegaGrandeApuesta);
-
-        crupier.asignarJuego(new Mesa(20)); // apuesta ciega chica 20
-
-        Ronda preFlop = new PreFlop(crupier);
-
-
-        int apuestaDelJugadorConLaCiegaGrande = 80;
-        crupier.getJugadorActual().subir(crupier, apuestaDelJugadorConLaCiegaGrande);
-
-        // Estado del juego: el jugador con la ciega grande ya jugo
-        // y la apuestaMinima nose mantuvo con el valor de la ciegaGrande
-        // en este caso termina la ronda.
-        assertEquals(ciegaGrande, crupier.getJugadorActual());
-
-        assertFalse(preFlop.cambiarRonda(new AgresorPreFlop(), new Jugador()));
-
-    }
-
-
     @Test
     public void determinarGanadorEsCorrectoTest(){
 

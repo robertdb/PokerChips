@@ -25,12 +25,6 @@ public class JugadorTest {
 
     }
 
-    @Ignore
-    @Test(expected = JugadorNoPuedePasarSiHayAgresorError.class)
-    public void jugadorNoPuedePasarSiHayAgresorTest() {
-
-    }
-
     @Test
     public void realizarUnaSubidaDebitaCorrectamenteTest(){
 

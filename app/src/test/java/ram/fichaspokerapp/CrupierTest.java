@@ -240,15 +240,30 @@ public class CrupierTest {
     }
 
 
+    @Test
+    public void preFlopTerminaSiLaCiegaGrandeApuestaEnSuTurnoTest(){
+
+        Crupier  crupier = getCrupierCargado(new Crupier());
+
+        // Se simula una ronda PreFlop.
+
+        //charly
+        crupier.getJugadorActual().igualar(crupier);
+
+        // marcos
+        crupier.getJugadorActual().igualar(crupier);
+
+        // andres
+        crupier.getJugadorActual().igualar(crupier);
+
+        // robert ciega grande
+        crupier.getJugadorActual().subir(crupier, 80);
 
 
+        // el pre flop no termina y charly tiene que jugar.
+        assertEquals(80, crupier.getApuestaMinima());
+        assertEquals("charly", crupier.getJugadorActual().getNombre());
 
-
-
-
-
-
-
-
+    }
 
 }
