@@ -12,13 +12,13 @@ public class AgresorApuestaNula implements Agresor {
     private Jugador jugadorCiegaChica;
 
 
-    public AgresorApuestaNula(Crupier crupier, Jugador jugadorActual) {
+    public AgresorApuestaNula(Crupier crupier) {
 
-        this.apuestaMinima = crupier.getApuestaMinima();
+        this.apuestaMinima = 0;
 
         this.crupier = crupier;
 
-        this.jugadorCiegaChica = jugadorActual;
+        this.jugadorCiegaChica = crupier.getJugadorActual();
 
     }
 

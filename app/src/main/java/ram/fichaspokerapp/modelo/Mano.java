@@ -1,7 +1,5 @@
 package ram.fichaspokerapp.modelo;
 
-import ram.fichaspokerapp.error.UltimaRondaTerminadaNoHayProximaError;
-
 /**
  * Created by Robert on 2/2/17.
  */
@@ -53,7 +51,7 @@ public class Mano {
 
         ronda = ronda.rondaTerminada();
 
-        agresor = new AgresorApuestaNula(crupier, crupier.getJugadorActual());
+        agresor = new AgresorApuestaNula(crupier);
 
     }
 }
