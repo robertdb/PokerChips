@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Poker Chips</string>
+    <string name="app_name" translatable="false">Poker Chips</string>
     <!--Nombre del EditText del inicio-->
     <string name="nombre">Name</string>
     <!--Boton de apostar medio pote-->
