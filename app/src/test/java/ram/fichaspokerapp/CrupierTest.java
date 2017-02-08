@@ -180,6 +180,38 @@ public class CrupierTest {
 
     }
 
+    @Test
+    public void sePuedePasarEnFlopSiElJugadorEsLaCiegaChicaTest(){
+
+        Crupier  crupier = getCrupierCargado(new Crupier());
+
+        // Se simula una ronda PreFlop.
+
+        //charly
+        crupier.getJugadorActual().igualar(crupier);
+
+        // marcos
+        crupier.getJugadorActual().igualar(crupier);
+
+        // andres
+        crupier.getJugadorActual().igualar(crupier);
+
+        // robert
+        crupier.getJugadorActual().pasar(crupier);
+
+        // Se termina el preFlop
+        // Comienza el flop
+        // andres ciega chica
+        crupier.getJugadorActual().pasar(crupier);
+
+        // el siguiente jugador es robert
+        assertEquals(0, crupier.getApuestaMinima());
+        assertEquals("robert", crupier.getJugadorActual().getNombre());
+
+    }
+
+
+
 
 
 
