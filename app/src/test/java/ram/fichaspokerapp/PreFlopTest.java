@@ -3,13 +3,12 @@ package ram.fichaspokerapp;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import ram.fichaspokerapp.modelo.AgresorPasivo;
+import ram.fichaspokerapp.modelo.AgresorPreFlop;
 import ram.fichaspokerapp.modelo.Crupier;
 import ram.fichaspokerapp.modelo.Flop;
 import ram.fichaspokerapp.modelo.Jugada;
 import ram.fichaspokerapp.modelo.Jugador;
 import ram.fichaspokerapp.modelo.Mesa;
-import ram.fichaspokerapp.modelo.Pozo;
 import ram.fichaspokerapp.modelo.PreFlop;
 import ram.fichaspokerapp.modelo.Ronda;
 import ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular;
@@ -101,7 +100,7 @@ public class PreFlopTest {
 
         // el actual es j3 y el proximo es j1.
         Jugador j3 = crupier.getJugadorActual();
-        assertTrue(preFlop.cambiarRonda(new AgresorPasivo(), j1));
+        assertTrue(preFlop.cambiarRonda(new AgresorPreFlop(), j1));
 
     }
 
@@ -139,7 +138,7 @@ public class PreFlopTest {
         // en este caso termina la ronda.
         assertEquals(ciegaGrande, crupier.getJugadorActual());
 
-        assertFalse(preFlop.cambiarRonda(new AgresorPasivo(), new Jugador()));
+        assertFalse(preFlop.cambiarRonda(new AgresorPreFlop(), new Jugador()));
 
     }
 

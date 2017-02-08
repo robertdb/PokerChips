@@ -20,9 +20,10 @@ public class Mano {
         this.crupier = crupier;
 
         this.pozo = new Pozo(crupier.getFichasTotales()); //TODO test
+
         this.ronda = new PreFlop(crupier);
 
-        this.agresor = new AgresorPasivo();
+        this.agresor = new AgresorPreFlop();
 
     }
 
@@ -50,16 +51,9 @@ public class Mano {
 
     public void terminarRonda() {
 
-        try {
+        ronda = ronda.rondaTerminada();
 
-            ronda = ronda.rondaTerminada();
+        agresor = new AgresorApuestaNula(crupier, crupier.getJugadorActual());
 
-            agresor = new AgresorPasivo();
-
-        } catch (UltimaRondaTerminadaNoHayProximaError e) {
-
-            determinarGanadores();
-
-        }
     }
 }

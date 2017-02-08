@@ -41,6 +41,13 @@ public class PreFlop extends Ronda {
 
     }
 
+    @Override
+    public boolean rondaSinApuestasTermina(Agresor agresor, Jugador proximoJugador){
+
+        return false;
+
+    }
+
     private boolean seguirRonda(){
 
         if (crupier.getJugadorActual() == jugadorCiegaGrande && apuestaMinima == crupier.getApuestaMinima()) {
