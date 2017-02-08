@@ -5,10 +5,8 @@ import org.junit.*;
 import ram.fichaspokerapp.error.JugadorNoPuedePasarSiHayAgresorError;
 import ram.fichaspokerapp.error.NoSePuedeSubirMenosQueLaSubidaMinimaError;
 import ram.fichaspokerapp.modelo.Crupier;
-import ram.fichaspokerapp.modelo.Jugada;
 import ram.fichaspokerapp.modelo.Jugador;
 import ram.fichaspokerapp.modelo.Mesa;
-import ram.fichaspokerapp.modelo.linkedList.ListaCircular;
 
 import static org.junit.Assert.assertEquals;
 
@@ -18,28 +16,12 @@ import static org.junit.Assert.assertEquals;
 
 public class JugadorTest {
 
-    private Jugador jugador;
-
-    private Jugada jugada;
-
     private Crupier crupier;
 
     @Before
     public void setUp() {
 
         crupier = new Crupier();
-
-        int ciegaGrande = 40;
-        jugada = new Jugada(ciegaGrande);
-
-        jugador = new Jugador("RAM", 1500);
-
-        ListaCircular<String> lista = new ListaCircular<String>();
-        lista.add(jugador);
-
-        crupier.asignarJuego(new Mesa());
-
-        crupier.crearMano();
 
     }
 
@@ -52,6 +34,14 @@ public class JugadorTest {
     @Test
     public void realizarUnaSubidaDebitaCorrectamenteTest(){
 
+        Mesa mesa = new Mesa(20);// apuesta ciega chica 20
+
+        mesa.agregarJugador("j1");
+
+        crupier.asignarJuego(mesa);
+
+        Jugador jugador = crupier.getJugadorActual();
+
         // Hipotetico caso: el jugador realiza una subida +80,
         // paga los 40 de la ciega grande y agrega +40.
         jugador.subir(crupier, 80);
@@ -63,6 +53,14 @@ public class JugadorTest {
     @Test(expected = NoSePuedeSubirMenosQueLaSubidaMinimaError.class)
     public void noSePuedeSubirMenosQueLaSubidaMinimaTest(){
 
+        Mesa mesa = new Mesa(20); // apuesta ciega chica
+
+        mesa.agregarJugador("j1");
+
+        crupier.asignarJuego(mesa);
+
+        Jugador jugador = crupier.getJugadorActual();
+
         // Apuesta minima es de 40.
         jugador.subir(crupier, 20);
 
@@ -71,54 +69,71 @@ public class JugadorTest {
     @Test
     public void realizarUnaIgualadaDebitaCorrectamenteTest() {
 
-        crupier = new Crupier();
+        Mesa mesa = new Mesa(40); // apuesta ciega chica 40
 
-        int ciegaGrande = 60;
-        jugada = new Jugada(ciegaGrande);
+        mesa.agregarJugador("j1");
 
-        jugador = new Jugador("RAM", 1500);
+        mesa.agregarJugador("j2");
 
-        ListaCircular<String> lista = new ListaCircular<String>();
-        lista.add(jugador);
-
-        crupier.asignarJuego(new Mesa());
-
-        crupier.crearMano();
+        // En la mesa hay 2 jugadores, se le descuentan las ciegas correspondientes.
+        crupier.asignarJuego(mesa);
 
 
-        // Un jugador sube +400.
+        // este jugador es la ciega chica y es el que empieza a jugar
+        // dado que es el siguiente de la ciega grande.
+        Jugador jugador2 = crupier.getJugadorActual();
+
+        // jugador2 iguala las 80 fichas de la ciega grande
+        // y sube 320 fichas mas.
+        // 400 fichas apostadas.
         int apuesta = 400;
-
-        Jugador jugador2 = new Jugador("j2", 1500);
-
         jugador2.subir(crupier, apuesta);
 
-        // jugador intenta igualar los 400.
-        jugador.igualar(crupier);
+        // jugador1 es el boton y la ciega grande.
+        Jugador jugador1 = crupier.getJugadorActual();
 
-        assertEquals(1100, jugador.getFichas());
+        // // iguala los 400 del jugador 2.
+        jugador1.igualar(crupier);
+
+        assertEquals(1100, jugador1.getFichas());
     }
 
     @Test
     public void primerJugadorEnJugarIgualaLaCiegaGrandeDeLaRondaDebitandoCorrectamenteTest() {
 
-        // el jugador iguala los 60 de la ciega grande.
-        int ciegaGrande = 60;
-        Jugada jugadaNueva = new Jugada(ciegaGrande);
-        jugador.igualar(crupier);
+        Mesa mesa = new Mesa(40); // apuesta ciega chica 40
 
-        assertEquals(1440, jugador.getFichas());
+        mesa.agregarJugador("j1");
+
+        mesa.agregarJugador("j2");
+
+        crupier.asignarJuego(mesa);
+
+        // este jugador es la ciega chica y es el que empieza a jugar
+        // dado que es el siguiente de la ciega grande.
+        Jugador jugador2 = crupier.getJugadorActual();
+
+        // el jugador iguala los 80 de la ciega grande.//
+        jugador2.igualar(crupier);
+
+        assertEquals(1420, jugador2.getFichas());
+
     }
 
 
 
     @Test
-    public void jugadorSeRetiraNoModificaPozoTest() {
+    public void jugadorSeRetiraNoModificaSusFichasTest() {
 
-        int apuestaMinima = 400;
-        int ciegaGrande = 60;
-        Jugada jugadaNueva = new Jugada(ciegaGrande);
-        jugador.retirar();
+        Mesa mesa = new Mesa(0); // descuenta cero al jugador
+
+        mesa.agregarJugador("j1");
+
+        crupier.asignarJuego(mesa);
+
+        Jugador jugador = crupier.getJugadorActual();
+
+        jugador.retirar(crupier);
 
         assertEquals(1500, jugador.getFichas());
 

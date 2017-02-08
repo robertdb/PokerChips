@@ -14,7 +14,7 @@ public class MesaTest {
     @Before
     public void setUp() {
 
-        mesa = new Mesa();
+        mesa = new Mesa(20); // apuesta ciega chica 20
         mesa.agregarJugador("j1");
 
     }
@@ -46,7 +46,7 @@ public class MesaTest {
     @Test(expected = PartidaNoPuedeComenzarConUnSoloJugadorError.class)
     public void partidaNoPuedeComenzarConUnSoloJugadorTest() {
 
-        mesa.comenzarPartida();
+        mesa.comenzarJuego();
 
     }
 
@@ -65,7 +65,7 @@ public class MesaTest {
 
         mesa.agregarJugador("j2");
         mesa.agregarJugador("j3");
-        mesa.comenzarPartida();
+        mesa.comenzarJuego();
         ciegaChica = mesa.getCiegaChica();
         ciegaGrande = mesa.getCiegaGrande();
         ciegaChica.apuestaObligatoria(10);

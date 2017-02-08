@@ -11,16 +11,25 @@ import ram.fichaspokerapp.modelo.linkedList.ListaCircular;
 public class Mesa {
 
     private final int cantidadMaximaDeJugadores; // le frutee el static porque creo que es atributo de clase, jeje
-    private Crupier crupier;
+
     private ListaCircular<Jugador> listaDeJugadores;
+
     private Jugador boton;
+
     private int cantidadDeFichasIniciales = 1500; // por ahora lo hardcodeo, en el futuro estaria encapsulado en ReglasDePartida o algo asi.
+
     private int fichasTotales;
 
-    public Mesa() {
+    private int apuestaCiegaChica;
+
+    public Mesa(int apuestaCiegaChica) {
+
+        this.apuestaCiegaChica = apuestaCiegaChica;
+
         this.cantidadMaximaDeJugadores = 10;
+
         this.listaDeJugadores = new ListaCircular<Jugador>();
-        this.crupier = new Crupier();
+
     }
 
     public int cantidadDeJugadoresSentados() {
@@ -73,7 +82,7 @@ public class Mesa {
         return (cantidadMaximaDeJugadores == listaDeJugadores.size());
     }
 
-    public void comenzarPartida() {
+    public void comenzarJuego() {
         // Todo determinar el boton y las ciegas.
         if (this.listaDeJugadores.size() == 1) {
             throw new PartidaNoPuedeComenzarConUnSoloJugadorError();
@@ -111,14 +120,14 @@ public class Mesa {
     public ListaCircular<Jugador> getListaDeJugadores() {
         return listaDeJugadores;
     }
-//  No se si esto esta bien, ya que por ahora solo lo estoy usando para un test
-    public Crupier getCrupier() {
-        return crupier;
-    }
 
-    public ListaCircular getListaActivos() {
+    public ListaCircular getListaClonadaDeActivos() {
 
         return listaDeJugadores.cloneList();
 
+    }
+
+    public int getApuestaCiegaChica(){
+        return apuestaCiegaChica;
     }
 }

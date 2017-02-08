@@ -51,7 +51,7 @@ public class ManoTest {
         IteradorListaCircular iterActivos = new IteradorListaCircular(listaJugadoreActivos, charly);
 
         // Mesa se crea con el jugador marcos
-        Mesa mesa = new Mesa();
+        Mesa mesa = new Mesa(20); //apuesta ciega chica 20
         mesa.agregarJugador("marcos");
         mesa.agregarJugador("andres");
         mesa.agregarJugador("robert");
@@ -128,7 +128,7 @@ public class ManoTest {
 
         mesa.agregarJugador("j2");
         mesa.agregarJugador("j3");
-        mesa.comenzarPartida();
+        mesa.comenzarJuego();
         ciegaChica = mesa.getCiegaChica();
         ciegaGrande = mesa.getCiegaGrande();
         ciegaChica.apuestaObligatoria(10);

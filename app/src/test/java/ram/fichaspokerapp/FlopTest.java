@@ -27,22 +27,17 @@ public class FlopTest {
 
         Crupier crupier = new Crupier();
 
-        ListaCircular<Jugador> lista = new ListaCircular<Jugador>();
-        Jugador ciegaGrande = new Jugador("pepe", 1500);
-        Jugador siguienteAlaCiegaGrande = new Jugador("jaimito", 1500);
+        Mesa mesa = new Mesa(20);// apuesta ciega chica 20
 
-        lista.add(ciegaGrande);
-        lista.add(siguienteAlaCiegaGrande);
+        mesa.agregarJugador("j1");
 
-        IteradorListaCircular iter = new IteradorListaCircular(lista, ciegaGrande);
+        mesa.agregarJugador("j2");
 
-        int ciegaGrandeApuesta = 40;
-        Jugada jugada = new Jugada(ciegaGrandeApuesta);
-
-        crupier.asignarJuego(new Mesa());
-
+        crupier.asignarJuego(mesa);
 
         Ronda flop = new Flop(crupier);
+
+        assertEquals(40, crupier.getApuestaMinima());
 
         flop.rondaTerminada();
 
@@ -56,19 +51,13 @@ public class FlopTest {
 
         Crupier crupier = new Crupier();
 
-        ListaCircular<Jugador> lista = new ListaCircular<Jugador>();
-        Jugador ciegaGrande = new Jugador("pepe", 1500);
-        Jugador siguienteAlaCiegaGrande = new Jugador("jaimito", 1500);
+        Mesa mesa = new Mesa(20);// apuesta ciega chica 20
 
-        lista.add(ciegaGrande);
-        lista.add(siguienteAlaCiegaGrande);
+        mesa.agregarJugador("j1");
 
-        IteradorListaCircular iter = new IteradorListaCircular(lista, ciegaGrande);
+        mesa.agregarJugador("j2");
 
-        int ciegaGrandeApuesta = 40;
-        Jugada jugada = new Jugada(ciegaGrandeApuesta);
-
-        crupier.asignarJuego(new Mesa());
+        crupier.asignarJuego(mesa);
 
         Ronda flop = new Flop(crupier);
 

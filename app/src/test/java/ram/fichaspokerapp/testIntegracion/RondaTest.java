@@ -23,7 +23,7 @@ public class RondaTest {
         //admin y jugador.
         Jugador braian = new Jugador("Braian", 1500);
 
-        Mesa mesa = new Mesa();
+        Mesa mesa = new Mesa(20); // apuesta ciega chica 20
 
         lista.add(new Jugador("Marcos", 1500)); // ciega chica.
         lista.add(new Jugador("Robert", 1500)); // ciega grande.

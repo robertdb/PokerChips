@@ -28,22 +28,17 @@ public class PreFlopTest {
     @Test
     public void laRondaPreFlopTerminaYlaApuestaMinimaVuelveACeroEsCorrectoTest(){
 
-
         Crupier crupier = new Crupier();
 
-        ListaCircular<Jugador> lista = new ListaCircular<Jugador>();
-        Jugador ciegaGrande = new Jugador("pepe", 1500);
-        Jugador siguienteAlaCiegaGrande = new Jugador("jaimito", 1500);
+        Mesa mesa = new Mesa(20);// apuesta ciega chica 20
 
-        lista.add(ciegaGrande);
-        lista.add(siguienteAlaCiegaGrande);
+        mesa.agregarJugador("j1 boton");
 
-        IteradorListaCircular iter = new IteradorListaCircular(lista, ciegaGrande);
+        mesa.agregarJugador("j2 ciega chica");
 
-        int ciegaGrandeApuesta = 40;
-        Jugada jugada = new Jugada(ciegaGrandeApuesta);
+        mesa.agregarJugador("j3 ciega grande");
 
-        crupier.asignarJuego(new Mesa());
+        crupier.asignarJuego(mesa);
 
         Ronda preFlop = new PreFlop(crupier);
 
@@ -58,19 +53,15 @@ public class PreFlopTest {
 
         Crupier crupier = new Crupier();
 
-        ListaCircular<Jugador> lista = new ListaCircular<Jugador>();
-        Jugador ciegaGrande = new Jugador("pepe", 1500);
-        Jugador siguienteAlaCiegaGrande = new Jugador("jaimito", 1500);
+        Mesa mesa = new Mesa(20);// apuesta ciega chica 20
 
-        lista.add(ciegaGrande);
-        lista.add(siguienteAlaCiegaGrande);
+        mesa.agregarJugador("j1 boton");
 
-        IteradorListaCircular iter = new IteradorListaCircular(lista, ciegaGrande);
+        mesa.agregarJugador("j2 ciega chica");
 
-        int ciegaGrandeApuesta = 40;
-        Jugada jugada = new Jugada(ciegaGrandeApuesta);
+        mesa.agregarJugador("j3 ciega grande");
 
-        crupier.asignarJuego(new Mesa());
+        crupier.asignarJuego(mesa);
 
         Ronda preFlop = new PreFlop(crupier);
 
@@ -83,26 +74,16 @@ public class PreFlopTest {
     @Test
     public void cambiarRondaSiLaCiegaGrandeNoApostoEnSuTurnoEsTrueTest(){
 
+
         Crupier crupier = new Crupier();
 
-        Jugador boton = new Jugador();
-        Jugador ciegaChica = new Jugador();
-        Jugador ciegaGrande = new Jugador();
+        Mesa mesa = new Mesa(20);// apuesta ciega chica 20
 
-        ListaCircular<Jugador> lista = new ListaCircular<Jugador>();
-        lista.add(boton);
-        lista.add(ciegaChica);
-        lista.add(ciegaGrande);
+        mesa.agregarJugador("j1 boton");
 
-        IteradorListaCircular iter = new IteradorListaCircular(lista, ciegaGrande);
+        mesa.agregarJugador("j2 ciega chica");
 
-        int ciegaGrandeApuesta = 40;
-        Jugada jugada = new Jugada(ciegaGrandeApuesta);
-
-
-        Mesa mesa = new Mesa();
-        mesa.agregarJugador("ciegaChica");
-        mesa.agregarJugador("ciegaGrande");
+        mesa.agregarJugador("j3 ciega grande");
 
         crupier.asignarJuego(mesa);
 
@@ -111,9 +92,16 @@ public class PreFlopTest {
         // Estado del juego: el jugador con la ciega grande ya jugo
         // y la apuestaMinima se mantuvo con el valor de la ciegaGrande
         // en este caso termina la ronda.
-        assertEquals(ciegaGrande, crupier.getJugadorActual());
-        assertEquals(ciegaGrande, crupier.getJugadorCiegaGrande());
-        assertTrue(preFlop.cambiarRonda(new AgresorPasivo(), new Jugador()));
+
+        Jugador j1 = crupier.getJugadorActual();
+        j1.igualar(crupier);
+
+        Jugador j2 = crupier.getJugadorActual();
+        j2.igualar(crupier);
+
+        // el actual es j3 y el proximo es j1.
+        Jugador j3 = crupier.getJugadorActual();
+        assertTrue(preFlop.cambiarRonda(new AgresorPasivo(), j1));
 
     }
 
@@ -136,7 +124,7 @@ public class PreFlopTest {
         int ciegaGrandeApuesta = 40;
         Jugada jugada = new Jugada(ciegaGrandeApuesta);
 
-        crupier.asignarJuego(new Mesa());
+        crupier.asignarJuego(new Mesa(20)); // apuesta ciega chica 20
 
         crupier.crearMano();
 
@@ -159,21 +147,7 @@ public class PreFlopTest {
     @Test
     public void determinarGanadorEsCorrectoTest(){
 
-    Crupier crupier = new Crupier();
-
-    ListaCircular<Jugador> lista = new ListaCircular<Jugador>();
-
-    lista.add(new Jugador("pepe", 1500));
-
-    IteradorListaCircular iter = new IteradorListaCircular(lista);
-
-    Pozo pozo = new Pozo(1000);
-
-    crupier.asignarJuego(new Mesa());
-
-    Ronda preFlop = new PreFlop(crupier);
-
-    assertTrue(preFlop.comprobarGanador(new IteradorListaCircular(lista), pozo));
+        assertTrue(true);
 
     }
 

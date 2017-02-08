@@ -30,15 +30,28 @@ public class Crupier implements CrupierMediador{
 
     public void asignarJuego(Mesa mesa) {
 
-        this.iterJugadoresActivos = new IteradorListaCircular(mesa.getListaActivos());
-
         this.mesa = mesa;
 
-        this.jugada = jugada;
+        // que la mesa maneje el tiempo de las ciegas.
+        int apuestaCiegachica = mesa.getApuestaCiegaChica();
+
+        this.jugada = new Jugada(apuestaCiegachica * 2);
 
         this.ciegaChica = mesa.getCiegaChica();
 
         this.ciegaGrande = mesa.getCiegaGrande();
+
+        mano = new Mano(this);
+
+        this.ciegaChica.apuestaObligatoria(apuestaCiegachica);
+
+        this.ciegaGrande.apuestaObligatoria(apuestaCiegachica * 2);
+
+        this.iterJugadoresActivos = new IteradorListaCircular(mesa.getListaClonadaDeActivos());
+
+        iterJugadoresActivos.moveActual(ciegaGrande);
+
+        iterJugadoresActivos.next();
 
     }
 

@@ -56,10 +56,10 @@ public class Jugador {
         crupier.igualar(this.pilaDeFichas.debitar(apuestaMinima));
     }
 
-    public void retirar() {
+    public void retirar(CrupierMediador crupier) {
 
-        // Todavia no le avisen al crupier jeje
-        //this.crupier.retirar();
+        crupier.retirar();
+
     }
 
     public void apuestaObligatoria(int apuesta) {

@@ -27,19 +27,15 @@ public class TurnTest {
 
         Crupier crupier = new Crupier();
 
-        ListaCircular<Jugador> lista = new ListaCircular<Jugador>();
-        Jugador ciegaGrande = new Jugador("pepe", 1500);
-        Jugador siguienteAlaCiegaGrande = new Jugador("jaimito", 1500);
+        Mesa mesa = new Mesa(20);// apuesta ciega chica 20
 
-        lista.add(ciegaGrande);
-        lista.add(siguienteAlaCiegaGrande);
+        mesa.agregarJugador("j1 boton");
 
-        IteradorListaCircular iter = new IteradorListaCircular(lista, ciegaGrande);
+        mesa.agregarJugador("j2 ciega chica");
 
-        int ciegaGrandeApuesta = 40;
-        Jugada jugada = new Jugada(ciegaGrandeApuesta);
+        mesa.agregarJugador("j3 ciega grande");
 
-        crupier.asignarJuego(new Mesa());
+        crupier.asignarJuego(mesa);
 
         Ronda turn = new Turn(crupier);
 
@@ -54,19 +50,15 @@ public class TurnTest {
 
         Crupier crupier = new Crupier();
 
-        ListaCircular<Jugador> lista = new ListaCircular<Jugador>();
-        Jugador ciegaGrande = new Jugador("pepe", 1500);
-        Jugador siguienteAlaCiegaGrande = new Jugador("jaimito", 1500);
+        Mesa mesa = new Mesa(20);// apuesta ciega chica 20
 
-        lista.add(ciegaGrande);
-        lista.add(siguienteAlaCiegaGrande);
+        mesa.agregarJugador("j1 boton");
 
-        IteradorListaCircular iter = new IteradorListaCircular(lista, ciegaGrande);
+        mesa.agregarJugador("j2 ciega chica");
 
-        int ciegaGrandeApuesta = 40;
-        Jugada jugada = new Jugada(ciegaGrandeApuesta);
+        mesa.agregarJugador("j3 ciega grande");
 
-        crupier.asignarJuego(new Mesa());
+        crupier.asignarJuego(mesa);
 
         Ronda turn = new Turn(crupier);
 
