@@ -78,29 +78,7 @@ public class ManoTest {
 
     }
 
-    @Ignore // La mano se crea en crupier. Este test puede que quede obsoleto.
-    @Test
-    public void cambiarRondaAlInicioSiNoHayApuestasQueSuperanLaMinimaEnLaPrimerVueltaTest(){
 
-        Crupier crupier = new Crupier();
-
-        Mano mano = getManoCargado(crupier);
-
-        // la ronda la empieza charly
-        charly.igualar(crupier);
-        marcos.igualar(crupier);
-        andres.igualar(crupier);
-
-        // Cuando la mano recibe a un jugador se considera que este ya jugo.
-        // Por lo tanto vamos a suponer que robert paso y no aposto.
-        // robert.pasar();
-
-
-        // Como la apuesta minima no se modifico durante una vuelta entera,
-        // el jugador con la ciega grande (robert) no aposto se cambia de ronda.
-        assertTrue(mano.cambiarRonda());
-
-    }
     @Ignore
     @Test
     public void seActualizaElPozoLuegoDeSubidaTest(){
@@ -116,25 +94,12 @@ public class ManoTest {
         assertEquals(560,pozo.getCantidadDeFichasActuales());
 
     }
-    /*
+
     //Todo: creo que este es un test de mano
     @Ignore
     @Test
     public void lasCiegasSeAcreditanEnElPozoCorrectamenteTest() {
 
-        Jugador jugador3 = new Jugador();
-        Jugador ciegaChica;
-        Jugador ciegaGrande;
-
-        mesa.agregarJugador("j2");
-        mesa.agregarJugador("j3");
-        mesa.comenzarJuego();
-        ciegaChica = mesa.getCiegaChica();
-        ciegaGrande = mesa.getCiegaGrande();
-        ciegaChica.apuestaObligatoria(10);
-        ciegaGrande.apuestaObligatoria(20);
-//        assertEquals(30, mesa.getPozo());
-
     }
-    */
+
 }
