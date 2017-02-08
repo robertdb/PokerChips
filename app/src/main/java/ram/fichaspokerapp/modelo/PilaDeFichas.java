@@ -44,4 +44,10 @@ public class PilaDeFichas {
 
     }
 
+    public int getFichasEnJuego(){
+
+        return fichasEnJuego;
+
+    }
+
 }

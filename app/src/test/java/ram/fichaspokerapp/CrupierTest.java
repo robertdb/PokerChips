@@ -3,6 +3,7 @@ package ram.fichaspokerapp;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import ram.fichaspokerapp.error.NoSePuedePasarSiSeSubeError;
 import ram.fichaspokerapp.modelo.Crupier;
 import ram.fichaspokerapp.modelo.Jugador;
 import ram.fichaspokerapp.modelo.Mesa;
@@ -126,7 +127,6 @@ public class CrupierTest {
     }
 
 
-    @Ignore
     @Test
     public void laRondaFlopTerminaSiLaApuestaMinimaSeMantieneEnCeroDuranteUnaVueltaDeRonda(){
 
@@ -167,6 +167,21 @@ public class CrupierTest {
         assertEquals("andres", crupier.getJugadorActual().getNombre());
 
     }
+
+    @Test(expected = NoSePuedePasarSiSeSubeError.class)
+    public void noSePuedePasarEnPreFlopSiElJugadorEsElSiguienteAlaCiegaGrandeTest(){
+
+        Crupier  crupier = getCrupierCargado(new Crupier());
+
+        // Se simula una ronda PreFlop.
+
+        //charly
+        crupier.getJugadorActual().pasar(crupier);
+
+    }
+
+
+
 
 
 

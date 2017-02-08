@@ -19,22 +19,20 @@ public class JugadaTest {
     @Test(expected = NoSePuedePasarSiSeSubeError.class )
     public void noSePuedePasarDespuesDeLaCiegaGrandeTest(){
 
-        // 10 jugadores con 1500 fichas c/u y ciegaChica = 20
-        Pozo pozo = new Pozo(15000,20);
-
         int ciegaGrande = 40;
 
         Jugada jugada = new Jugada(ciegaGrande);
 
-        jugada.pasar();
+        int fichasEnJuego = 0;
+
+        jugada.pasar(fichasEnJuego);
 
     }
 
     @Test
     public void seActualizaLaApuestaMinimaLuegoDeSubidaTest(){
 
-        // 10 jugadores con 1500 fichas c/u y ciegaChica = 20
-        Pozo pozo = new Pozo(15000,20);
+
         int ciegaGrande = 40;
         Jugada jugada = new Jugada(ciegaGrande);
         int apuesta = 500;
@@ -47,8 +45,7 @@ public class JugadaTest {
     @Test(expected = NoSePuedeSubirMenosQueLaSubidaMinimaError.class )
     public void noSePuedeSubirMenosQueLaSubidaMinimaTest(){
 
-        // 10 jugadores con 1500 fichas c/u y ciegaChica = 20
-        Pozo pozo = new Pozo(15000,20);
+
         int apuestaMinima = 100;
         int ciegaGrande = 40;
         Jugada jugada = new Jugada(ciegaGrande);
@@ -63,10 +60,6 @@ public class JugadaTest {
     @Test(expected = NoSePuedeIgualarSiNoHuboSubidaError.class)
     public void noSePuedeIgualarSiNoHuboSubidaTest(){
 
-        // 10 jugadores con 1500 fichas c/u y ciegaChica = 20
-        // La mano puede estar arrancando el flop, turn o river.
-        // en cada una de estas etapas se empieza con apuestaMinima cero.
-        Pozo pozo = new Pozo(15000,20);
         int ciegaGrande = 40;
         Jugada jugada = new Jugada(ciegaGrande);
 

@@ -29,6 +29,8 @@ public class Jugador {
 
     public void pasar(CrupierMediador crupier) {
 
+        crupier.getJugada().pasar(pilaDeFichas.getFichasEnJuego());
+
         crupier.pasar();
 
     }

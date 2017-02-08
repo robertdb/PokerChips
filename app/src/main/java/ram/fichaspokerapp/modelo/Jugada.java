@@ -24,9 +24,9 @@ public class Jugada {
         return apuestaMinima;
     }
 
-    public void pasar() {
+    public void pasar(int fichasEnJuego) {
 
-        if (this.apuestaMinima > 0){
+        if (this.apuestaMinima > fichasEnJuego){
             throw new NoSePuedePasarSiSeSubeError();
 
         }

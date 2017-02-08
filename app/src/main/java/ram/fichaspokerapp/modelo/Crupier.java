@@ -41,8 +41,6 @@ public class Crupier implements CrupierMediador{
 
         this.ciegaGrande = mesa.getCiegaGrande();
 
-        mano = new Mano(this);
-
         this.ciegaChica.apuestaObligatoria(apuestaCiegachica);
 
         this.ciegaGrande.apuestaObligatoria(apuestaCiegachica * 2);
