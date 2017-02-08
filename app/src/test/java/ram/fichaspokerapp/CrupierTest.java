@@ -4,6 +4,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import ram.fichaspokerapp.error.NoSePuedePasarSiSeSubeError;
+import ram.fichaspokerapp.error.NoSePuedeSubirMenosQueLaSubidaMinimaError;
 import ram.fichaspokerapp.modelo.Crupier;
 import ram.fichaspokerapp.modelo.Jugador;
 import ram.fichaspokerapp.modelo.Mesa;
@@ -209,6 +210,36 @@ public class CrupierTest {
         assertEquals("robert", crupier.getJugadorActual().getNombre());
 
     }
+
+    // Todo: este test fue creado bajo la ignorancia
+    // Todo: de que un jugador puede hacer all-in.
+    // Todo: un vez implementado ese comportamiendo lo revisamos de nuevo.
+    @Test(expected = NoSePuedeSubirMenosQueLaSubidaMinimaError.class)
+    public void noSePuedeSubirEnUnaRondaMenosQueLaSubidaMinimaTest(){
+
+        Crupier  crupier = getCrupierCargado(new Crupier());
+
+        // Se simula una ronda PreFlop.
+        // la ciega grande esta en 40.
+
+        //charly
+        crupier.getJugadorActual().igualar(crupier);
+
+        // marcos sube a +80
+        crupier.getJugadorActual().subir(crupier, 80);
+        assertEquals(80, crupier.getApuestaMinima());
+
+        // andres sube  a +120
+        crupier.getJugadorActual().subir(crupier, 120);
+        assertEquals(120, crupier.getApuestaMinima());
+
+        // robert sube a +150
+        // su apuesta no cubre la subida minima que es de 160 fichas.
+        crupier.getJugadorActual().subir(crupier, 150);
+
+    }
+
+
 
 
 
