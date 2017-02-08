@@ -79,9 +79,16 @@ public class Crupier implements CrupierMediador{
     @Override
     public void pasar() {
 
-        // FALTA VER COMO VA MANEJAR LA MANO AL PASAR.
-        // QUE PASA SI EN UNA RONDA COMO EL FLOP TURN RIVER TODOS DECIDEN PASAR
-        iterJugadoresActivos.next();
+        if(mano.cambiarRonda()){
+
+            mano.terminarRonda();
+
+        }
+        else{
+            iterJugadoresActivos.next();
+        }
+
+        mano.comprobarSiGanadores();
 
     }
 
@@ -92,12 +99,12 @@ public class Crupier implements CrupierMediador{
 
             mano.terminarRonda();
 
-            return;
+        }
+        else{
+            iterJugadoresActivos.next();
         }
 
         mano.comprobarSiGanadores();
-
-        iterJugadoresActivos.next();
 
     }
 
@@ -109,6 +116,8 @@ public class Crupier implements CrupierMediador{
             ciegaChica = (Jugador) iterJugadoresActivos.seeNext();
 
         iterJugadoresActivos.removeActual();
+
+        mano.comprobarSiGanadores();
 
     }
 
