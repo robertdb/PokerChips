@@ -18,7 +18,7 @@ public class Flop extends Ronda{
 
         crupier.nuevaRonda();
 
-        return (Ronda) new Turn(crupier);
+        return (Ronda) new Turn(crupier, new Mano(crupier));
 
     }
 }

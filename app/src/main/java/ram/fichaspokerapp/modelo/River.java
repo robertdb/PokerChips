@@ -7,10 +7,19 @@ import ram.fichaspokerapp.error.UltimaRondaTerminadaNoHayProximaError;
  */
 public class River extends Ronda {
 
+    private Mano mano;
+
+    public River(Mano mano) {
+
+        this.mano = mano;
+
+    }
     @Override
     public Ronda rondaTerminada() {
 
-        throw new UltimaRondaTerminadaNoHayProximaError();
+        mano.determinarGanadores();
+
+        return this;
 
     }
 }

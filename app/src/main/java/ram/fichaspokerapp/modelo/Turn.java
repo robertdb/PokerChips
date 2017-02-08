@@ -7,9 +7,13 @@ public class Turn extends Ronda{
 
     private Crupier crupier;
 
-    public Turn(Crupier crupier) {
+    private Mano mano;
+
+    public Turn(Crupier crupier, Mano mano) {
 
         this.crupier = crupier;
+
+        this.mano = mano;
 
     }
 
@@ -18,7 +22,7 @@ public class Turn extends Ronda{
 
         crupier.nuevaRonda();
 
-        return (Ronda) new River();
+        return (Ronda) new River(mano);
 
     }
 }

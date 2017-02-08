@@ -4,14 +4,11 @@ import org.junit.Test;
 
 
 import ram.fichaspokerapp.modelo.Crupier;
-import ram.fichaspokerapp.modelo.Jugada;
-import ram.fichaspokerapp.modelo.Jugador;
+import ram.fichaspokerapp.modelo.Mano;
 import ram.fichaspokerapp.modelo.Mesa;
 import ram.fichaspokerapp.modelo.River;
 import ram.fichaspokerapp.modelo.Ronda;
 import ram.fichaspokerapp.modelo.Turn;
-import ram.fichaspokerapp.modelo.linkedList.IteradorListaCircular;
-import ram.fichaspokerapp.modelo.linkedList.ListaCircular;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -37,7 +34,7 @@ public class TurnTest {
 
         crupier.asignarJuego(mesa);
 
-        Ronda turn = new Turn(crupier);
+        Ronda turn = new Turn(crupier, new Mano(crupier));
 
         turn.rondaTerminada();
 
@@ -60,7 +57,7 @@ public class TurnTest {
 
         crupier.asignarJuego(mesa);
 
-        Ronda turn = new Turn(crupier);
+        Ronda turn = new Turn(crupier, new Mano(crupier));
 
         Ronda ronda = turn.rondaTerminada();
 
