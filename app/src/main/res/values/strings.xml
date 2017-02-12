@@ -2,16 +2,16 @@
     <string name="app_name" translatable="false">Poker Chips</string>
     <!--Nombre del EditText del inicio-->
     <string name="nombre">Name</string>
-    <!--Boton de apostar medio pote-->
-    <string name="un_medio">1/2</string>
-    <!--Boton de apostar tres cuartos de pote-->
-    <string name="tres_cuartos">3/4</string>
-    <!--Boton de apostar el pote-->
-    <string name="pote">Pot</string>
-    <!--Boton de apostar all in-->
-    <string name="all_in">All-in</string>
     <!--CheckBox del inicio-->
     <string name="listo">Done</string>
     <!--Numero cero-->
     <string name="cero">0</string>
+    <!--Boton de apostar medio pote-->
+    <string name="un_medio">1/2</string> <!--Asi sugiere escribir el 1/2 el Android Studio-->
+    <!--Boton de apostar tres cuartos de pote-->
+    <string name="tres_cuartos">3/4</string> <!--Asi sugiere escribir el 3/4 el Android Studio-->
+    <!--Boton de apostar el pote-->
+    <string name="pote">Pot</string>
+    <!--Boton de apostar all in-->
+    <string name="all_in">All-in</string>
 </resources>

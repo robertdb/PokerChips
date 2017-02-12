@@ -3,9 +3,9 @@
     <!--acá podemos meter tildes, eñes y cosas raras ¡¿?!!!!!!-->
     <string name="listo">Listo</string>
     <string name="nombre">Nombre</string>
-    <string name="pote">Pote</string>
-    <string name="tres_cuartos">3/4</string>
-    <string name="un_medio">1/2</string>
-    <string name="all_in">All-in</string>
     <string name="cero">0</string>
+    <string name="un_medio">1/2</string> <!--Asi sugiere escribir el 1/2 el Android Studio-->
+    <string name="tres_cuartos">3/4</string> <!--Asi sugiere escribir el 3/4 el Android Studio-->
+    <string name="pote">Pote</string>
+    <string name="all_in">All-in</string>
 </resources>
